@@ -4,14 +4,14 @@ Projektarbeit für Python von Frank Rübenkönig, Sarah Stebich, Tobias Spohn un
 
 ## Projektaufteilung
 
-Frank: UI
-Sarah: Computergegner
-Tobias: Logik
-Florian: Speichern
+*Frank: UI
+*Sarah: Computergegner
+*Tobias: Logik
+*Florian: Speichern
 
 # Test Code Anzeigen
 
-'''python
+```python
 def load_data(self, file_name):
     """load match from directory ../games
     Arguments:
@@ -26,7 +26,7 @@ def load_data(self, file_name):
             return new_matchfield
     except IOError:
         return None
-'''
+```
 
 # Test Link
 
