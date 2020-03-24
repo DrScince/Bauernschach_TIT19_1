@@ -1,11 +1,15 @@
 #TODO docstring
 import unittest
 
-from chess_storage import ChessStorage
+try:
+    from chess_storage import ChessStorage
+except ImportError:
+    print("Import Error!")
+    exit()
 
 class StorageTest(unittest.TestCase):
     #TODO docstring
     def test_load_data(self):
         #TODO docstring
         test = ChessStorage()
-        self.assertTrue(test.load_data("test123"))
+        self.assertTrue(test.load_data("Test123"))
