@@ -1,6 +1,7 @@
 #TODO docstring
 import unittest
-from main.chess_storage import ChessStorage
+
+from chess_storage import ChessStorage
 
 class StorageTest(unittest.TestCase):
     #TODO docstring
