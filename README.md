@@ -4,10 +4,10 @@ Projektarbeit für Python von Frank Rübenkönig, Sarah Stebich, Tobias Spohn un
 
 ## Projektaufteilung
 
-*Frank: UI
-*Sarah: Computergegner
-*Tobias: Logik
-*Florian: Speichern
+* Frank: UI
+* Sarah: Computergegner
+* Tobias: Logik
+* Florian: Speichern
 
 # Test Code Anzeigen
 
