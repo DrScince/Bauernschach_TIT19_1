@@ -14,10 +14,8 @@ class ChessStorage:
         """
         __dir_game_saves = os.path.dirname(__file__)
         __dir_game_saves = os.path.join(__dir_game_saves, '\\games')
-        try:
+        if os.path.isdir(__dir_game_saves) != True:
             os.mkdir(__dir_game_saves, mode=0o777, exist_ok=False)
-        except OSError:
-            pass
 
     def load_data(self, file_name):
         """load match from directory ../games
