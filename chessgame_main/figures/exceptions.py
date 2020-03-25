@@ -1,0 +1,2 @@
+"""Exceptions for figures
+"""
