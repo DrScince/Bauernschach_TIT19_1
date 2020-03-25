@@ -27,7 +27,7 @@ def main():
         __print_menu()
         __print_game(__gamefield)
         __print_footer()
-        __run_game = __get_input()
+        __run_game = __get_input(__gamefield)
 
 def __fill_default_game():
     gamefield = [[0 for i in range(consts.GAME_SIZE)] for j in range(consts.GAME_SIZE)]
@@ -54,47 +54,56 @@ def __print_footer():
 
 def __print_game(gamefield):
     print("\n\t\t\t\t    A    B    C    D    E    F    G    H\n")
-    __print_game_line(gamefield, 7)
-    __print_game_line(gamefield, 6)
-    __print_game_line(gamefield, 5)
-    __print_game_line(gamefield, 4)
-    __print_game_line(gamefield, 3)
-    __print_game_line(gamefield, 2)
-    __print_game_line(gamefield, 1)
-    __print_game_line(gamefield, 0)
+    for i in range(8):
+        __print_game_line(gamefield, i)
+   
     print("\n\t\t\t\t    A    B    C    D    E    F    G    H")
 
 def __print_game_line(gamefield, line_number):
     print("\t\t\t       ", end="")
     print(str(line_number+1)+"", end="")
-    print("    "+str(gamefield[line_number][0])+"", end="")
-    print("    "+str(gamefield[line_number][1])+"", end="")
-    print("    "+str(gamefield[line_number][2])+"", end="")
-    print("    "+str(gamefield[line_number][3])+"", end="")
-    print("    "+str(gamefield[line_number][4])+"", end="")
-    print("    "+str(gamefield[line_number][5])+"", end="")
-    print("    "+str(gamefield[line_number][6])+"", end="")
-    print("    "+str(gamefield[line_number][7])+"", end="")
+    for i in range(8):
+        print("    "+str(gamefield[line_number][i])+"", end="")
     print("     "+str(line_number+1))
 
-def __get_input():
+def __get_input(gamefield):
     print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")
     desiccion = input("\t\t\t\t")
     desiccion = str.upper(desiccion)
 
     if desiccion == consts.LOAD:
         print("\t\t\t\tSpiel Laden")
+        #TODO Spiel Laden einbauen
         return True
     elif desiccion == consts.SAVE:
         print("\t\t\t\tSpiel Speichern ...")
+        #TODO Spiel Speichern einbauen
         return True
     elif desiccion == consts.NEW_GAME:
         print("\t\t\t\tNeues Spiel")
+        #TODO Neues Spiel einbaune
         return True
     elif desiccion == consts.QUIT:
         return __quit_game()
+    elif len(desiccion) == 2:
+        __letter = str.upper(list(desiccion)[0])
+        __number = int(list(desiccion)[1])-1
+        return __move_figure(__letter, __number, gamefield)
+
     else:
         return True
+
+def __move_figure(letter, number, gamefield):
+    row = ord(letter) - 65
+    col = number
+    gamefield[col][row] = '\033[3;32;47m'+ str(gamefield[col][row])+"\033[0;30;47m"
+    
+    # for move in moves: #TODO Possible moves from figures
+        
+        
+
+    return True
+    
 
 def __quit_game():
     CLEAR()
