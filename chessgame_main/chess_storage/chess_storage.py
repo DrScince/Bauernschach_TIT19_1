@@ -78,10 +78,10 @@ class ChessStorage:
             if __match == __log_name:
                 if append:
                     with open(__dir_game_log, 'a') as __log_game:
-                        __log_game.writelines(str(log_info))
+                        __log_game.writelines([str(log_info), "\n"])
                         return 0
                 else:
                     return 2
         with open(__dir_game_log, 'a') as __log_game:
-            __log_game.writelines(str(log_info))
+            __log_game.writelines([str(log_info), "\n"])
             return 0
