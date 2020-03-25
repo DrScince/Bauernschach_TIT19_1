@@ -13,6 +13,11 @@ class Position():
     """
 
     def __init__(self, char_pos, number_pos):
+        """
+        Arguments:
+            char_pos{char} -- A to H
+            number_pos{int} -- 1 to 8
+        """
         if number_pos > GAME_SIZE or number_pos < 1:
             raise OutOfBoundsException
         if len(char_pos) == 1:
