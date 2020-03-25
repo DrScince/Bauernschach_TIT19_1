@@ -48,5 +48,15 @@ class StorageTest(unittest.TestCase):
         __test_filenames = self.__test.get_all_games()
         self.assertEqual(__test_filenames, __filenames)
 
+    def test_4_log_game(self):
+        """Test the method log_game
+        """
+        __log_test = self.__test.log_game(self.__test_filename, self.__test_data, True)
+        self.assertEqual(__log_test, 0)
+        __log_test = self.__test.log_game(self.__test_filename, self.__test_data, False)
+        self.assertEqual(__log_test, 2)
+        __log_test = self.__test.log_game(self.__test_filename, self.__test_data, True)
+        self.assertEqual(__log_test, 0)
+
 if __name__ == '__main__':
     unittest.main()

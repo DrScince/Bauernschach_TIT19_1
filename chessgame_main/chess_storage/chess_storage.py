@@ -62,3 +62,26 @@ class ChessStorage:
         for __match in os.listdir(self.__dir_game_saves):
             __games.append(__match)
         return __games
+
+    def log_game(self, file_name, log_info, append):
+        """Log in a txt file
+        Arguments:
+            file_name {string} -- new name from the file
+            log_info {} -- info to log (converts to string)
+            append {bool} -- True: append the file, False: do nothing
+        Returns:
+            ErrorCode -- 0 success, 2 file exists
+        """
+        __log_name = str(file_name) + "_log.txt"
+        __dir_game_log = os.path.join(self.__dir_game_saves, str(__log_name))
+        for __match in os.listdir(self.__dir_game_saves):
+            if __match == __log_name:
+                if append:
+                    with open(__dir_game_log, 'a') as __log_game:
+                        __log_game.writelines(str(log_info))
+                        return 0
+                else:
+                    return 2
+        with open(__dir_game_log, 'a') as __log_game:
+            __log_game.writelines(str(log_info))
+            return 0
