@@ -16,7 +16,7 @@ Zum Laden, Speichern und durchsuchen von Dateien in /games
 
 ## test_chessstorage
 
-* class StorageTest\
+* class StorageTest
     >Nach dem Name test_ in den Methoden folgt eine Zahl für die Reihenfolge
     * test_1_save_data
         >Es wird drei mal mit dem selben Namen gespeichert um das überschreiben zu testen
