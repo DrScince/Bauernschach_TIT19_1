@@ -5,72 +5,68 @@ Returns:
 """
 import platform
 import os
+
 # from colorama import Fore, Back
+# import consts
 try:
     import consts
+    from util import UIutil
+    from figures import position
 except ImportError:
     print("Import Error!")
     exit()
+
+
 
 def main():
     """[summary]
     """
     #TODO Frank docstring
-    __gamefield = __fill_default_game()
+    __gamefield = UIutil.fill_default_game()
+
+    # Fliegt raus nach Implementierung
     for k in range(8):
         __gamefield[1][k] = "♙"
         __gamefield[6][k] = "♟"
+    # Fliegt raus nach Implementierung
 
     __run_game = True
     while __run_game:
-        CLEAR()
-        __print_menu()
-        __print_game(__gamefield)
-        __print_footer()
+        __print_all(__gamefield)
         __run_game = __get_input(__gamefield)
 
-def __fill_default_game():
-    gamefield = [[0 for i in range(consts.GAME_SIZE)] for j in range(consts.GAME_SIZE)]
-    for i in range(8):
-        for j in range(8):
-            if i % 2 == 0:
-                if j % 2 == 0:
-                    gamefield[i][j] = "◼"
-                else:
-                    gamefield[i][j] = "◻"
-            else:
-                if j % 2 == 0:
-                    gamefield[i][j] = "◻"
-                else:
-                    gamefield[i][j] = "◼"
-    return gamefield
+def __print_all(gamefield):
+    CLEAR()
+    __print_menu()
+    __print_game(gamefield)
+    __print_footer()
 
 def __print_menu():
-    print("\t\tNeues Spiel(N)\t\tSpeichern(S)\tLaden(L)\t\tSpiel Beenden(B)")
+    print("\n\t\t\t\t\t\tSchachautomat\t\t")
+    print("\n\t\tNeues Spiel(N)\t\tSpeichern(S)\tLaden(L)\t\tSpiel Beenden(B)")
     print("\t\t________________________________________________________________________________")
 
 def __print_footer():
     print("\t\t________________________________________________________________________________")
 
 def __print_game(gamefield):
-    print("\n\t\t\t\t    A    B    C    D    E    F    G    H\n")
+    print("\n\t\t\t\t\033[6;34;47m    A    B    C    D    E    F    G    H\033[0;30;47m\n")
     for i in range(8):
         __print_game_line(gamefield, i)
-   
-    print("\n\t\t\t\t    A    B    C    D    E    F    G    H")
+    print("\n\t\t\t\t\033[6;34;47m    A    B    C    D    E    F    G    H\033[0;30;47m\n")
 
 def __print_game_line(gamefield, line_number):
     print("\t\t\t       ", end="")
-    print(str(line_number+1)+"", end="")
+    print('\033[6;34;47m'+str(line_number+1)+"", end="\033[0;30;47m")
     for i in range(8):
         print("    "+str(gamefield[line_number][i])+"", end="")
-    print("     "+str(line_number+1))
+    print("     \033[6;34;47m"+str(line_number+1), end="\033[0;30;47m\n")
 
 def __get_input(gamefield):
     print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")
     desiccion = input("\t\t\t\t")
     desiccion = str.upper(desiccion)
-
+    #TODO falsche Eingabe Abfangen
     if desiccion == consts.LOAD:
         print("\t\t\t\tSpiel Laden")
         #TODO Spiel Laden einbauen
@@ -86,24 +82,45 @@ def __get_input(gamefield):
     elif desiccion == consts.QUIT:
         return __quit_game()
     elif len(desiccion) == 2:
-        __letter = str.upper(list(desiccion)[0])
+        #TODO Abfangen von Falsch eingaben
+        __letter = str(list(desiccion)[0])
         __number = int(list(desiccion)[1])-1
-        return __move_figure(__letter, __number, gamefield)
-
+        return __turn(__letter, __number, gamefield)
     else:
         return True
 
-def __move_figure(letter, number, gamefield):
+def __turn(letter, number, gamefield):
     row = ord(letter) - 65
     col = number
     gamefield[col][row] = '\033[3;32;47m'+ str(gamefield[col][row])+"\033[0;30;47m"
-    
-    # for move in moves: #TODO Possible moves from figures
-        
-        
+    #TODO Spohn einbinden
+    # Aufruf get_possiblemoves
+    # moves = getpossiblemoves(row.col)
 
+    #Beispielcode kann entfernt werden nach Implementierung
+    __moves = []
+    __moves.append(position.Position('H', 2))
+    __moves.append(position.Position('A', 1))
+    __moves.append(position.Position('G', 7))
+    #
+    for move in __moves: #TODO mögliche Bewewgung anzeigen von Spielfeld (Tobias Spohn)
+        move_row = ord(move.get_pos_char()) - 65
+        move_col = move.get_pos_number()
+        gamefield[move_col][move_row] = '\033[4;31;47m'+ str(gamefield[move_col][move_row])+"\033[0;30;47m"
+    __print_all(gamefield)
+    __next_move = __get_input_move(__moves)
+    #TODO Spoh einbinden
+    #spielplan = domove(__nextmove)
+    #gamefield = gamefield #spielfeld do turn
     return True
-    
+
+def __get_input_move(posible_moves):
+    print("\t\t\t\tBitte einen der folgenden Züge auswählen:")
+    print("\t\t\t\t\t", end="\033[0;31;47m")
+    for move in posible_moves:
+        print(""+str(move.get_pos_char())+""+str(move.get_pos_number())+"", end="\t")
+    __move = input("\033[0;30;47m\n\t\t\t\t")
+    return __move
 
 def __quit_game():
     CLEAR()
