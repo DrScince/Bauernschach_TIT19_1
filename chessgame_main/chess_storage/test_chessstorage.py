@@ -3,8 +3,10 @@
 import unittest
 import os
 
+from ..chess_storage import chess_storage
+
 try:
-    import chess_storage
+    # import chess_storage
     import consts
 except ImportError:
     print("Import Error!")
