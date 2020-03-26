@@ -12,9 +12,9 @@ class ChessStorage:
         """get path
         """
         self.__dir_game_saves = os.path.dirname(__file__)
-        self.__dir_game_saves = os.path.join(self.__dir_game_saves, '\\games')
+        self.__dir_game_saves = os.path.join(self.__dir_game_saves, "games")
         if not os.path.isdir(self.__dir_game_saves):
-            os.mkdir(self.__dir_game_saves, mode=0o777)
+            os.mkdir(self.__dir_game_saves)
 
     def save_data(self, file_name, current_game, overwrite):
         """Save current game as an binary file
@@ -26,17 +26,17 @@ class ChessStorage:
             ErrorCode -- 0 success, 2 file exists
         """
         __dir_game = os.path.join(self.__dir_game_saves, str(file_name))
-        for __match in os.listdir(self.__dir_game_saves):
-            if __match == file_name:
-                if overwrite:
-                    with open(__dir_game, 'wb') as __old_game:
-                        pickle.dump(current_game, __old_game)
-                        return 0
-                else:
-                    return 2
-        with open(__dir_game, 'wb') as __old_game:
-            pickle.dump(current_game, __old_game)
-            return 0
+        if os.path.isfile(__dir_game):
+            if overwrite:
+                with open(__dir_game, 'wb') as __old_game:
+                    pickle.dump(current_game, __old_game)
+                    return 0
+            else:
+                return 2
+        else:
+            with open(__dir_game, 'wb') as __old_game:
+                pickle.dump(current_game, __old_game)
+                return 0
 
     def load_data(self, file_name):
         """load match from directory ../games
@@ -73,15 +73,15 @@ class ChessStorage:
             ErrorCode -- 0 success, 2 file exists
         """
         __log_name = str(file_name) + "_log.txt"
-        __dir_game_log = os.path.join(self.__dir_game_saves, str(__log_name))
-        for __match in os.listdir(self.__dir_game_saves):
-            if __match == __log_name:
-                if append:
-                    with open(__dir_game_log, 'a') as __log_game:
-                        __log_game.writelines([str(log_info), "\n"])
-                        return 0
-                else:
-                    return 2
-        with open(__dir_game_log, 'a') as __log_game:
-            __log_game.writelines([str(log_info), "\n"])
-            return 0
+        __dir_game_log = os.path.join(self.__dir_game_saves, __log_name)
+        if os.path.isfile(__dir_game_log):
+            if append:
+                with open(__dir_game_log, 'a') as __log_game:
+                    __log_game.writelines([str(log_info), "\n"])
+                    return 0
+            else:
+                return 2
+        else:
+            with open(__dir_game_log, 'a') as __log_game:
+                __log_game.writelines([str(log_info), "\n"])
+                return 0
