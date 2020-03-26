@@ -1,46 +1,48 @@
 """Figure base class for the chess game
 """
-
+try:
+    from consts import COLOR_BLACK, COLOR_WHITE
+    import sys
+except ImportError:
+    print("ImportError")
+    sys.exit()
 
 class Figure:
     """Figure base class for the chess game
     """
 
-    def __init__(self, pos_x, pos_y, color):
+    def __init__(self, color, position):
         """
         Arguments:
-            pos_x {int} -- start pos of pwan
-            pos_y {int} -- start pos of pwan
             color {String} -- COLOR_BLACK or COLOR_WHITE
+            position{Position}
         """
-        raise NotImplementedError
+        if color == COLOR_WHITE:
+            self.__color = COLOR_WHITE
+        elif color == COLOR_BLACK:
+            self.__color = COLOR_BLACK
+        else:
+            raise AttributeError
 
-    def move_to(self, new_x, new_y, is_occupied):
-        """Move figure to new position
-
-        Arguments:
-            new_x {int} -- new position
-            new_y {int} -- new position
-            is_occupied {bool} -- is new position occupied?
-
-        Return:
-            True if move was made
-            False if move could not be made
-        """
-        raise NotImplementedError
-
-    def get_position(self):
-        """Get position as tuple
-
-        Return:
-            Position as tuple (x, y)
-        """
-        raise NotImplementedError
+        if position is not None:
+            self.__position = position
+        else:
+            raise AttributeError
 
     def get_color(self):
-        """Gets the color of the Figure
-
+        """ Gets the color of the Figure
         Return:
             COLOR_BLACK or COLOR_WHITE
         """
-        raise NotImplementedError
+        return self.__color
+
+    def get_position(self):
+        """ Gets the position of the Figure
+
+        Return:
+            position {Position}
+        """
+        return self.__position
+
+    def _do_move(self, new_position):
+        self.__position = new_position
