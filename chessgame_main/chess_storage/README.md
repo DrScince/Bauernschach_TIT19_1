@@ -29,3 +29,6 @@ Zum Laden, Speichern und durchsuchen von Dateien in /games
     * test_4_log_game
         >Es wird drei mal mit dem selben Namen ausgeführt um das erweitern zu testen\
         >Der Inhalt der Testdatei wird im Terminal ausgegeben
+    * test_999_remove_testfiles
+        >Muss als Letztes laufen!!!\
+        >Löscht die erstellten Dateien und den Ordner "games" falls dieser leer ist.
