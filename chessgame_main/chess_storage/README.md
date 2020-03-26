@@ -27,4 +27,5 @@ Zum Laden, Speichern und durchsuchen von Dateien in /games
     * test_3_get_all_games
         >Testet ob die Dateinamen korrekt gelesen werden
     * test_4_log_game
-        >Es wird drei mal mit dem selben Namen ausgeführt um das erweitern zu testen
+        >Es wird drei mal mit dem selben Namen ausgeführt um das erweitern zu testen\
+        >Der Inhalt der Testdatei wird im Terminal ausgegeben

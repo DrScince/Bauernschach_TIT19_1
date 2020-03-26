@@ -32,8 +32,9 @@
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="Chess_Storage" use3DEffect="true">
             <y:AttributeLabel xml:space="preserve">- dir_game_saves</y:AttributeLabel>
             <y:MethodLabel xml:space="preserve">+ matchfield: load_data (string file_name)
-+ bool: save_data (string file_name, matchfield current_game, bool overwirite)
-+ list matchfield: get_all_games ()</y:MethodLabel>
++ ErrorCode: save_data (string file_name, matchfield current_game, bool overwirite)
++ list matchfield: get_all_games ()
++ ErrorCode: log_game (string file_name,  log_info, bool append)</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
