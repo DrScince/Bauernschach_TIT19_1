@@ -48,9 +48,6 @@ class StorageTest(unittest.TestCase):
         for __filename_infolder in os.listdir(__dir_game_saves):
             __filenames_infolder.append(__filename_infolder)
         __test_filenames = __test.get_all_games()
-        print("\nSame names:")
-        print(__filenames_infolder)
-        print(__test_filenames)
         self.assertEqual(__test_filenames, __filenames_infolder)
 
     def test_4_log_game(self):
