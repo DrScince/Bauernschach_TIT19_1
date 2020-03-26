@@ -4,6 +4,12 @@
 import os
 import pickle
 
+try:
+    import consts
+except ImportError:
+    print("Import Error!")
+    exit()
+
 class ChessStorage:
     """Manage gamefiles
     """
@@ -30,13 +36,13 @@ class ChessStorage:
             if overwrite:
                 with open(__dir_game, 'wb') as __old_game:
                     pickle.dump(current_game, __old_game)
-                    return 0
+                    return consts.SUCCESSFULL
             else:
-                return 2
+                return consts.FILE_EXIST
         else:
             with open(__dir_game, 'wb') as __old_game:
                 pickle.dump(current_game, __old_game)
-                return 0
+                return consts.SUCCESSFULL
 
     def load_data(self, file_name):
         """load match from directory ../games
@@ -78,10 +84,10 @@ class ChessStorage:
             if append:
                 with open(__dir_game_log, 'a') as __log_game:
                     __log_game.writelines([str(log_info), "\n"])
-                    return 0
+                    return consts.SUCCESSFULL
             else:
-                return 2
+                return consts.FILE_EXIST
         else:
             with open(__dir_game_log, 'a') as __log_game:
                 __log_game.writelines([str(log_info), "\n"])
-                return 0
+                return consts.SUCCESSFULL

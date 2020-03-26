@@ -13,7 +13,7 @@ except ImportError:
     exit()
 
 class StorageTest(unittest.TestCase):
-    """Tests the class CHESSStorage
+    """Tests the class ChessStorage
     """
 
     def test_1_save_data(self):
@@ -95,5 +95,6 @@ class StorageTest(unittest.TestCase):
         if len(__list_files) == 0:
             os.removedirs(__dir_game_saves)
 
-if __name__ == '__main__':
-    unittest.main()
+# Needed to run without console command
+# if __name__ == '__main__':
+#     unittest.main()
