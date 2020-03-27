@@ -1,9 +1,9 @@
 """ Pawn figure for the chess game
 """
 try:
-    from figure import Figure
-    from consts import COLOR_WHITE, COLOR_BLACK
-    from position import Position
+    from chess_logik.figure import Figure
+    from chess_logik.consts import COLOR_WHITE, COLOR_BLACK
+    from chess_logik.position import Position
     import sys
 except ImportError:
     print("ImportError")

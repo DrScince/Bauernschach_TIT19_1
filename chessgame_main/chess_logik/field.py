@@ -1,12 +1,12 @@
 """ The field wich contains the Pawns
 """
 try:
-    from pawn import Pawn
-    from position import Position
-    from consts import COLOR_BLACK, COLOR_WHITE
+    from chess_logik.position import Position 
+    from chess_logik.pawn import Pawn
+    from chess_logik.consts import COLOR_BLACK, COLOR_WHITE
     import sys
-except ImportError:
-    print("ImportError")
+except ImportError as err:
+    print("ImportError"+str(err))
     sys.exit()
 
 class Field():

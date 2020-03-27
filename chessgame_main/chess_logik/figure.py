@@ -1,7 +1,7 @@
 """Figure base class for the chess game
 """
 try:
-    from consts import COLOR_BLACK, COLOR_WHITE
+    from chess_logik.consts import COLOR_BLACK, COLOR_WHITE
     import sys
 except ImportError:
     print("ImportError")

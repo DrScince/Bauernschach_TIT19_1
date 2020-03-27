@@ -1,8 +1,8 @@
 """ Position Object to handle the position of a figure
 """
 try:
-    from exceptions import OutOfBoundsException
-    from consts import GAME_SIZE
+    from chess_logik.exceptions import OutOfBoundsException
+    from chess_logik.consts import GAME_SIZE
     import sys
 except ImportError:
     print("ImportError")
