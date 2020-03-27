@@ -5,7 +5,7 @@ import os
 import pickle
 
 try:
-    import consts
+    from chess_storage import consts
 except ImportError:
     print("Import Error!")
     exit()
