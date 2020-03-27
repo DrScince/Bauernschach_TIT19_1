@@ -1,12 +1,15 @@
 # pylint: disable=C
 import unittest
-
-from chessgame.main.pawn import Pawn
-from chessgame.main.exceptions import OutOfBoundsException
-from chessgame.main.consts import GAME_SIZE
-from chessgame.main.consts import COLOR_BLACK
-from chessgame.main.consts import COLOR_WHITE
-
+try:
+    from pawn import Pawn
+    from exceptions import OutOfBoundsException
+    from consts import GAME_SIZE
+    from consts import COLOR_BLACK
+    from consts import COLOR_WHITE
+    import sys
+except ImportError:
+    print("ImportError")
+    sys.exit()
 
 class PawnTest(unittest.TestCase):
 
