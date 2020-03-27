@@ -86,6 +86,10 @@ class Pawn(Figure):
         old_pos = super().get_position()
         if new_position.get_pos_number() - 2 == old_pos.get_pos_number() or new_position.get_pos_number() + 2 == old_pos.get_pos_number():
             self.__has_done_double_move = True
-        if new_position in self.__possible_moves_buffer:
-            super()._do_move(new_position)
+        for position in self.__possible_moves_buffer:
+            if position.get_pos_char() == new_position.get_pos_char():
+                if position.get_pos_number() == new_position.get_pos_number()
+                    super()._do_move(new_position)
+                    __possible_moves = None
+                    return
         __possible_moves = None
