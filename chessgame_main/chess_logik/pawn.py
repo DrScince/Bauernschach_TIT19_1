@@ -29,14 +29,14 @@ class Pawn(Figure):
             double_straight_is_possible = True
         for figure in field:
             if own_position.get_pos_number() - 1 == figure.get_position().get_pos_number():
-                if own_position.get_pos_char() == figure.get_position().get_pos_char:
+                if own_position.get_pos_char() == figure.get_position().get_pos_char():
                     straight_is_possible = False
                 if ord(own_position.get_pos_char()) - 1 == ord(figure.get_position().get_pos_char()) and figure.get_color() == COLOR_WHITE:
-                    self.__possible_moves_buffer.append(Position(chr(own_position.get_pos_char() - 1), own_position.get_pos_number() - 1))
+                    self.__possible_moves_buffer.append(Position(figure.get_position().get_pos_char(), figure.get_position().get_pos_number()))
                 if ord(own_position.get_pos_char()) + 1 == ord(figure.get_position().get_pos_char()) and figure.get_color() == COLOR_WHITE:
-                    self.__possible_moves_buffer.append(Position(chr(own_position.get_pos_char() + 1), own_position.get_pos_number() - 1))
+                    self.__possible_moves_buffer.append(Position(figure.get_position().get_pos_char(), figure.get_position().get_pos_number()))
             if double_straight_is_possible and own_position.get_pos_number() - 2 == figure.get_position().get_pos_number():
-                if own_position.get_pos_char() == figure.get_position().get_pos_char:
+                if own_position.get_pos_char() == figure.get_position().get_pos_char():
                     double_straight_is_possible = False
         if straight_is_possible:
             self.__possible_moves_buffer.append(Position(own_position.get_pos_char(), own_position.get_pos_number() - 1))
@@ -52,14 +52,14 @@ class Pawn(Figure):
             double_straight_is_possible = True
         for figure in field:
             if own_position.get_pos_number() + 1 == figure.get_position().get_pos_number():
-                if own_position.get_pos_char() == figure.get_position().get_pos_char:
+                if own_position.get_pos_char() == figure.get_position().get_pos_char():
                     straight_is_possible = False
-                if ord(own_position.get_pos_char()) - 1 == ord(figure.get_position().get_pos_char()) and figure.get_color() == COLOR_WHITE:
-                    self.__possible_moves_buffer.append(Position(chr(own_position.get_pos_char() - 1), own_position.get_pos_number() + 1))
-                if ord(own_position.get_pos_char()) + 1 == ord(figure.get_position().get_pos_char()) and figure.get_color() == COLOR_WHITE:
-                    self.__possible_moves_buffer.append(Position(chr(own_position.get_pos_char() + 1), own_position.get_pos_number() + 1))
+                if ord(own_position.get_pos_char()) - 1 == ord(figure.get_position().get_pos_char()) and figure.get_color() == COLOR_BLACK:
+                    self.__possible_moves_buffer.append(Position(figure.get_position().get_pos_char(), figure.get_position().get_pos_number()))
+                if ord(own_position.get_pos_char()) + 1 == ord(figure.get_position().get_pos_char()) and figure.get_color() == COLOR_BLACK:
+                    self.__possible_moves_buffer.append(Position(figure.get_position().get_pos_char(), figure.get_position().get_pos_number()))
             if double_straight_is_possible and own_position.get_pos_number() + 2 == figure.get_position().get_pos_number():
-                if own_position.get_pos_char() == figure.get_position().get_pos_char:
+                if own_position.get_pos_char() == figure.get_position().get_pos_char():
                     double_straight_is_possible = False
         if straight_is_possible:
             self.__possible_moves_buffer.append(Position(own_position.get_pos_char(), own_position.get_pos_number() + 1))
