@@ -5,17 +5,19 @@ Returns:
 """
 import platform
 import os
-
 # from colorama import Fore, Back
 # import consts
 try:
     import consts
     from util import UIutil
-    from figures import position
+    #
+    from chess_storage.chess_storage import ChessStorage
+    #
+    from chess_logik.position import Position
+    from chess_logik.field import Field
 except ImportError:
     print("Import Error!")
     exit()
-
 
 
 def main():
@@ -23,11 +25,10 @@ def main():
     """
     #TODO Frank docstring
     __gamefield = UIutil.fill_default_game()
-
     # Fliegt raus nach Implementierung
-    for k in range(8):
-        __gamefield[1][k] = "♙"
-        __gamefield[6][k] = "♟"
+    # for k in range(8):
+    #     __gamefield[1][k] = "♙"
+    #     __gamefield[6][k] = "♟"
     # Fliegt raus nach Implementierung
 
     __run_game = True
@@ -57,10 +58,10 @@ def __print_game(gamefield):
 
 def __print_game_line(gamefield, line_number):
     print("\t\t\t       ", end="")
-    print('\033[6;34;47m'+str(line_number+1)+"", end="\033[0;30;47m")
+    print('\033[6;34;47m'+str(8-line_number)+"", end="\033[0;30;47m")
     for i in range(8):
         print("    "+str(gamefield[line_number][i])+"", end="")
-    print("     \033[6;34;47m"+str(line_number+1), end="\033[0;30;47m\n")
+    print("     \033[6;34;47m"+str(8-line_number), end="\033[0;30;47m\n")
 
 def __get_input(gamefield):
     print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")
@@ -99,9 +100,9 @@ def __turn(letter, number, gamefield):
 
     #Beispielcode kann entfernt werden nach Implementierung
     __moves = []
-    __moves.append(position.Position('H', 2))
-    __moves.append(position.Position('A', 1))
-    __moves.append(position.Position('G', 7))
+    __moves.append(Position('H', 2))
+    __moves.append(Position('A', 1))
+    __moves.append(Position('G', 7))
     #
     for move in __moves: #TODO mögliche Bewewgung anzeigen von Spielfeld (Tobias Spohn)
         move_row = ord(move.get_pos_char()) - 65
