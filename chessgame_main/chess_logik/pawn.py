@@ -24,6 +24,7 @@ class Pawn(Figure):
     def __get_possible_moves_black(self, field):
         own_position = super().get_position()
         straight_is_possible = True
+        double_straight_is_possible = False
         if self.__has_done_double_move is None:
             double_straight_is_possible = True
         for figure in field:
@@ -46,6 +47,7 @@ class Pawn(Figure):
     def __get_possible_moves_white(self, field):
         own_position = super().get_position()
         straight_is_possible = True
+        double_straight_is_possible = False
         if self.__has_done_double_move is None:
             double_straight_is_possible = True
         for figure in field:
@@ -88,7 +90,7 @@ class Pawn(Figure):
             self.__has_done_double_move = True
         for position in self.__possible_moves_buffer:
             if position.get_pos_char() == new_position.get_pos_char():
-                if position.get_pos_number() == new_position.get_pos_number()
+                if position.get_pos_number() == new_position.get_pos_number():
                     super()._do_move(new_position)
                     __possible_moves = None
                     return
