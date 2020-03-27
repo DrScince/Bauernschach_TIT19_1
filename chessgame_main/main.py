@@ -1,4 +1,3 @@
-#TODO SCHACHFELD Falschrum
 """[summary]
 
 Returns:
@@ -104,27 +103,19 @@ def __turn(selceted_position, printed_gamefield, logic_gamefield):
     row = ord(selceted_position.get_pos_char()) - 65
     print_col = 8 - selceted_position.get_pos_number()
     printed_gamefield[print_col][row] = '\033[3;32;47m'+ str(printed_gamefield[(print_col)][row])+"\033[0;30;47m"
-    #TODO Spohn einbinden
-    # Aufruf get_possiblemoves
-    # moves = getpossiblemoves(row.col)
-
-    #Beispielcode kann entfernt werden nach Implementierung
     __moves = logic_gamefield.get_possible_moves(selceted_position)
 
     #
-    for move in __moves: #TODO mögliche Bewewgung anzeigen von Spielfeld (Tobias Spohn)
+    for move in __moves:
         move_row = ord(move.get_pos_char()) - 65
         move_col = 8 - move.get_pos_number()
         printed_gamefield[move_col][move_row] = '\033[0;31;47m'+ str(printed_gamefield[move_col][move_row])+"\033[0;30;47m"
     __print_all(printed_gamefield)
-    #TODO SAHRA###################################################################################################################################
+    #TODO SARAH###################################################################################################################################
     # Computer Gegener Einbauen stattdessen#
     __next_move = __get_input_move(__moves)
     ###############################################################################################################################################
     logic_gamefield.do_move(selceted_position, __next_move)
-    #TODO Spoh einbinden
-    #spielplan = domove(__nextmove)
-    #gamefield = gamefield #spielfeld do turn
     return True
 
 def __get_input_move(posible_moves):
