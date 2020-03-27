@@ -40,14 +40,15 @@ class Field():
         """
         return self.__field
 
-    def do_move(self, selected_figure, new_position):
+    def do_move(self, selected_position, new_position):
         """Move figure to new position
         Arguments:
+            selected_position {Position} -- old position
             new_position {Position} -- new position
         """
         for figure in self.__field:
-            if figure.get_position().get_pos_char() == selected_figure.get_pos_char():
-                if figure.get_position().get_pos_number() == selected_figure.get_pos_number():
+            if figure.get_position().get_pos_char() == selected_position.get_pos_char():
+                if figure.get_position().get_pos_number() == selected_position.get_pos_number():
                     figure.do_move(new_position)
                     return self.get_field()
         raise AttributeError
