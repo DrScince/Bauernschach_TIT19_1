@@ -1,3 +1,4 @@
+#TODO SCHACHFELD Falschrum
 """[summary]
 
 Returns:
@@ -24,22 +25,19 @@ def main():
     """[summary]
     """
     #TODO Frank docstring
-    __gamefield = UIutil.fill_default_game()
-    # Fliegt raus nach Implementierung
-    # for k in range(8):
-    #     __gamefield[1][k] = "♙"
-    #     __gamefield[6][k] = "♟"
-    # Fliegt raus nach Implementierung
-
+    __logic_gamefield = Field()
+    __printed_gamefield = UIutil.fill_default_game()
     __run_game = True
     while __run_game:
-        __print_all(__gamefield)
-        __run_game = __get_input(__gamefield)
+        __printed_gamefield = UIutil.fill_default_game()
+        __printed_gamefield = UIutil.fill_game_field(__logic_gamefield.get_field(), __printed_gamefield)
+        __print_all(__printed_gamefield)
+        __run_game = __get_input(__printed_gamefield, __logic_gamefield)
 
-def __print_all(gamefield):
+def __print_all(printed_gamefield):
     CLEAR()
     __print_menu()
-    __print_game(gamefield)
+    __print_game(printed_gamefield)
     __print_footer()
 
 def __print_menu():
@@ -50,20 +48,20 @@ def __print_menu():
 def __print_footer():
     print("\t\t________________________________________________________________________________")
 
-def __print_game(gamefield):
+def __print_game(printed_gamefield):
     print("\n\t\t\t\t\033[6;34;47m    A    B    C    D    E    F    G    H\033[0;30;47m\n")
     for i in range(8):
-        __print_game_line(gamefield, i)
+        __print_game_line(printed_gamefield, i)
     print("\n\t\t\t\t\033[6;34;47m    A    B    C    D    E    F    G    H\033[0;30;47m\n")
 
-def __print_game_line(gamefield, line_number):
+def __print_game_line(printed_gamefield, line_number):
     print("\t\t\t       ", end="")
     print('\033[6;34;47m'+str(8-line_number)+"", end="\033[0;30;47m")
     for i in range(8):
-        print("    "+str(gamefield[line_number][i])+"", end="")
+        print("    "+str(printed_gamefield[line_number][i])+"", end="")
     print("     \033[6;34;47m"+str(8-line_number), end="\033[0;30;47m\n")
 
-def __get_input(gamefield):
+def __get_input(printed_gamefield, logic_gamefield):
     print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")
     desiccion = input("\t\t\t\t")
     desiccion = str.upper(desiccion)
@@ -84,32 +82,30 @@ def __get_input(gamefield):
         return __quit_game()
     elif len(desiccion) == 2:
         #TODO Abfangen von Falsch eingaben
-        __letter = str(list(desiccion)[0])
-        __number = int(list(desiccion)[1])-1
-        return __turn(__letter, __number, gamefield)
+        __pos = Position(str(list(desiccion)[0]), int(list(desiccion)[1]))
+        return __turn(__pos, printed_gamefield, logic_gamefield)
     else:
         return True
 
-def __turn(letter, number, gamefield):
-    row = ord(letter) - 65
-    col = number
-    gamefield[col][row] = '\033[3;32;47m'+ str(gamefield[col][row])+"\033[0;30;47m"
+def __turn(selceted_position, printed_gamefield, logic_gamefield):
+    row = ord(selceted_position.get_pos_char()) - 65
+    print_col = 8 - selceted_position.get_pos_number()
+    printed_gamefield[print_col][row] = '\033[3;32;47m'+ str(printed_gamefield[(print_col)][row])+"\033[0;30;47m"
     #TODO Spohn einbinden
     # Aufruf get_possiblemoves
     # moves = getpossiblemoves(row.col)
 
     #Beispielcode kann entfernt werden nach Implementierung
-    __moves = []
-    __moves.append(Position('H', 2))
-    __moves.append(Position('A', 1))
-    __moves.append(Position('G', 7))
+    __moves = logic_gamefield.get_possible_moves(selceted_position)
+
     #
     for move in __moves: #TODO mögliche Bewewgung anzeigen von Spielfeld (Tobias Spohn)
         move_row = ord(move.get_pos_char()) - 65
-        move_col = move.get_pos_number()
-        gamefield[move_col][move_row] = '\033[4;31;47m'+ str(gamefield[move_col][move_row])+"\033[0;30;47m"
-    __print_all(gamefield)
+        move_col = 8 - move.get_pos_number()
+        printed_gamefield[move_col][move_row] = '\033[0;31;47m'+ str(printed_gamefield[8-move_col][move_row])+"\033[0;30;47m"
+    __print_all(printed_gamefield)
     __next_move = __get_input_move(__moves)
+    logic_gamefield.do_move(selceted_position, __next_move)
     #TODO Spoh einbinden
     #spielplan = domove(__nextmove)
     #gamefield = gamefield #spielfeld do turn
@@ -121,7 +117,9 @@ def __get_input_move(posible_moves):
     for move in posible_moves:
         print(""+str(move.get_pos_char())+""+str(move.get_pos_number())+"", end="\t")
     __move = input("\033[0;30;47m\n\t\t\t\t")
-    return __move
+    __move = str.upper(__move)
+    __move_pos = Position(str(list(__move)[0]), int(list(__move)[1]))
+    return __move_pos
 
 def __quit_game():
     CLEAR()
