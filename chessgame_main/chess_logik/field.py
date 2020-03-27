@@ -40,15 +40,22 @@ class Field():
         """
         return self.__field
 
+    def __del_old_figure(self, new_position):
+        for figure in self.__field: #delete the old figure if there is one
+            if figure.get_position().get_pos_char() == new_position.get_pos_char():
+                if figure.get_position().get_pos_number() == new_position.get_pos_number():
+                    self.__field.remove(figure)
+
     def do_move(self, selected_position, new_position):
         """Move figure to new position
         Arguments:
             selected_position {Position} -- old position
             new_position {Position} -- new position
         """
-        for figure in self.__field:
+        for figure in self.__field: #move the figure to the new position
             if figure.get_position().get_pos_char() == selected_position.get_pos_char():
                 if figure.get_position().get_pos_number() == selected_position.get_pos_number():
+                    self.__del_old_figure(new_position)
                     figure.do_move(new_position)
                     return self.get_field()
         raise AttributeError
