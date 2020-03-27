@@ -34,7 +34,7 @@
             <y:MethodLabel xml:space="preserve">+ matchfield: load_data (string file_name)
 + ErrorCode: save_data (string file_name, matchfield current_game, bool overwirite)
 + list matchfield: get_all_games ()
-+ ErrorCode: log_game (string file_name,  log_info, bool append)</y:MethodLabel>
++ ErrorCode: log (string file_name,  log_info, bool append)</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>

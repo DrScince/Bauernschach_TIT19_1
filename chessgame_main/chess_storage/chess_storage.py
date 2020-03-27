@@ -69,7 +69,7 @@ class ChessStorage:
             __games.append(__match)
         return __games
 
-    def log_game(self, file_name, log_info, append):
+    def log(self, file_name, log_info, append):
         """Log in a txt file
         Arguments:
             file_name {string} -- new name from the file
@@ -83,11 +83,21 @@ class ChessStorage:
         if os.path.isfile(__dir_game_log):
             if append:
                 with open(__dir_game_log, 'a') as __log_game:
-                    __log_game.writelines([str(log_info), "\n"])
-                    return consts.SUCCESSFULL
+                    if isinstance(log_info, list):
+                        __len_list = len(log_info)
+                        for i in range(__len_list):
+                            __log_game.writelines([str(log_info[i]), "\n"])
+                    else:
+                        __log_game.writelines([str(log_info), "\n"])
+                        return consts.SUCCESSFULL
             else:
                 return consts.FILE_EXIST
         else:
             with open(__dir_game_log, 'a') as __log_game:
-                __log_game.writelines([str(log_info), "\n"])
-                return consts.SUCCESSFULL
+                if isinstance(log_info, list):
+                    __len_list = len(log_info)
+                    for i in range(__len_list):
+                        __log_game.writelines([str(log_info[i]), "\n"])
+                else:
+                    __log_game.writelines([str(log_info), "\n"])
+                    return consts.SUCCESSFULL
