@@ -1,5 +1,6 @@
 # Dateiverwaltung
 
+Die Dateien müssen vom Ordner darüber ausgeführt werden.\
 Zum Laden, Speichern und durchsuchen von Dateien in /games
 
 ## chess_storage

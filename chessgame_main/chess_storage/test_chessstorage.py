@@ -50,7 +50,7 @@ class StorageTest(unittest.TestCase):
         __test_filenames = __test.get_all_games()
         self.assertEqual(__test_filenames, __filenames_infolder)
 
-    def test_4_log_game(self):
+    def test_4_log(self):
         """Test the method log_game
         """
         __test = chess_storage.ChessStorage()
@@ -60,17 +60,17 @@ class StorageTest(unittest.TestCase):
         __test_filename = consts.TEST_FILENAME
         __test_logname = __test_filename + "_log.txt"
         __dir_game_log = os.path.join(__dir_game_saves, __test_logname)
-        __log_test = __test.log_game(__test_filename, __test_data, True)
+        __log_test = __test.log(__test_filename, __test_data, True)
         self.assertEqual(__log_test, 0)
         with open(__dir_game_log, 'r') as __log_game:
             print("\nOne Line:")
             print(__log_game.read())
-        __log_test = __test.log_game(__test_filename, __test_data, False)
+        __log_test = __test.log(__test_filename, __test_data, False)
         self.assertEqual(__log_test, 2)
         with open(__dir_game_log, 'r') as __log_game:
             print("Still one Line:")
             print(__log_game.read())
-        __log_test = __test.log_game(__test_filename, __test_data, True)
+        __log_test = __test.log(__test_filename, __test_data, True)
         self.assertEqual(__log_test, 0)
         with open(__dir_game_log, 'r') as __log_game:
             print("Two Lines")
