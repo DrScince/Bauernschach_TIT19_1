@@ -3,6 +3,8 @@
 
 import os
 import pickle
+import sys
+
 
 try:
     from chess_storage import consts
@@ -86,7 +88,8 @@ class ChessStorage:
                     if isinstance(log_info, list):
                         __len_list = len(log_info)
                         for i in range(__len_list):
-                            __log_game.writelines([str(log_info[i]), "\n"])
+                            __tmp = str(log_info[i])
+                            __log_game.writelines([__tmp, "\n"])
                     else:
                         __log_game.writelines([str(log_info), "\n"])
                         return consts.SUCCESSFULL

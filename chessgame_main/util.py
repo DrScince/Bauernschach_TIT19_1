@@ -45,7 +45,7 @@ class UIutil():
     @staticmethod
     def fill_game_field(logic_gamefield, printed_gamefield):
         """[summary]
-        
+
         Arguments:
             logic_gamefield {[type]} -- [description]
             printed_gamefield {[type]} -- [description]
@@ -57,13 +57,12 @@ class UIutil():
             __actual_color = actual_pawn.get_color()
             __col = ord(__actual_pos.get_pos_char())-65
             __row = 8-__actual_pos.get_pos_number()
-            
-            
+
+
             #
             if __actual_color == consts.COLOR_BLACK:
-                printed_gamefield[__row][__col] = "♟"
+                printed_gamefield[__row][__col] = u"♟"
             elif __actual_color == consts.COLOR_WHITE:
-                printed_gamefield[__row][__col] = "♙"
+                printed_gamefield[__row][__col] = u"♙"
         #
         return printed_gamefield
-            

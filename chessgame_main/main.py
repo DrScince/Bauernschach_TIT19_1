@@ -6,6 +6,7 @@ Returns:
 """
 import platform
 import os
+
 # from colorama import Fore, Back
 # import consts
 try:
@@ -26,12 +27,24 @@ def main():
     """
     #TODO Frank docstring
     __logic_gamefield = Field()
+    __file_usage = ChessStorage()
+    __file_usage.log("test", "Hallo du Nudel", False)
     __printed_gamefield = UIutil.fill_default_game()
     __run_game = True
     while __run_game:
         __printed_gamefield = UIutil.fill_default_game()
         __printed_gamefield = UIutil.fill_game_field(__logic_gamefield.get_field(), __printed_gamefield)
         __print_all(__printed_gamefield)
+
+        # __testarray = __printed_gamefield
+        # for i in range(8):
+        #     for j in range(8):
+        #         __testarray[i][j] = "B"
+
+
+        # __file_usage.log("game1", __printed_gamefield, True)
+        # __file_usage.log("game1", "________________________________________________________________________", True)
+
         __run_game = __get_input(__printed_gamefield, __logic_gamefield)
 
 def __print_all(printed_gamefield):
@@ -102,9 +115,12 @@ def __turn(selceted_position, printed_gamefield, logic_gamefield):
     for move in __moves: #TODO mögliche Bewewgung anzeigen von Spielfeld (Tobias Spohn)
         move_row = ord(move.get_pos_char()) - 65
         move_col = 8 - move.get_pos_number()
-        printed_gamefield[move_col][move_row] = '\033[0;31;47m'+ str(printed_gamefield[8-move_col][move_row])+"\033[0;30;47m"
+        printed_gamefield[move_col][move_row] = '\033[0;31;47m'+ str(printed_gamefield[move_col][move_row])+"\033[0;30;47m"
     __print_all(printed_gamefield)
+    #TODO SAHRA###################################################################################################################################
+    # Computer Gegener Einbauen stattdessen#
     __next_move = __get_input_move(__moves)
+    ###############################################################################################################################################
     logic_gamefield.do_move(selceted_position, __next_move)
     #TODO Spoh einbinden
     #spielplan = domove(__nextmove)
