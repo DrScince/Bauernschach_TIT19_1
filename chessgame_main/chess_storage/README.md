@@ -19,11 +19,10 @@ Zum Laden, Speichern und durchsuchen von Dateien in /games
         >Speichert eine Variablen in einer txt Datei\
         >Falls es eine Liste ist wird Zeile für Zeile Gespeichert
 
-### Coverage
+### Fehlende Zeilen in Coverage
 
-Es fehlt:
 * except für ImportError
-    >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Datei: consts.py fehlt.\
+    >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Datei: consts.py fehlt.
 * os.mkdir für /games
     >Zum Erstellen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser nicht existiert. Damit Spieldateien und Logs gespeichert werden können.
 
@@ -44,10 +43,9 @@ Es fehlt:
         >Muss als Letztes laufen!!!\
         >Löscht die erstellten Dateien und den Ordner "games" falls dieser leer ist.
 
-### Coverage
+### Fehlende Zeilen in Coverage
 
-Es fehlt:
 * except für ImportError
-    >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Dateien: chess_storage.py und consts.py fehlen.\
+    >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Dateien: chess_storage.py und consts.py fehlen.
 * os.removedirs für /games
     >Zum löschen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser Leer ist. Damit vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.
