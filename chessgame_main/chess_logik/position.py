@@ -1,9 +1,9 @@
 """ Position Object to handle the position of a figure
 """
+import sys
 try:
     from chess_logik.exceptions import OutOfBoundsException
     from chess_logik.consts import GAME_SIZE
-    import sys
 except ImportError:
     print("ImportError")
     sys.exit()
@@ -17,14 +17,17 @@ class Position():
         Arguments:
             char_pos{char} -- A to H
             number_pos{int} -- 1 to 8
+
+        If the Position isn't in the field, the value is ERROR:char or :number
+        so the values needs to be proofed
         """
         if number_pos > GAME_SIZE or number_pos < 1:
-            raise OutOfBoundsException
+            number_pos = "ERROR:number"
         if len(char_pos) == 1:
             if ord(char_pos) > GAME_SIZE + 64 or ord(char_pos) < 64:
-                raise OutOfBoundsException
+                char_pos = "ERROR:char"
         else:
-            raise Exception
+            char_pos = "ERROR:char"
         self.pos_number = number_pos
         self.pos_char = char_pos
 
