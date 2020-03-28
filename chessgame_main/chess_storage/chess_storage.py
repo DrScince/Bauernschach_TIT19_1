@@ -3,8 +3,6 @@
 
 import os
 import pickle
-import sys
-
 
 try:
     from chess_storage import consts
@@ -84,23 +82,24 @@ class ChessStorage:
         __dir_game_log = os.path.join(self.__dir_game_saves, __log_name)
         if os.path.isfile(__dir_game_log):
             if append:
-                with open(__dir_game_log, 'a') as __log_game:
+                with open(__dir_game_log, 'a', encoding="utf8") as __log_game:
                     if isinstance(log_info, list):
                         __len_list = len(log_info)
                         for i in range(__len_list):
-                            __tmp = str(log_info[i])
-                            __log_game.writelines([__tmp, "\n"])
+                            __log_game.writelines([str(log_info[i]), "\n"])
+                        return consts.SUCCESSFULL
                     else:
                         __log_game.writelines([str(log_info), "\n"])
                         return consts.SUCCESSFULL
             else:
                 return consts.FILE_EXIST
         else:
-            with open(__dir_game_log, 'a') as __log_game:
+            with open(__dir_game_log, 'a', encoding="utf8") as __log_game:
                 if isinstance(log_info, list):
                     __len_list = len(log_info)
                     for i in range(__len_list):
                         __log_game.writelines([str(log_info[i]), "\n"])
+                    return consts.SUCCESSFULL
                 else:
                     __log_game.writelines([str(log_info), "\n"])
                     return consts.SUCCESSFULL

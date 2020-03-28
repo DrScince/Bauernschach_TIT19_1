@@ -14,8 +14,16 @@ Zum Laden, Speichern und durchsuchen von Dateien in /games
         >Bekommt ein String als Übergabeparameter
     * get_all_games
         >Gibt alle Dateien im Pfad /games in einer Liste zurück
-    * log_game
-        >Speichert eine Variablen in einer txt Datei
+    * log
+        >Die Datei wird in UTF-8 coodiert\
+        >Speichert eine Variablen in einer txt Datei\
+        >Falls es eine Liste ist wird Zeile für Zeile Gespeichert
+
+### Coverage
+
+Es fehlt:
+>except für ImportError: Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Datei: consts.py fehlt.\
+>Zum Erstellen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser nicht existiert. Damit Spieldateien und Logs gespeichert werden können.
 
 ## test_chessstorage
 
@@ -28,8 +36,14 @@ Zum Laden, Speichern und durchsuchen von Dateien in /games
     * test_3_get_all_games
         >Testet ob die Dateinamen korrekt gelesen werden
     * test_4_log_game
-        >Es wird drei mal mit dem selben Namen ausgeführt um das erweitern zu testen\
+        >Es wird eine Liste und ein String je drei mal mit dem selben Namen ausgeführt um das erweitern zu testen\
         >Der Inhalt der Testdatei wird im Terminal ausgegeben
     * test_999_remove_testfiles
         >Muss als Letztes laufen!!!\
         >Löscht die erstellten Dateien und den Ordner "games" falls dieser leer ist.
+
+### Coverage
+
+Es fehlt:
+>except für ImportError: Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Dateien: chess_storage.py und consts.py fehlen.\
+>Zum löschen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser Leer ist. Damit Vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.

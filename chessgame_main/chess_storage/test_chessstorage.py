@@ -21,11 +21,11 @@ class StorageTest(unittest.TestCase):
         __test_data = list(range(consts.TEST_LIST_LENGHT))
         __test_filename = consts.TEST_FILENAME
         __save_test = __test.save_data(__test_filename, __test_data, True)
-        self.assertEqual(__save_test, 0)
+        self.assertEqual(__save_test, consts.SUCCESSFULL)
         __save_test = __test.save_data(__test_filename, __test_data, False)
-        self.assertEqual(__save_test, 2)
+        self.assertEqual(__save_test, consts.FILE_EXIST)
         __save_test = __test.save_data(__test_filename, __test_data, True)
-        self.assertEqual(__save_test, 0)
+        self.assertEqual(__save_test, consts.SUCCESSFULL)
 
     def test_2_load_data(self):
         """Test the method load_data
@@ -60,18 +60,37 @@ class StorageTest(unittest.TestCase):
         __test_filename = consts.TEST_FILENAME
         __test_logname = __test_filename + "_log.txt"
         __dir_game_log = os.path.join(__dir_game_saves, __test_logname)
+        #test list
         __log_test = __test.log(__test_filename, __test_data, True)
-        self.assertEqual(__log_test, 0)
+        self.assertEqual(__log_test, consts.SUCCESSFULL)
         with open(__dir_game_log, 'r') as __log_game:
             print("\nOne Line:")
             print(__log_game.read())
         __log_test = __test.log(__test_filename, __test_data, False)
-        self.assertEqual(__log_test, 2)
+        self.assertEqual(__log_test, consts.FILE_EXIST)
         with open(__dir_game_log, 'r') as __log_game:
             print("Still one Line:")
             print(__log_game.read())
         __log_test = __test.log(__test_filename, __test_data, True)
-        self.assertEqual(__log_test, 0)
+        self.assertEqual(__log_test, consts.SUCCESSFULL)
+        with open(__dir_game_log, 'r') as __log_game:
+            print("Two Lines")
+            print(__log_game.read())
+        os.remove(__dir_game_log)
+        self.assertFalse(os.path.isfile(__dir_game_log))
+        #test string
+        __log_test = __test.log(__test_filename, "__test_data", True)
+        self.assertEqual(__log_test, consts.SUCCESSFULL)
+        with open(__dir_game_log, 'r') as __log_game:
+            print("\nOne Line:")
+            print(__log_game.read())
+        __log_test = __test.log(__test_filename, "__test_data", False)
+        self.assertEqual(__log_test, consts.FILE_EXIST)
+        with open(__dir_game_log, 'r') as __log_game:
+            print("Still one Line:")
+            print(__log_game.read())
+        __log_test = __test.log(__test_filename, "__test_data", True)
+        self.assertEqual(__log_test, consts.SUCCESSFULL)
         with open(__dir_game_log, 'r') as __log_game:
             print("Two Lines")
             print(__log_game.read())
