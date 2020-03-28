@@ -1,10 +1,10 @@
 """ Pawn figure for the chess game
 """
+import sys
 try:
     from chess_logik.figure import Figure
     from chess_logik.consts import COLOR_WHITE, COLOR_BLACK
     from chess_logik.position import Position
-    import sys
 except ImportError:
     print("ImportError")
     sys.exit()
@@ -70,7 +70,7 @@ class Pawn(Figure):
     def get_possible_moves(self, field):
         """ gets all the possible moves of the Pawn
         Return:
-            possible_moves {Position[]}
+            possible_moves {Position[]} -- if there are none the array is empty
         """
         self.__possible_moves_buffer = []
         if super().get_color() == COLOR_BLACK:

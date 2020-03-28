@@ -1,9 +1,9 @@
 # pylint: disable=C
 import unittest
+import sys
 try:
     from field import Field
     from position import Position
-    import sys
 except ImportError:
     print("ImportError")
     sys.exit()
