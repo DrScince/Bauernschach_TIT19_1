@@ -19,7 +19,7 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
         >Speichert eine Variablen in einer txt Datei\
         >Falls es eine Liste ist wird Zeile für Zeile Gespeichert
 
-### Fehlende Zeilen in Coverage
+### Fehlende Zeilen im Unittest coverage
 
 * except für ImportError
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Datei: consts.py fehlt.
@@ -43,7 +43,7 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
         >Muss als Letztes laufen!!!\
         >Löscht die erstellten Dateien und den Ordner "games" falls dieser leer ist.
 
-### Fehlende Zeilen in Coverage
+### Fehlende Zeilen im Unittest coverage
 
 * except für ImportError
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Dateien: chess_storage.py und consts.py fehlen.
