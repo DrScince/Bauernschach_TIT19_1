@@ -18,6 +18,10 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
         >Die Datei wird in UTF-8 coodiert\
         >Speichert eine Variablen in einer txt Datei\
         >Falls es eine Liste ist wird Zeile für Zeile Gespeichert
+    * __write_file
+        >Schreibt die übergebene Datei mit den Infos
+    * __log_append
+        >Erweitert die übergebene Datei mit den Infos
 
 ### Fehlende Zeilen im Unittest coverage
 

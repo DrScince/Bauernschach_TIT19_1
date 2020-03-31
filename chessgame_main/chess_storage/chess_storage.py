@@ -34,15 +34,11 @@ class ChessStorage:
         __dir_game = os.path.join(self.__dir_game_saves, str(file_name))
         if os.path.isfile(__dir_game):
             if overwrite:
-                with open(__dir_game, 'wb') as __old_game:
-                    pickle.dump(current_game, __old_game)
-                    return consts.SUCCESSFULL
+                return self.__write_file(__dir_game, current_game)
             else:
                 return consts.FILE_EXIST
         else:
-            with open(__dir_game, 'wb') as __old_game:
-                pickle.dump(current_game, __old_game)
-                return consts.SUCCESSFULL
+            return self.__write_file(__dir_game, current_game)
 
     def load_data(self, file_name):
         """load match from directory ../games
@@ -82,24 +78,40 @@ class ChessStorage:
         __dir_game_log = os.path.join(self.__dir_game_saves, __log_name)
         if os.path.isfile(__dir_game_log):
             if append:
-                with open(__dir_game_log, 'a', encoding="utf8") as __log_game:
-                    if isinstance(log_info, list):
-                        __len_list = len(log_info)
-                        for i in range(__len_list):
-                            __log_game.writelines([str(log_info[i]), "\n"])
-                        return consts.SUCCESSFULL
-                    else:
-                        __log_game.writelines([str(log_info), "\n"])
-                        return consts.SUCCESSFULL
+                return self.__log_append(__dir_game_log, log_info)
             else:
                 return consts.FILE_EXIST
         else:
-            with open(__dir_game_log, 'a', encoding="utf8") as __log_game:
-                if isinstance(log_info, list):
-                    __len_list = len(log_info)
-                    for i in range(__len_list):
-                        __log_game.writelines([str(log_info[i]), "\n"])
-                    return consts.SUCCESSFULL
-                else:
-                    __log_game.writelines([str(log_info), "\n"])
-                    return consts.SUCCESSFULL
+            return self.__log_append(__dir_game_log, log_info)
+
+    def __write_file(self, file_path, current_game):
+        """Write a file binary
+        Arguments:
+            file_path {string} -- must be a os path
+            current_game {matchfield} -- the current game to save
+        Returns:
+            ErrorCode -- 0 Successs
+        """
+        assert isinstance(file_path, str), "file_path is not a string"
+        with open(file_path, 'wb') as __old_game:
+            pickle.dump(current_game, __old_game)
+            return consts.SUCCESSFULL
+
+    def __log_append(self, file_path, log_info):
+        """Append logfiles
+        Arguments:
+            file_path {string} -- must be a os path
+            log_info {} -- info to log (converts to string)
+        Returns:
+            ErrorCode -- 0 Successs
+        """
+        assert isinstance(file_path, str), "file_path is not a string"
+        with open(file_path, 'a', encoding="utf8") as __log_game:
+            if isinstance(log_info, list):
+                __len_list = len(log_info)
+                for i in range(__len_list):
+                    __log_game.writelines([str(log_info[i]), "\n"])
+                return consts.SUCCESSFULL
+            else:
+                __log_game.writelines([str(log_info), "\n"])
+                return consts.SUCCESSFULL

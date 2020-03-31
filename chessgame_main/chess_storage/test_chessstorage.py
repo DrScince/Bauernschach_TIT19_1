@@ -64,17 +64,17 @@ class StorageTest(unittest.TestCase):
         __log_test = __test.log(__test_filename, __test_data, True)
         self.assertEqual(__log_test, consts.SUCCESSFULL)
         with open(__dir_game_log, 'r') as __log_game:
-            print("\nOne Line:")
+            print("\nLine (0 bis " +str(consts.TEST_LIST_LENGHT-1) +")")
             print(__log_game.read())
         __log_test = __test.log(__test_filename, __test_data, False)
         self.assertEqual(__log_test, consts.FILE_EXIST)
         with open(__dir_game_log, 'r') as __log_game:
-            print("Still one Line:")
+            print("Still Line (0 bis " +str(consts.TEST_LIST_LENGHT-1) +")")
             print(__log_game.read())
         __log_test = __test.log(__test_filename, __test_data, True)
         self.assertEqual(__log_test, consts.SUCCESSFULL)
         with open(__dir_game_log, 'r') as __log_game:
-            print("Two Lines")
+            print("Line (0 bis " +str(consts.TEST_LIST_LENGHT-1) +") two times")
             print(__log_game.read())
         os.remove(__dir_game_log)
         self.assertFalse(os.path.isfile(__dir_game_log))
