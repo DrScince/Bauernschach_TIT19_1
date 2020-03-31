@@ -1,12 +1,12 @@
 # pylint: disable=C
 import unittest
+import sys
 try:
     from pawn import Pawn
     from exceptions import OutOfBoundsException
     from consts import GAME_SIZE
     from consts import COLOR_BLACK
     from consts import COLOR_WHITE
-    import sys
 except ImportError:
     print("ImportError")
     sys.exit()

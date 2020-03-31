@@ -1,10 +1,10 @@
 """ The field wich contains the Pawns
 """
+import sys
 try:
     from chess_logik.position import Position
     from chess_logik.pawn import Pawn
     from chess_logik.consts import COLOR_BLACK, COLOR_WHITE
-    import sys
 except ImportError as err:
     print("ImportError"+str(err))
     sys.exit()
@@ -13,7 +13,13 @@ class Field():
     """ Contains all the figures in the game and methods to interact
     """
 
-    def __init__(self, load_field=None):
+    def __init__(self, load_field=None, white_turn=True):
+        """
+        Arguments: -- Only if the game gets loaded
+            load_field {Figure[]}
+            white_turn {bool}
+        """
+        self.__white_turn = white_turn
         if load_field is not None:
             self.__field = load_field
         else:
@@ -26,12 +32,15 @@ class Field():
         """
         Arguments:
             selected_figure {Position}
+        Returns:
+            possible_moves {Position[]}
+            1 {int} -- if figure doesn't exist
         """
         for figure in self.__field:
             if figure.get_position().get_pos_char() == selected_figure.get_pos_char():
                 if figure.get_position().get_pos_number() == selected_figure.get_pos_number():
                     return figure.get_possible_moves(self.__field)
-        raise AttributeError
+        return 1
 
     def get_field(self):
         """ get the field
@@ -40,32 +49,49 @@ class Field():
         """
         return self.__field
 
-    def __del_old_figure(self, new_position):
-        for figure in self.__field: #delete the old figure if there is one
+    def __del_old_figure(self, new_position, own_color):
+        """ delete the old figure if there is one
+        Arguments:
+            new_position {Position}
+        """
+        for figure in self.__field:
             if figure.get_position().get_pos_char() == new_position.get_pos_char():
                 if figure.get_position().get_pos_number() == new_position.get_pos_number():
                     self.__field.remove(figure)
+                    return
+        for figure in self.__field:
+            if figure.get_position().get_pos_char() == new_position.get_pos_char():
+                if own_color == COLOR_BLACK:
+                    directional_factor = -1
+                elif own_color == COLOR_WHITE:
+                    directional_factor = 1
+                if figure.get_position().get_pos_number() == new_position.get_pos_number() - directional_factor:
+                    if figure.get_double_move() and figure.get_color() != own_color:
+                        self.__field.remove(figure)
 
     def do_move(self, selected_position, new_position):
         """Move figure to new position
         Arguments:
             selected_position {Position} -- old position
             new_position {Position} -- new position
+        Returns:
+            field {Figure[]}
+            1 {int} -- if one of the figures doesn't exist
         """
-        for figure in self.__field: #move the figure to the new position
+        for figure in self.__field:
             if figure.get_position().get_pos_char() == selected_position.get_pos_char():
                 if figure.get_position().get_pos_number() == selected_position.get_pos_number():
-                    self.__del_old_figure(new_position)
+                    self.__del_old_figure(new_position, figure.get_color())
                     figure.do_move(new_position)
                     return self.get_field()
-        raise AttributeError
+        return 1
 
     def check_win(self):
         """ Check if someone won
         Returns:
-            no winner {int = 0}
-            white won {int = 1}
-            black won {int = 2}
+            0 {int} -- no winner
+            1 {int} -- white won
+            2 {int} -- black won
         """
         for figure in self.__field:
             if figure.get_color() == COLOR_WHITE:

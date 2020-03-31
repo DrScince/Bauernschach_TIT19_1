@@ -1,10 +1,10 @@
 """Figure base class for the chess game
 """
+import sys
 try:
     from chess_logik.consts import COLOR_BLACK, COLOR_WHITE
-    import sys
-except ImportError:
-    print("ImportError")
+except ImportError as err:
+    print("ImportError"+str(err))
     sys.exit()
 
 class Figure:
@@ -16,18 +16,19 @@ class Figure:
         Arguments:
             color {String} -- COLOR_BLACK or COLOR_WHITE
             position{Position}
+        Values will be ERROR:color or :position -> they need to be validated
         """
         if color == COLOR_WHITE:
             self.__color = COLOR_WHITE
         elif color == COLOR_BLACK:
             self.__color = COLOR_BLACK
         else:
-            raise AttributeError
+            self.__color = "ERROR:color"
 
         if position is not None:
             self.__position = position
         else:
-            raise AttributeError
+            self.__position = "ERROR:position"
 
     def get_color(self):
         """ Gets the color of the Figure
@@ -44,5 +45,9 @@ class Figure:
         """
         return self.__position
 
-    def _do_move(self, new_position):
+    def do_move(self, new_position):
+        """
+        Arguments:
+            new_position {Position}
+        """
         self.__position = new_position
