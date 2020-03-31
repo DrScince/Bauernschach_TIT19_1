@@ -1,4 +1,4 @@
-# Classen aller Spielfiguren
+# Klassen aller Spielfiguren
 
 *Bitte füllen* @Donloran
 
@@ -7,6 +7,14 @@
 Bitte füllen @Donloran
 
 ## pawn
+
+Bitte füllen @Donloran
+
+## position
+
+Bitte füllen @Donloran
+
+## field
 
 Bitte füllen @Donloran
 

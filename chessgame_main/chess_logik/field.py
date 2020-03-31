@@ -4,7 +4,8 @@ import sys
 try:
     from chess_logik.position import Position
     from chess_logik.pawn import Pawn
-    from chess_logik.consts import COLOR_BLACK, COLOR_WHITE
+    from chess_logik.consts import COLOR_BLACK
+    from chess_logik.consts import COLOR_WHITE
 except ImportError as err:
     print("ImportError"+str(err))
     sys.exit()

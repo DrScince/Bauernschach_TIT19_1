@@ -3,7 +3,9 @@
 import sys
 try:
     from chess_logik.figure import Figure
-    from chess_logik.consts import COLOR_BLACK, DIRECTION_BLACK, DIRECTION_WHITE
+    from chess_logik.consts import COLOR_BLACK
+    from chess_logik.consts import DIRECTION_BLACK
+    from chess_logik.consts import DIRECTION_WHITE
     from chess_logik.position import Position
 except ImportError as err:
     print("ImportError"+str(err))
@@ -16,7 +18,7 @@ class Pawn(Figure):
     def __init__(self, color, position):
         """
         Arguments:
-            color {char}
+            color {str}
             position {Position}
         """
         super().__init__(color, position)
@@ -36,7 +38,7 @@ class Pawn(Figure):
     def get_double_move(self):
         """ getter
         Returns:
-            has_done_double_move {Bool} -- None if no move has been done
+            has_done_double_move {bool} -- None if no move has been done
         """
         return self.__has_done_double_move
 
