@@ -14,6 +14,11 @@ class Field():
     """
 
     def __init__(self, load_field=None, white_turn=True):
+        """
+        Arguments: -- Only if the game gets loaded
+            load_field {Figure[]}
+            white_turn {bool}
+        """
         self.__white_turn = white_turn
         if load_field is not None:
             self.__field = load_field
@@ -44,7 +49,7 @@ class Field():
         """
         return self.__field
 
-    def __del_old_figure(self, new_position):
+    def __del_old_figure(self, new_position, own_color):
         """ delete the old figure if there is one
         Arguments:
             new_position {Position}
@@ -53,6 +58,16 @@ class Field():
             if figure.get_position().get_pos_char() == new_position.get_pos_char():
                 if figure.get_position().get_pos_number() == new_position.get_pos_number():
                     self.__field.remove(figure)
+                    return
+        for figure in self.__field:
+            if figure.get_position().get_pos_char() == new_position.get_pos_char():
+                if own_color == COLOR_BLACK:
+                    directional_factor = -1
+                elif own_color == COLOR_WHITE:
+                    directional_factor = 1
+                if figure.get_position().get_pos_number() == new_position.get_pos_number() - directional_factor:
+                    if figure.get_double_move() and figure.get_color() != own_color:
+                        self.__field.remove(figure)
 
     def do_move(self, selected_position, new_position):
         """Move figure to new position
@@ -66,7 +81,7 @@ class Field():
         for figure in self.__field:
             if figure.get_position().get_pos_char() == selected_position.get_pos_char():
                 if figure.get_position().get_pos_number() == selected_position.get_pos_number():
-                    self.__del_old_figure(new_position)
+                    self.__del_old_figure(new_position, figure.get_color())
                     figure.do_move(new_position)
                     return self.get_field()
         return 1

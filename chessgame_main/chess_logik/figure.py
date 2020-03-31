@@ -3,8 +3,8 @@
 import sys
 try:
     from chess_logik.consts import COLOR_BLACK, COLOR_WHITE
-except ImportError:
-    print("ImportError")
+except ImportError as err:
+    print("ImportError"+str(err))
     sys.exit()
 
 class Figure:
@@ -45,5 +45,9 @@ class Figure:
         """
         return self.__position
 
-    def _do_move(self, new_position):
+    def do_move(self, new_position):
+        """
+        Arguments:
+            new_position {Position}
+        """
         self.__position = new_position
