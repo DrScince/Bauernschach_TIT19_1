@@ -20,6 +20,8 @@ class Position():
         If the Position isn't in the field, the value is ERROR:char or :number
         so the values needs to be proofed
         """
+        assert isinstance(char_pos, str), "char_pos is not a str"
+        assert isinstance(number_pos, int), "number_pos is not a int"
         if number_pos > GAME_SIZE or number_pos < 1:
             number_pos = "ERROR:number"
         if len(char_pos) == 1:
