@@ -3,6 +3,7 @@
 import sys
 try:
     from chess_logik.consts import COLOR_BLACK, COLOR_WHITE
+    from chess_logik.position import Position
 except ImportError as err:
     print("ImportError"+str(err))
     sys.exit()
@@ -50,4 +51,5 @@ class Figure:
         Arguments:
             new_position {Position}
         """
+        assert isinstance(new_position, Position), "new_position is not a Position"
         self.__position = new_position
