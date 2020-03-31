@@ -28,12 +28,15 @@ class Field():
         Returns:
             possible_moves {Position[]}
             Error:1 {int} -- if figure doesn't exist
+            Error:2 {int} -- if figure has the wrong color
         """
-        assert isinstance(selected_position, Position), "selected_position is not a Position"
+        assert isinstance(selected_position, Position), "selected_position is not a Position" + str(type(selected_position))
         for figure in self.__field:
             if figure.get_position().get_pos_char() == selected_position.get_pos_char():
                 if figure.get_position().get_pos_number() == selected_position.get_pos_number():
-                    return figure.get_possible_moves(self.__field)
+                    if (self.__white_turn and figure.get_color() == COLOR_WHITE) or (figure.get_color() == COLOR_BLACK and not self.__white_turn):
+                        return figure.get_possible_moves(self.__field)
+                    return 2
         return 1
 
     def get_field(self):
@@ -48,8 +51,8 @@ class Field():
         Arguments:
             new_position {Position}
         """
-        assert isinstance(new_position, Position), "new_position is not a Position"
-        assert isinstance(own_color, str), "own_color is not a str"
+        assert isinstance(new_position, Position), "new_position is not a Position" + str(type(new_position))
+        assert isinstance(own_color, str), "own_color is not a str" + str(type(own_color))
         for figure in self.__field:
             if figure.get_position().get_pos_char() == new_position.get_pos_char():
                 if figure.get_position().get_pos_number() == new_position.get_pos_number():
@@ -73,15 +76,19 @@ class Field():
         Returns:
             field {Figure[]}
             Error:1 {int} -- if one of the figures doesn't exist
+            Error:2 {int} -- if figure has the wrong color
         """
-        assert isinstance(selected_position, Position), "selected_position is not a Position"
-        assert isinstance(new_position, Position), "new_position is not a Position"
+        assert isinstance(selected_position, Position), "selected_position is not a Position" + str(type(selected_position))
+        assert isinstance(new_position, Position), "new_position is not a Position" + str(type(new_position))
         for figure in self.__field:
             if figure.get_position().get_pos_char() == selected_position.get_pos_char():
                 if figure.get_position().get_pos_number() == selected_position.get_pos_number():
-                    self.__del_old_figure(new_position, figure.get_color())
-                    figure.do_move(new_position)
-                    return self.get_field()
+                    if (self.__white_turn and figure.get_color() == COLOR_WHITE) or (figure.get_color() == COLOR_BLACK and not self.__white_turn):
+                        self.__del_old_figure(new_position, figure.get_color())
+                        figure.do_move(new_position)
+                        self.__white_turn = not self.__white_turn
+                        return self.get_field()
+                    return 2
         return 1
 
     def check_win(self):
