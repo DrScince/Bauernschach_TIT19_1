@@ -3,8 +3,8 @@
 import sys
 try:
     from chess_logik.consts import GAME_SIZE
-except ImportError:
-    print("ImportError")
+except ImportError as err:
+    print("ImportError"+str(err))
     sys.exit()
 
 class Position():
