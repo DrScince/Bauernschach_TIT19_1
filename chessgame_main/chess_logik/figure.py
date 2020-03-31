@@ -2,7 +2,8 @@
 """
 import sys
 try:
-    from chess_logik.consts import COLOR_BLACK, COLOR_WHITE
+    from chess_logik.consts import COLOR_BLACK
+    from chess_logik.consts import COLOR_WHITE
     from chess_logik.position import Position
 except ImportError as err:
     print("ImportError"+str(err))
@@ -15,7 +16,7 @@ class Figure:
     def __init__(self, color, position):
         """
         Arguments:
-            color {String} -- COLOR_BLACK or COLOR_WHITE
+            color {str} -- COLOR_BLACK or COLOR_WHITE
             position{Position}
         Values will be ERROR:color or :position -> they need to be validated
         """

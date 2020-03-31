@@ -2,11 +2,11 @@
 import unittest
 import sys
 try:
-    from pawn import Pawn
-    from exceptions import OutOfBoundsException
-    from consts import GAME_SIZE
-    from consts import COLOR_BLACK
-    from consts import COLOR_WHITE
+    from chess_logik.pawn import Pawn
+    from chess_logik.exceptions import OutOfBoundsException
+    from chess_logik.consts import GAME_SIZE
+    from chess_logik.consts import COLOR_BLACK
+    from chess_logik.consts import COLOR_WHITE
 except ImportError:
     print("ImportError")
     sys.exit()

@@ -14,7 +14,7 @@ class Position():
     def __init__(self, char_pos, number_pos):
         """
         Arguments:
-            char_pos{char} -- A to H
+            char_pos{str} -- A to H
             number_pos{int} -- 1 to 8
 
         If the Position isn't in the field, the value is ERROR:char or :number
