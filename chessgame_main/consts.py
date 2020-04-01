@@ -10,3 +10,6 @@ LOAD = "L"
 SAVE = "S"
 QUIT = "B"
 NEW_GAME = "N"
+FOREVER = True
+HOME = "H"
+

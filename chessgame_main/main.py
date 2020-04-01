@@ -5,128 +5,119 @@ Returns:
 """
 import platform
 import os
+import sys
 
 # from colorama import Fore, Back
 # import consts
 try:
     import consts
-    from util import UIutil
-    #
+    from game import ActiveGame
     from chess_storage.chess_storage import ChessStorage
-    #
-    from chess_logik.position import Position
-    from chess_logik.field import Field
 except ImportError:
     print("Import Error!")
-    exit()
+    sys.exit()
 
 
 def main():
     """[summary]
     """
     #TODO Frank docstring
-    __logic_gamefield = Field()
-    __file_usage = ChessStorage()
-    __file_usage.log("test", "Hallo du Nudel", False)
-    __printed_gamefield = UIutil.fill_default_game()
-    __run_game = True
-    while __run_game:
-        __printed_gamefield = UIutil.fill_default_game()
-        __printed_gamefield = UIutil.fill_game_field(__logic_gamefield.get_field(), __printed_gamefield)
-        __print_all(__printed_gamefield)
-
-        # __testarray = __printed_gamefield
-        # for i in range(8):
-        #     for j in range(8):
-        #         __testarray[i][j] = "B"
-
-
-        # __file_usage.log("game1", __printed_gamefield, True)
-        # __file_usage.log("game1", "________________________________________________________________________", True)
-
-        __run_game = __get_input(__printed_gamefield, __logic_gamefield)
-
-def __print_all(printed_gamefield):
+    
+    storage = ChessStorage()
+    start_game = __print_welcome_screen()
     CLEAR()
-    __print_menu()
-    __print_game(printed_gamefield)
-    __print_footer()
+    while consts.FOREVER:
+        if(start_game == consts.NEW_GAME):
+            __active_game = __set_new_game(storage)
+            __game_run = True
+            while __game_run:
+                CLEAR()
+                __game_result = __active_game.run_game()
+                if not isinstance(__game_result, bool):
+                    if __game_result == consts.QUIT:
+                        start_game = consts.HOME
+                        break
+                    elif __game_result == consts.SAVE:
+                        storage.save_data(__active_game.get_game_name(), __active_game, True)
+                
+        elif start_game == consts.LOAD:
+            __games = storage.get_all_games()
+            __load_games(__games)
+        elif start_game == consts.QUIT:
+            __quit_game()
+            break
+        elif start_game == consts.HOME:
+            start_game = __print_welcome_screen()
+    # __run_game = True
+    # while __run_game:
+    #    
 
-def __print_menu():
+def __print_welcome_screen():
+    """[Starts the Game]
+    
+    Returns:
+        [string] -- [
+            const.QUIT
+            const.NEW_Game
+            cons.LOAD_GAME
+            ]
+    """
+    CLEAR()
     print("\n\t\t\t\t\t\tSchachautomat\t\t")
-    print("\n\t\tNeues Spiel(N)\t\tSpeichern(S)\tLaden(L)\t\tSpiel Beenden(B)")
-    print("\t\t________________________________________________________________________________")
+    print("\t\t________________________________________________________________________________\n")
+    print("\t\t\t\t\t        Neues Spiel(N)\t\t")
+    print("\t\t\t\t\t        Spiel Laden(L)\t\t")
+    print("\t\t\t\t\t        Beenden(B)\t\t")
+    print("\n\t\t________________________________________________________________________________")
+    while(consts.FOREVER):
+        __input = str.upper(input("\n\t\t\t\t\t\tWas möchten sie tun: "))
+        if __input == "N":
+            return consts.NEW_GAME
+        elif __input == "L":
+            return consts.LOAD
+        elif __input == "B":
+            return consts.QUIT
+        else:
+            print("\n\t\t\t\t\t\t\033[0;31;47mFalsche eingabe !\033[0;30;47m")
 
-def __print_footer():
-    print("\t\t________________________________________________________________________________")
+def __load_games(games):
+    CLEAR()
+    print("\n\t\t\t\t\t\tSchachautomat\t\t")
+    print("\t\t________________________________________________________________________________\n")
+    print("\n\t\t\t\t\t\tSpiele zum laden\t\t")
+    i = 0
+    for game in games:
+        i += 1
+        print("\t\t\t\t\t\t("+str(i)+")\t"+game)
+    print("\t\t________________________________________________________________________________\n")
+    desicion = ""
+    while not isinstance(desicion, int):
+        desicion = input("\t\t\t\t\t\tBitte Spiel wählen")
 
-def __print_game(printed_gamefield):
-    print("\n\t\t\t\t\033[6;34;47m    A    B    C    D    E    F    G    H\033[0;30;47m\n")
-    for i in range(8):
-        __print_game_line(printed_gamefield, i)
-    print("\n\t\t\t\t\033[6;34;47m    A    B    C    D    E    F    G    H\033[0;30;47m\n")
+def __set_new_game(storage):
+    print("\n\t\t\t\t\t\tSchachautomat\t\t")
+    print("\t\t________________________________________________________________________________\n")
 
-def __print_game_line(printed_gamefield, line_number):
-    print("\t\t\t       ", end="")
-    print('\033[6;34;47m'+str(8-line_number)+"", end="\033[0;30;47m")
-    for i in range(8):
-        print("    "+str(printed_gamefield[line_number][i])+"", end="")
-    print("     \033[6;34;47m"+str(8-line_number), end="\033[0;30;47m\n")
+    while consts.FOREVER:
+        __play_against_bot = str.upper(input("\t\t\t\t\t\tWollen sie gegen den Computer Spielen (J/N) :\n\t\t\t\t\t\t"))
+        if __play_against_bot == "J":
+            __play_against_bot = True
+        elif __play_against_bot == "N":
+            __play_against_bot = False
+        if not isinstance(__play_against_bot, bool):
+            print("\t\t\t\t\t\t\033[0;31;47mFalsche eingabe bitte erneut Versuchen\033[0;30;47m")
+        else:
+            break
+        #
+    __game_name = str(input("\t\t\t\t\t\tBitte Spielname eingeben :\n\t\t\t\t\t\t"))
+    __playername_one = str(input("\t\t\t\t\t\tBitte Spieler Name 1 :\n\t\t\t\t\t\t"))
+    if not __play_against_bot:
+        __playername_two = str(input("\t\t\t\t\t\tBitte Spieler Name 1 :\n\t\t\t\t\t\t"))
+        return ActiveGame(__playername_one, __playername_two, __game_name, False, storage)
+    return ActiveGame(__playername_one, "Computergegner", __game_name, True, storage)
 
-def __get_input(printed_gamefield, logic_gamefield):
-    print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")
-    desiccion = input("\t\t\t\t")
-    desiccion = str.upper(desiccion)
-    #TODO falsche Eingabe Abfangen
-    if desiccion == consts.LOAD:
-        print("\t\t\t\tSpiel Laden")
-        #TODO Spiel Laden einbauen
-        return True
-    elif desiccion == consts.SAVE:
-        print("\t\t\t\tSpiel Speichern ...")
-        #TODO Spiel Speichern einbauen
-        return True
-    elif desiccion == consts.NEW_GAME:
-        print("\t\t\t\tNeues Spiel")
-        #TODO Neues Spiel einbaune
-        return True
-    elif desiccion == consts.QUIT:
-        return __quit_game()
-    elif len(desiccion) == 2:
-        #TODO Abfangen von Falsch eingaben
-        __pos = Position(str(list(desiccion)[0]), int(list(desiccion)[1]))
-        return __turn(__pos, printed_gamefield, logic_gamefield)
-    else:
-        return True
 
-def __turn(selceted_position, printed_gamefield, logic_gamefield):
-    row = ord(selceted_position.get_pos_char()) - 65
-    print_col = 8 - selceted_position.get_pos_number()
-    printed_gamefield[print_col][row] = '\033[3;32;47m'+ str(printed_gamefield[(print_col)][row])+"\033[0;30;47m"
-    __moves = logic_gamefield.get_possible_moves(selceted_position)
-
-    #
-    for move in __moves:
-        move_row = ord(move.get_pos_char()) - 65
-        move_col = 8 - move.get_pos_number()
-        printed_gamefield[move_col][move_row] = '\033[0;31;47m'+ str(printed_gamefield[move_col][move_row])+"\033[0;30;47m"
-    __print_all(printed_gamefield)
-    #TODO SARAH###################################################################################################################################
-    # Computer Gegener Einbauen stattdessen#
-    __next_move = __get_input_move(__moves)
-    ###############################################################################################################################################
-    logic_gamefield.do_move(selceted_position, __next_move)
-    return True
-
-def __get_input_move(posible_moves):
-    print("\t\t\t\tBitte einen der folgenden Züge auswählen:")
-    print("\t\t\t\t\t", end="\033[0;31;47m")
-    for move in posible_moves:
-        print(""+str(move.get_pos_char())+""+str(move.get_pos_number())+"", end="\t")
-    __move = input("\033[0;30;47m\n\t\t\t\t")
-    __move = str.upper(__move)
-    __move_pos = Position(str(list(__move)[0]), int(list(__move)[1]))
-    return __move_pos
+    
 
 def __quit_game():
     CLEAR()
