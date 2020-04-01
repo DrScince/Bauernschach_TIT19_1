@@ -3,6 +3,7 @@
 import sys
 try:
     from chess_logik.consts import GAME_SIZE
+    from chess_logik.consts import ERROR_CODES
 except ImportError as err:
     print("ImportError"+str(err))
     sys.exit()
