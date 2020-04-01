@@ -8,6 +8,15 @@ COLOR_BLACK = 'b'
 #Direction
 DIRECTION_BLACK = -1
 DIRECTION_WHITE = 1
+
+ERROR_CODES = {
+    "Null": "Error:Null",
+    "NoFigure": "Error:FigureDoesn'tExist",
+    "WrongColor": "Error:SelectedFigureHasWrongColor",
+    "Number": "Error:NumberIsNotInRange",
+    "Char": "Error:CharIsNotInRange"
+}
+
 LEFT = -1
 RIGHT = 1
 

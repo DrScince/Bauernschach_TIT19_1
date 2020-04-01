@@ -6,6 +6,7 @@ try:
     from chess_logik.pawn import Pawn
     from chess_logik.consts import COLOR_BLACK
     from chess_logik.consts import COLOR_WHITE
+    from chess_logik.consts import ERROR_CODES
 except ImportError as err:
     print("ImportError"+str(err))
     sys.exit()
@@ -13,7 +14,6 @@ except ImportError as err:
 class Field():
     """ Contains all the figures in the game and methods to interact
     """
-
     def __init__(self):
         self.__white_turn = True
         self.__field = []
@@ -27,8 +27,8 @@ class Field():
             selected_position {Position}
         Returns:
             possible_moves {Position[]}
-            Error:1 {int} -- if figure doesn't exist
-            Error:2 {int} -- if figure has the wrong color
+            ERROR_CODES["WrongColor"] {str} -- if figure doesn't exist
+            ERROR_CODES["NoFigure"] {str} -- if figure has the wrong color
         """
         assert isinstance(selected_position, Position), "selected_position is not a Position" + str(type(selected_position))
         for figure in self.__field:
@@ -36,8 +36,8 @@ class Field():
                 if figure.get_position().get_pos_number() == selected_position.get_pos_number():
                     if (self.__white_turn and figure.get_color() == COLOR_WHITE) or (figure.get_color() == COLOR_BLACK and not self.__white_turn):
                         return figure.get_possible_moves(self.__field)
-                    return 2
-        return 1
+                    return ERROR_CODES["WrongColor"]
+        return ERROR_CODES["NoFigure"]
 
     def get_field(self):
         """ getter
