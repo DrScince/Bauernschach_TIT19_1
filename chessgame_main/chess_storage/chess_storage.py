@@ -65,7 +65,8 @@ class ChessStorage:
         """
         __games = []
         for __match in os.listdir(self.__dir_game_saves):
-            __games.append(__match)
+            if __match != "log":
+                __games.append(__match)
         return __games
 
     def log(self, file_name, log_info, append):
