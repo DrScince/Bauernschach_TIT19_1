@@ -21,6 +21,9 @@ class ChessStorage:
         self.__dir_game_saves = os.path.join(self.__dir_game_saves, "games")
         if not os.path.isdir(self.__dir_game_saves):
             os.mkdir(self.__dir_game_saves)
+        self.__dir_game_log = os.path.join(self.__dir_game_saves, "log")
+        if not os.path.isdir(self.__dir_game_log):
+            os.mkdir(self.__dir_game_log)
 
     def save_data(self, file_name, current_game, overwrite):
         """Save current game as an binary file
@@ -75,7 +78,7 @@ class ChessStorage:
             ErrorCode -- 0 success, 2 file exists
         """
         __log_name = str(file_name) + "_log.txt"
-        __dir_game_log = os.path.join(self.__dir_game_saves, __log_name)
+        __dir_game_log = os.path.join(self.__dir_game_log, __log_name)
         if os.path.isfile(__dir_game_log):
             if append:
                 return self.__log_append(__dir_game_log, log_info)

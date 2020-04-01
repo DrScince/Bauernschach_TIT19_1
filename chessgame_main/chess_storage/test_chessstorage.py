@@ -59,7 +59,8 @@ class StorageTest(unittest.TestCase):
         __dir_game_saves = os.path.join(__dir_game_saves, 'games')
         __test_filename = consts.TEST_FILENAME
         __test_logname = __test_filename + "_log.txt"
-        __dir_game_log = os.path.join(__dir_game_saves, __test_logname)
+        __dir_game_log = os.path.join(__dir_game_saves, "log")
+        __dir_game_log = os.path.join(__dir_game_log, __test_logname)
         #test list
         __log_test = __test.log(__test_filename, __test_data, True)
         self.assertEqual(__log_test, consts.SUCCESSFULL)
@@ -102,15 +103,19 @@ class StorageTest(unittest.TestCase):
         __dir_game_saves = os.path.join(__dir_game_saves, 'games')
         __test_filename = consts.TEST_FILENAME
         __dir_game_testfile = os.path.join(__dir_game_saves, __test_filename)
-        __test_logname = __test_filename + "_log.txt"
-        __dir_game_log = os.path.join(__dir_game_saves, __test_logname)
         os.remove(__dir_game_testfile)
         self.assertFalse(os.path.isfile(__dir_game_testfile))
-        os.remove(__dir_game_log)
-        self.assertFalse(os.path.isfile(__dir_game_log))
         __list_files = os.listdir(__dir_game_saves)
         if len(__list_files) == 0:
             os.removedirs(__dir_game_saves)
+        __dir_game_log = os.path.join(__dir_game_saves, "log")
+        __test_logname = __test_filename + "_log.txt"
+        __dir_game_logfile = os.path.join(__dir_game_log, __test_logname)
+        os.remove(__dir_game_logfile)
+        self.assertFalse(os.path.isfile(__dir_game_logfile))
+        __list_files = os.listdir(__dir_game_log)
+        if len(__list_files) == 0:
+            os.removedirs(__dir_game_log)
 
 # Needed to run without console command
 # if __name__ == '__main__':

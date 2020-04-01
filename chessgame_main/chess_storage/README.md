@@ -27,7 +27,7 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
 
 * except für ImportError
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Datei: consts.py fehlt.
-* os.mkdir für /games
+* os.mkdir für /games und //log
     >Zum Erstellen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser nicht existiert. Damit Spieldateien und Logs gespeichert werden können.
 
 ## test_chessstorage
@@ -51,5 +51,5 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
 
 * except für ImportError
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet. Except fällt wenn die Dateien: chess_storage.py und consts.py fehlen.
-* os.removedirs für /games
+* os.removedirs für /games und //log
     >Zum löschen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser Leer ist. Damit vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.
