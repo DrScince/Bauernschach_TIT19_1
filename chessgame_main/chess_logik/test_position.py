@@ -2,9 +2,9 @@
 import unittest
 import sys
 try:
-    from chess_logik.pawn import Position
+    from chess_logik.position import Position
 except ImportError as err:
-    print("ImportError"+str(err))
+    print("ImportError "+str(err))
     sys.exit()
 
 class PositionTest(unittest.TestCase):
@@ -36,4 +36,3 @@ class PositionTest(unittest.TestCase):
             Position("A", "2")
         with self.assertRaises(Exception):
             Position(6, 2)
-            

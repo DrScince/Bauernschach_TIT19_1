@@ -6,7 +6,7 @@ try:
     from chess_logik.consts import COLOR_WHITE
     from chess_logik.position import Position
 except ImportError as err:
-    print("ImportError"+str(err))
+    print("ImportError "+str(err))
     sys.exit()
 
 class Figure:
@@ -21,6 +21,7 @@ class Figure:
         if an error occurs Values will be ERROR:color or :position -> they need to be validated
         """
         assert isinstance(color, str), "color is not a str" + str(type(color))
+        assert len(color) == 1, "color doesn't have the length 1, the length is: " + str(len(color))
         assert isinstance(position, Position), "position is not a Position" + str(type(position))
         if color == COLOR_WHITE:
             self.__color = COLOR_WHITE

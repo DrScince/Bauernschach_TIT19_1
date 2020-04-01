@@ -7,8 +7,8 @@ try:
     from chess_logik.consts import GAME_SIZE
     from chess_logik.consts import COLOR_BLACK
     from chess_logik.consts import COLOR_WHITE
-except ImportError:
-    print("ImportError")
+except ImportError as err:
+    print("ImportError"+str(err))
     sys.exit()
 
 class PawnTest(unittest.TestCase):
