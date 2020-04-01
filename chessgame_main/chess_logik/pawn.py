@@ -2,8 +2,8 @@
 """
 import sys
 try:
-    from chess_logik.figure import Figure
     from chess_logik.position import Position
+    from chess_logik.figure import Figure
     from chess_logik import consts
 except ImportError as err:
     print("ImportError"+str(err))
@@ -84,17 +84,18 @@ class Pawn(Figure):
         Return:
             The new Field {Figure[]}
         """
+        #TODO errorcode
         assert isinstance(new_position, Position), "new_position ist keine Position" + str(type(new_position))
         old_pos_num = super().get_position().get_pos_number
         for position in self.__possible_moves_buffer:
             if position.get_pos_char() == new_position.get_pos_char():
                 if position.get_pos_number() == new_position.get_pos_number():
                     super().do_move(new_position)
-                    if old_pos_num == (new_position.get_pos_number() + (consts.DOUBLE_MOVE * self.__get_move_direction)):
+                    if old_pos_num == (new_position.get_pos_number() + (consts.DOUBLE_MOVE * self.__get_move_direction())):
                         self.__has_done_double_move = True
                     else:
                         self.__has_done_double_move = False
                     self.__possible_moves_buffer = []
-                    return consts.SUCCESSFULL
+                    return consts.ERROR_CODES["Success"]
         self.__possible_moves_buffer = []
-        return consts.NO_POSSIBLE_MOVE
+        return consts.ERROR_CODES["NoPosMove"]

@@ -2,9 +2,7 @@
 """
 import sys
 try:
-    from chess_logik.consts import COLOR_BLACK
-    from chess_logik.consts import COLOR_WHITE
-    from chess_logik.consts import ERROR_CODES
+    from chess_logik import consts
     from chess_logik.position import Position
 except ImportError as err:
     print("ImportError "+str(err))
@@ -18,20 +16,19 @@ class Figure:
         """
         Arguments:
             color {str} -- COLOR_BLACK or COLOR_WHITE
-            position{Position}
-        if an error occurs position will be Error:position -> they need to be validated
+            position{Position} -- switched to ERROR_CODES["None"] if argument is None
         """
         assert isinstance(color, str), "color is not a str" + str(type(color))
         assert len(color) == 1, "color doesn't have the length 1, the length is: " + str(len(color))
         assert isinstance(position, Position), "position is not a Position" + str(type(position))
-        if color == COLOR_WHITE:
-            self.__color = COLOR_WHITE
-        elif color == COLOR_BLACK:
-            self.__color = COLOR_BLACK
+        if color == consts.COLOR_WHITE:
+            self.__color = consts.COLOR_WHITE
+        elif color == consts.COLOR_BLACK:
+            self.__color = consts.COLOR_BLACK
         if position is not None:
             self.__position = position
         else:
-            self.__position = "ERROR:position"
+            self.__position = consts.ERROR_CODES["None"]
 
     def get_color(self):
         """ Gets the color of the Figure
