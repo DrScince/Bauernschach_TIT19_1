@@ -53,6 +53,7 @@ class Field():
         """
         assert isinstance(new_position, Position), "new_position is not a Position" + str(type(new_position))
         assert isinstance(own_color, str), "own_color is not a str" + str(type(own_color))
+        assert len(own_color) == 1, "own_color doesn't have the length 1, the length is: " + str(len(own_color))
         for figure in self.__field:
             if figure.get_position().get_pos_char() == new_position.get_pos_char():
                 if figure.get_position().get_pos_number() == new_position.get_pos_number():
