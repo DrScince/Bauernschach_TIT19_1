@@ -3,10 +3,8 @@
 import sys
 try:
     from chess_logik.figure import Figure
-    from chess_logik.consts import COLOR_BLACK
-    from chess_logik.consts import DIRECTION_BLACK
-    from chess_logik.consts import DIRECTION_WHITE
     from chess_logik.position import Position
+    from chess_logik import consts
 except ImportError as err:
     print("ImportError"+str(err))
     sys.exit()
@@ -25,15 +23,15 @@ class Pawn(Figure):
         self.__has_done_double_move = None
         self.__possible_moves_buffer = []
 
-    def __get_directional_factor(self):
+    def __get_move_direction(self):
         """
         Returns:
             DIRECTION_BLACK {int} -- own color is black
             DIRECTION_WHITE {int} -- own color is white
         """
-        if super().get_color() == COLOR_BLACK:
-            return DIRECTION_BLACK
-        return DIRECTION_WHITE
+        if super().get_color() == consts.COLOR_BLACK:
+            return consts.DIRECTION_BLACK
+        return consts.DIRECTION_WHITE
 
     def get_double_move(self):
         """ getter
@@ -51,35 +49,32 @@ class Pawn(Figure):
         """
         assert isinstance(field, list), "field ist kein []" + str(type(field))
         self.__possible_moves_buffer = []
-        own_position = super().get_position()
-        straight_is_possible = True
-        double_straight_is_possible = False
-        dir_factor = self.__get_directional_factor()
-        if self.__has_done_double_move is None:
-            double_straight_is_possible = True
+        __straight_is_free = consts.FREE_FIELD
+        own_pos_num = super().get_position().get_pos_number()
+        own_pos_cha = ord(super().get_position().get_pos_char())
+        own_direction = self.__get_move_direction()
         for figure in field:
-            assert isinstance(figure, Figure), "field ist kein Figure[]" + str(type(figure))
+            assert isinstance(figure, Figure), "figure ist kein Figure in field[]" + str(type(figure))
             fig_pos_num = figure.get_position().get_pos_number()
             fig_pos_cha = ord(figure.get_position().get_pos_char())
-            own_pos_num = own_position.get_pos_number()
-            own_pos_cha = ord(own_position.get_pos_char())
-            different_col = figure.get_color() != super().get_color()
-            if own_pos_num == fig_pos_num:
-                if  fig_pos_cha in (own_pos_cha + 1, own_pos_cha - 1):
-                    if different_col and figure.get_double_move():
-                        self.__possible_moves_buffer.append(Position(chr(fig_pos_cha), fig_pos_num + dir_factor))
-            elif own_pos_num + dir_factor == fig_pos_num:
-                if own_pos_cha == fig_pos_cha:
-                    straight_is_possible = False
-                elif fig_pos_cha in (own_pos_cha + 1, own_pos_cha - 1):
-                    if different_col:
+            if figure.get_color() != super().get_color():
+                if fig_pos_cha in ((own_pos_cha + consts.LEFT), (own_pos_cha + consts.RIGHT)):
+                    if fig_pos_num == own_pos_num:
+                        if figure.get_double_move():
+                            self.__possible_moves_buffer.append(Position(chr(fig_pos_cha), (fig_pos_num + own_direction)))
+                    elif fig_pos_num == (own_pos_num + own_direction):
                         self.__possible_moves_buffer.append(Position(chr(fig_pos_cha), fig_pos_num))
-            elif own_pos_num + (dir_factor * 2) == fig_pos_num and own_pos_cha == fig_pos_cha:
-                double_straight_is_possible = False
-        if straight_is_possible:
-            self.__possible_moves_buffer.append(Position(chr(own_pos_cha), own_pos_num + dir_factor))
-        if double_straight_is_possible and straight_is_possible:
-            self.__possible_moves_buffer.append(Position(chr(own_pos_cha), own_pos_num + (dir_factor * 2)))
+            if fig_pos_cha == own_pos_cha:
+                if fig_pos_num == (own_pos_num + own_direction):
+                    __straight_is_free = consts.ONE_IN_FRONT
+                elif fig_pos_num == (own_pos_num + (consts.DOUBLE_MOVE * own_direction)):
+                    __straight_is_free = consts.TWO_IN_FRONT
+        if __straight_is_free == consts.FREE_FIELD:
+            self.__possible_moves_buffer.append(Position(chr(own_pos_cha), (own_pos_num + own_direction)))
+            if self.get_double_move() is None:
+                self.__possible_moves_buffer.append(Position(chr(own_pos_cha), own_pos_num + (consts.DOUBLE_MOVE * own_direction)))
+        elif __straight_is_free == consts.TWO_IN_FRONT:
+            self.__possible_moves_buffer.append(Position(chr(own_pos_cha), (own_pos_num + own_direction)))
         return self.__possible_moves_buffer
 
     def do_move(self, new_position):
@@ -91,13 +86,15 @@ class Pawn(Figure):
         """
         assert isinstance(new_position, Position), "new_position ist keine Position" + str(type(new_position))
         old_pos_num = super().get_position().get_pos_number
-        if old_pos_num in (new_position.get_pos_number() - 2, new_position.get_pos_number() + 2):
-            self.__has_done_double_move = True
         for position in self.__possible_moves_buffer:
             if position.get_pos_char() == new_position.get_pos_char():
                 if position.get_pos_number() == new_position.get_pos_number():
                     super().do_move(new_position)
-                    self.__has_done_double_move = False
-                    __possible_moves = None
-                    return
-        __possible_moves = None
+                    if old_pos_num == (new_position.get_pos_number() + (consts.DOUBLE_MOVE * self.__get_move_direction)):
+                        self.__has_done_double_move = True
+                    else:
+                        self.__has_done_double_move = False
+                    self.__possible_moves_buffer = []
+                    return consts.SUCCESSFULL
+        self.__possible_moves_buffer = []
+        return consts.NO_POSSIBLE_MOVE
