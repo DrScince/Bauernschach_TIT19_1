@@ -2,30 +2,37 @@
 """
 
 GAME_SIZE = 8
+GAME_SIZE_MIN = 1
 COLOR_WHITE = 'w'
 COLOR_BLACK = 'b'
 
-#Direction
-DIRECTION_BLACK = -1
-DIRECTION_WHITE = 1
-
 ERROR_CODES = {
-    "Null": "Error:Null",
+    "None": "Error:ArgumentIsNone",
     "NoFigure": "Error:FigureDoesn'tExist",
     "WrongColor": "Error:SelectedFigureHasWrongColor",
     "Number": "Error:NumberIsNotInRange",
-    "Char": "Error:CharIsNotInRange"
+    "Char": "Error:CharIsNotInRange",
+    "NoPosMove": "Error:NotAPossibleMove",
+    "NoPosMoves": "Error:NoPossibleMoves",
+    "OutOfBounds": "Error:OutOfBounds",
+    "Success": "Success:NothingFailed"
 }
 
-LEFT = -1
-RIGHT = 1
+WINNER_CODES = {
+    "NoWinner": 10,
+    "WhiteWon": 11,
+    "BlackWon": 12
+}
+
+DIRECTIONS = {
+    "LEFT": -1,
+    "RIGHT": 1,
+    "BLACK_MOVE": -1,
+    "WHITE_MOVE": 1
+}
 
 #Movement
-DOUBLE_MOVE = 2
 FREE_FIELD = 0
 ONE_IN_FRONT = 1
 TWO_IN_FRONT = 2
-
-#ERRORCODE
-SUCCESSFULL = 0
-NO_POSSIBLE_MOVE = 1
+DOUBLE_MOVE = 2
