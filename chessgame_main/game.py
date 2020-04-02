@@ -1,4 +1,4 @@
-"""Stores the class ActiveGame wich contains all functions to run a chessgame
+"""Contains the class ActiveGame wich contains all functions to run a chessgame
 """
 
 try:
@@ -8,6 +8,8 @@ try:
     # from chess_storage.chess_storage import ChessStorage
     #
     from chess_logik.position import Position
+    import consts
+    from chess_logik import consts as game_consts
     from chess_logik.field import Field
 except ImportError:
     print("Import Error!")
@@ -37,20 +39,27 @@ class ActiveGame:
         
         self.__info_text = ""
         self.__info_text2 = ""
+        self.__successfull_turn = False
         self.__active_player = consts.COLOR_WHITE
-        
+        self.__storage = storage
         self.__playername_one = playername_one
         self.__playername_two = playername_two
         self.__gamename = gamename
         self.__play_against_bot = play_against_bot
 
-        storage.log(self.__gamename, "Hallo", True)
+        self.__storage.log(self.__gamename, "\t\t\t Neues Spiel erstellt "+gamename, True)
 
         self.__logic_gamefield = Field()
         self.__printed_gamefield = self.__fill_default_game()
         self.__printed_gamefield = self.__fill_game_field(self.__logic_gamefield, self.__printed_gamefield)
 
     def run_game(self):
+        """Runs the actual game
+        
+        Returns:
+            bool -- TRUE if game is not finished and should continue
+            string --
+        """
         if self.__active_player == consts.COLOR_WHITE:
             self.__info_text = "\033[0;30;47m"+self.__playername_one+" ist an der Reihe\033[0;30;47m"
         elif self.__active_player == consts.COLOR_BLACK:
@@ -59,6 +68,14 @@ class ActiveGame:
         self.__printed_gamefield = self.__fill_default_game()
         self.__printed_gamefield = self.__fill_game_field(self.__logic_gamefield, self.__printed_gamefield)
         self.__print_game_all()
+
+        if self.__successfull_turn:
+            self.__storage.log(self.__gamename, "________________________________________________________________________________", True)
+            self.__storage.log(self.__gamename, self.__printed_gamefield, True)
+            self.__storage.log(self.__gamename, "________________________________________________________________________________", True)
+            self.__successfull_turn = False
+        elif len(str.split(self.__info_text2, " ")) == 3:
+            self.__storage.log(self.__gamename, str.split(self.__info_text2, " ")[1], True)
         __run_game = self.__get_input()
         return __run_game
 
@@ -115,15 +132,17 @@ class ActiveGame:
         print("\n\t\t\t\t\t\tSchachautomat\t\t")
         print("\n\t\tNeues Spiel(N)\t\tSpeichern(S)\tLaden(L)\t\tSpiel Beenden(B)")
         print("\t\t________________________________________________________________________________")
-
+     
     def __print_footer(self):
         print("\t\t________________________________________________________________________________")
+        
+        
 
     def __print_game(self):
-        print("\n\t\t\t\t\033[6;34;47m    A    B    C    D    E    F    G    H\033[0;30;47m\n")
+        print("\n\t\t\t\t    A    B    C    D    E    F    G    H\n")
         for i in range(8):
             self.__print_game_line(i)
-        print("\n\t\t\t\t\033[6;34;47m    A    B    C    D    E    F    G    H\033[0;30;47m\n")
+        print("\n\t\t\t\t    A    B    C    D    E    F    G    H\n")
 
     def __print_game_line(self, line_number):
         print("\t\t\t       ", end="")
@@ -164,11 +183,18 @@ class ActiveGame:
         print_col = 8 - selceted_position.get_pos_number()
         self.__printed_gamefield[print_col][row] = '\033[3;32;47m'+ str(self.__printed_gamefield[(print_col)][row])+"\033[0;30;47m"
         __moves = self.__logic_gamefield.get_possible_moves(selceted_position)
-        if __moves == 1:
-            self.__info_text = "\033[0;31;47mFalsche Feld ausgewählt\033[0;30;47m"
-            self.__info_text2 = "\033[0;31;47mKein Bauer auf dem Feld oder Falsche Spielfigur\033[0;30;47m"
+        if not isinstance(__moves, list):
+            self.__info_text = "\033[0;31;47mFalsches Feld ausgewählt\033[0;30;47m"
+            if __moves == game_consts.ERROR_CODES["WrongColor"]:
+                self.__info_text2 = "\033[0;31;47m Spielfigur hat falsche Farbe \033[0;30;47m"
+            elif __moves == game_consts.ERROR_CODES["NoFigure"]:
+                self.__info_text2 = "\033[0;31;47m Keine Figur auf diesem Feld \033[0;30;47m"
+            elif __moves == game_consts.ERROR_CODES["NoPosMoves"]:
+                self.__info_text2 = "\033[0;31;47m Keine Spielzüge für diese Figur möglich \033[0;30;47m"
+                
             return True
         #
+        self.__info_text2 = "\033[0;31;47m \033[0;30;47m"
         for move in __moves:
             move_row = ord(move.get_pos_char()) - 65
             move_col = 8 - move.get_pos_number()
@@ -178,7 +204,17 @@ class ActiveGame:
         # Computer Gegener Einbauen stattdessen#
         __next_move = self.__get_input_move(__moves)
         ###############################################################################################################################################
-        self.__logic_gamefield.do_move(selceted_position, __next_move)
+        __move_result = self.__logic_gamefield.do_move(selceted_position, __next_move)
+        str_selected_position = selceted_position.get_pos_char() + str(selceted_position.get_pos_number())
+        str_new_position = __next_move.get_pos_char() + str(__next_move.get_pos_number())
+        if isinstance(__move_result, list):
+            self.__successfull_turn = True
+            if self.__active_player == consts.COLOR_WHITE:
+                self.__active_player = consts.COLOR_BLACK
+                self.__storage.log(self.__gamename, "Weiser Spieler bewegt Bauer von"+str_selected_position+" nach "+str_new_position+"", True)
+            elif self.__active_player == consts.COLOR_BLACK:
+                self.__storage.log(self.__gamename, "Schwarzer Spieler bewegt Bauer von"+str_selected_position+" nach "+str_new_position+"", True)
+                self.__active_player = consts.COLOR_WHITE
         return True
 
     def __get_input_move(self, possible_moves):
@@ -186,15 +222,20 @@ class ActiveGame:
         print("\t\t\t\t\t", end="\033[0;31;47m")
         for move in possible_moves:
             print(""+str(move.get_pos_char())+""+str(move.get_pos_number())+"", end="\t")
-        __move = input("\033[0;30;47m\n\t\t\t\t")
-        __move = str.upper(__move)
-        __move_pos = Position(str(list(__move)[0]), int(list(__move)[1]))
-        
-        if self.__active_player == consts.COLOR_WHITE:
-            self.__active_player = consts.COLOR_BLACK
-        elif self.__active_player == consts.COLOR_BLACK:
-            self.__active_player = consts.COLOR_WHITE
-        return __move_pos
+
+        while consts.FOREVER:
+            __move = input("\033[0;30;47m\n\t\t\t\t")
+            __move = str.upper(__move)
+            if len(__move) == 2:
+                for move in possible_moves:
+                    __move_pos = Position(str(list(__move)[0]), int(list(__move)[1]))
+                    if __move_pos.get_pos_number() == move.get_pos_number() and __move_pos.get_pos_char() == move.get_pos_char():
+                        return __move_pos
+            else:
+                print("\t\t\t\t\033[0;31;47mFalsche eingabe bitte eine der Optionen eingeben\033[0;30;47m")
 
     def get_game_name(self):
         return self.__gamename
+
+
+

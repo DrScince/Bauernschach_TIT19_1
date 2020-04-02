@@ -7,6 +7,7 @@ COLOR_WHITE = 'w'
 COLOR_BLACK = 'b'
 
 LOAD = "L"
+RUN_GAME = "running"
 SAVE = "S"
 QUIT = "B"
 NEW_GAME = "N"

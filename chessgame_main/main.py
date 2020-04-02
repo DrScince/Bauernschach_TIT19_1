@@ -29,6 +29,13 @@ def main():
     while consts.FOREVER:
         if(start_game == consts.NEW_GAME):
             __active_game = __set_new_game(storage)
+            start_game = consts.RUN_GAME
+        elif start_game == consts.LOAD:
+            __games = storage.get_all_games()
+            __game_load_name = __get_load_game(__games)
+            __active_game = storage.load_data(__game_load_name)
+            start_game = consts.RUN_GAME
+        elif start_game == consts.RUN_GAME:
             __game_run = True
             while __game_run:
                 CLEAR()
@@ -38,11 +45,8 @@ def main():
                         start_game = consts.HOME
                         break
                     elif __game_result == consts.SAVE:
-                        storage.save_data(__active_game.get_game_name(), __active_game, True)
-                
-        elif start_game == consts.LOAD:
-            __games = storage.get_all_games()
-            __load_games(__games)
+                        storage.save_
+                        data(__active_game.get_game_name(), __active_game, True)
         elif start_game == consts.QUIT:
             __quit_game()
             break
@@ -80,7 +84,7 @@ def __print_welcome_screen():
         else:
             print("\n\t\t\t\t\t\t\033[0;31;47mFalsche eingabe !\033[0;30;47m")
 
-def __load_games(games):
+def __get_load_game(games):
     CLEAR()
     print("\n\t\t\t\t\t\tSchachautomat\t\t")
     print("\t\t________________________________________________________________________________\n")
@@ -90,9 +94,14 @@ def __load_games(games):
         i += 1
         print("\t\t\t\t\t\t("+str(i)+")\t"+game)
     print("\t\t________________________________________________________________________________\n")
-    desicion = ""
-    while not isinstance(desicion, int):
-        desicion = input("\t\t\t\t\t\tBitte Spiel wählen")
+    
+    decision = ""
+    while not isinstance(decision, int):
+        decision = input("\t\t\t\t\t\tBitte Spiel wählen : ")
+        decision = int(decision)
+    return games[decision-1]
+
+
 
 def __set_new_game(storage):
     print("\n\t\t\t\t\t\tSchachautomat\t\t")
@@ -112,7 +121,7 @@ def __set_new_game(storage):
     __game_name = str(input("\t\t\t\t\t\tBitte Spielname eingeben :\n\t\t\t\t\t\t"))
     __playername_one = str(input("\t\t\t\t\t\tBitte Spieler Name 1 :\n\t\t\t\t\t\t"))
     if not __play_against_bot:
-        __playername_two = str(input("\t\t\t\t\t\tBitte Spieler Name 1 :\n\t\t\t\t\t\t"))
+        __playername_two = str(input("\t\t\t\t\t\tBitte Spieler Name 2 :\n\t\t\t\t\t\t"))
         return ActiveGame(__playername_one, __playername_two, __game_name, False, storage)
     return ActiveGame(__playername_one, "Computergegner", __game_name, True, storage)
 
