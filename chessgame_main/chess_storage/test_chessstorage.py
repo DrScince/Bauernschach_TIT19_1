@@ -97,6 +97,34 @@ class StorageTest(unittest.TestCase):
             print("Two Lines")
             print(__log_game.read())
 
+    def test_5_write_file(self):
+        """testing the private method __write_file
+        """
+        __test = chess_storage.ChessStorage()
+        __test_data = list(range(consts.TEST_LIST_LENGHT))
+        __dir_game_saves = os.path.dirname(__file__)
+        __dir_game_saves = os.path.join(__dir_game_saves, 'games')
+        __dir_game_saves = os.path.join(__dir_game_saves, consts.TEST_FILENAME)
+        # pylint: disable = protected-access
+        __save_test = __test._ChessStorage__write_file(__dir_game_saves, __test_data)
+        # pylint: enable = protected-access
+        self.assertEqual(__save_test, consts.ERROR_CODES["SUCCESSFULL"])
+
+    def test_6_log_append(self):
+        """testing the private method __log_append
+        """
+        __test = chess_storage.ChessStorage()
+        __test_data = list(range(consts.TEST_LIST_LENGHT))
+        __dir_game_saves = os.path.dirname(__file__)
+        __dir_game_saves = os.path.join(__dir_game_saves, 'games')
+        __dir_game_log = os.path.join(__dir_game_saves, "log")
+        __test_logname = consts.TEST_FILENAME + "_log.txt"
+        __dir_game_logfile = os.path.join(__dir_game_log, __test_logname)
+        # pylint: disable = protected-access
+        __log_test = __test._ChessStorage__log_append(__dir_game_logfile, __test_data)
+        # pylint: enable = protected-access
+        self.assertEqual(__log_test, consts.ERROR_CODES["SUCCESSFULL"])
+
     def test_999_remove_testfiles(self):
         """Remove all created files
         """
@@ -104,11 +132,6 @@ class StorageTest(unittest.TestCase):
         __dir_game_saves = os.path.join(__dir_game_saves, 'games')
         __test_filename = consts.TEST_FILENAME
         __dir_game_testfile = os.path.join(__dir_game_saves, __test_filename)
-        os.remove(__dir_game_testfile)
-        self.assertFalse(os.path.isfile(__dir_game_testfile))
-        __list_files = os.listdir(__dir_game_saves)
-        if len(__list_files) == 0:
-            os.removedirs(__dir_game_saves)
         __dir_game_log = os.path.join(__dir_game_saves, "log")
         __test_logname = __test_filename + "_log.txt"
         __dir_game_logfile = os.path.join(__dir_game_log, __test_logname)
@@ -117,6 +140,11 @@ class StorageTest(unittest.TestCase):
         __list_files = os.listdir(__dir_game_log)
         if len(__list_files) == 0:
             os.removedirs(__dir_game_log)
+        os.remove(__dir_game_testfile)
+        self.assertFalse(os.path.isfile(__dir_game_testfile))
+        __list_files = os.listdir(__dir_game_saves)
+        if len(__list_files) == 0:
+            os.removedirs(__dir_game_saves)
 
 # Needed to run without console command
 # if __name__ == '__main__':

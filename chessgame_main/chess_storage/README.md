@@ -43,6 +43,10 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
     * test_4_log_game
         >Es wird eine Liste und ein String je drei mal mit dem selben Namen ausgeführt um das erweitern zu testen\
         >Der Inhalt der Testdatei wird im Terminal ausgegeben
+    * test_5_write_file
+        >Es wird einmal eine Datei geschrieben
+    * test_6_log_append
+        >Es wird einmal eine Datei erweitert
     * test_999_remove_testfiles
         >Muss als Letztes laufen!!!\
         >Löscht die erstellten Dateien und den Ordner "games" falls dieser leer ist.
