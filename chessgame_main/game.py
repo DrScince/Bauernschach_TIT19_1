@@ -3,12 +3,12 @@
 
 try:
     import sys
-    import consts
     #
     # from chess_storage.chess_storage import ChessStorage
     #
-    from chess_logik.position import Position
+    import time
     import consts
+    from chess_logik.position import Position
     from chess_logik import consts as game_consts
     from chess_logik.field import Field
 except ImportError:
@@ -35,6 +35,7 @@ class ActiveGame:
             assert isinstance(play_against_bot, bool), "play_against_bot ist nicht vom typ bool"
             assert storage is not None, "Kein storage übegeben"
         except AssertionError as error:
+            #TODO Richtiger error einbinden
             print(error)
         
         self.__info_text = ""
@@ -61,13 +62,21 @@ class ActiveGame:
             string --
         """
         if self.__active_player == consts.COLOR_WHITE:
-            self.__info_text = "\033[0;30;47m"+self.__playername_one+" ist an der Reihe\033[0;30;47m"
+            self.__info_text = "\033[0;30;47m "+self.__playername_one+" ist an der Reihe\033[0;30;47m"
         elif self.__active_player == consts.COLOR_BLACK:
-            self.__info_text = "\033[0;37;40m"+self.__playername_two+" ist an der Reihe\033[0;30;47m"
+            self.__info_text = "\033[0;37;40m "+self.__playername_two+" ist an der Reihe\033[0;30;47m"
             
         self.__printed_gamefield = self.__fill_default_game()
         self.__printed_gamefield = self.__fill_game_field(self.__logic_gamefield, self.__printed_gamefield)
         self.__print_game_all()
+
+        if self.__play_against_bot:
+            #TODO Bot Instanztieren
+            # self.__bot = bot()
+            pass
+        else:
+            self.__bot = None
+
 
         if self.__successfull_turn:
             self.__storage.log(self.__gamename, "________________________________________________________________________________", True)
@@ -77,7 +86,12 @@ class ActiveGame:
         elif len(str.split(self.__info_text2, " ")) == 3:
             self.__storage.log(self.__gamename, str.split(self.__info_text2, " ")[1], True)
         __run_game = self.__get_input()
-        return __run_game
+        if __run_game == game_consts.WINNER_CODES["NoWinner"]:
+            return __run_game
+        else:
+            print("Gewonnen")
+            return input("was möchten sie machen ("+consts.NEW_GAME+") oder ("+consts.QUIT+")")
+           
 
     def __fill_default_game(self):
         """[summary]
@@ -132,11 +146,9 @@ class ActiveGame:
         print("\n\t\t\t\t\t\tSchachautomat\t\t")
         print("\n\t\tNeues Spiel(N)\t\tSpeichern(S)\tLaden(L)\t\tSpiel Beenden(B)")
         print("\t\t________________________________________________________________________________")
-     
+    
     def __print_footer(self):
         print("\t\t________________________________________________________________________________")
-        
-        
 
     def __print_game(self):
         print("\n\t\t\t\t    A    B    C    D    E    F    G    H\n")
@@ -157,25 +169,37 @@ class ActiveGame:
             print("    \033[6;34;47m"+str(8-line_number), end="\033[0;30;47m\n")
 
     def __get_input(self):
-        print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")###
-        #
-        desiccion = input("\t\t\t\t")
-        desiccion = str.upper(desiccion)
-        #TODO falsche Eingabe Abfangen
-        if desiccion == consts.LOAD:
-            print("\t\t\t\tSpiel Laden")
-            return consts.LOAD
-        elif desiccion == consts.SAVE:
-            return consts.SAVE
-        elif desiccion == consts.NEW_GAME:
-            return consts.NEW_GAME
-        elif desiccion == consts.QUIT:
-            return consts.QUIT
-        elif len(desiccion) == 2:
-            __pos = Position(str(list(desiccion)[0]), int(list(desiccion)[1]))
-            return self.__turn(__pos)
-        else:
+        if self.__play_against_bot and self.__active_player == game_consts.COLOR_BLACK:
+            #__sel_position = self.__bot.get_pawn_position()
+            #__new_position = self.__bot.get_pawn_move()
+            time.sleep(2)
+            __sel_position = Position('A', 7)
+            __new_position = Position('A', 5)
+            self.__logic_gamefield.do_move(__sel_position, __new_position)
+            self.__successfull_turn = True
+            self.__active_player = consts.COLOR_WHITE
+            self.__storage.log(self.__gamename, "Weiser Spieler bewegt Bauer von A7 nach A5", True)
             return True
+        else:
+            print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")###
+            #
+            desiccion = input("\t\t\t\t")
+            desiccion = str.upper(desiccion)
+            #TODO falsche Eingabe Abfangen
+            if desiccion == consts.LOAD:
+                print("\t\t\t\tSpiel Laden")
+                return consts.LOAD
+            elif desiccion == consts.SAVE:
+                return consts.SAVE
+            elif desiccion == consts.NEW_GAME:
+                return consts.NEW_GAME
+            elif desiccion == consts.QUIT:
+                return consts.QUIT
+            elif len(desiccion) == 2:
+                __pos = Position(str(list(desiccion)[0]), int(list(desiccion)[1]))
+                return self.__turn(__pos)
+            else:
+                return True
 
     def __turn(self, selceted_position):
 
@@ -215,7 +239,8 @@ class ActiveGame:
             elif self.__active_player == consts.COLOR_BLACK:
                 self.__storage.log(self.__gamename, "Schwarzer Spieler bewegt Bauer von"+str_selected_position+" nach "+str_new_position+"", True)
                 self.__active_player = consts.COLOR_WHITE
-        return True
+       
+        return self.__logic_gamefield.check_win()
 
     def __get_input_move(self, possible_moves):
         print("\t\t\t\tBitte einen der folgenden Züge auswählen:")
@@ -237,5 +262,11 @@ class ActiveGame:
     def get_game_name(self):
         return self.__gamename
 
+    def get_playername_one(self):
+        return self.__playername_one
 
+    def get_playername_two(self):
+        return self.__playername_one
 
+    def get_play_against_bot(self):
+        return self.__play_against_bot

@@ -110,7 +110,7 @@ class Field():
                     return consts.WINNER_CODES["WhiteWon"]
                 count_white += consts.WINNER_CODES["WhiteWon"]
             if figure.get_color() == consts.COLOR_BLACK:
-                if figure.get_position.get_pos_number() == consts.GAME_SIZE_MIN:
+                if figure.get_position().get_pos_number() == consts.GAME_SIZE_MIN:
                     return consts.WINNER_CODES["BlackWon"]
                 count_black += consts.WINNER_CODES["WhiteWon"]
         if count_white == 0:

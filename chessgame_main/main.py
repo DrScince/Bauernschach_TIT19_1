@@ -23,35 +23,48 @@ def main():
     """
     #TODO Frank docstring
     
-    storage = ChessStorage()
-    start_game = __print_welcome_screen()
+    __storage = ChessStorage()
+    __start_game = __print_welcome_screen()
     CLEAR()
     while consts.FOREVER:
-        if(start_game == consts.NEW_GAME):
-            __active_game = __set_new_game(storage)
-            start_game = consts.RUN_GAME
-        elif start_game == consts.LOAD:
-            __games = storage.get_all_games()
+        if(__start_game == consts.NEW_GAME):
+            __active_game = __set_new_game(__storage)
+            __start_game = consts.RUN_GAME
+        elif __start_game == consts.LOAD:
+            __games = __storage.get_all_games()
             __game_load_name = __get_load_game(__games)
-            __active_game = storage.load_data(__game_load_name)
-            start_game = consts.RUN_GAME
-        elif start_game == consts.RUN_GAME:
+            __active_game = __storage.load_data(__game_load_name)
+            __start_game = consts.RUN_GAME
+        elif __start_game == consts.RUN_GAME:
             __game_run = True
             while __game_run:
                 CLEAR()
                 __game_result = __active_game.run_game()
                 if not isinstance(__game_result, bool):
                     if __game_result == consts.QUIT:
-                        start_game = consts.HOME
+                        __start_game = consts.HOME
                         break
                     elif __game_result == consts.SAVE:
-                        storage.save_
-                        data(__active_game.get_game_name(), __active_game, True)
-        elif start_game == consts.QUIT:
+                        __storage.save_data(__active_game.get_game_name(), __active_game, True)
+                    elif __game_result == consts.LOAD:
+                        __start_game = consts.LOAD
+                        break
+                    elif __game_result == consts.NEW_GAME:
+                        __start_game = __check_new_game(__active_game, __storage)
+                        break
+        elif __start_game == consts.RESET:
+            __game_name = __active_game.get_game_name()
+            __playername_one = __active_game.get_playername_one()
+            __playername_two = __active_game.get_playername_two()
+            __play_against_bot = __active_game.get_play_against_bot()
+            #
+            __active_game = ActiveGame(__playername_one, __playername_two, __game_name, __play_against_bot, __storage)
+            __start_game = consts.RUN_GAME
+        elif __start_game == consts.QUIT:
             __quit_game()
             break
-        elif start_game == consts.HOME:
-            start_game = __print_welcome_screen()
+        elif __start_game == consts.HOME:
+            __start_game = __print_welcome_screen()
     # __run_game = True
     # while __run_game:
     #    
@@ -101,9 +114,28 @@ def __get_load_game(games):
         decision = int(decision)
     return games[decision-1]
 
+def __check_new_game(game, storage):
+    if game.get_game_name() in storage.get_all_games():
+        CLEAR()
+        print("\n\t\t\t\t\t\tSchachautomat\t\t")
+        print("\t\t________________________________________________________________________________\n")
+        print("\t\t\t\t\t\tSpiel "+game.get_game_name()+" existiert bereits\n")
+        print("\t\t\t\t\t\tSpiel Was möchten sie tun\n")
+        print("\t\t\t\t\t\t(1)\tNochmal Spielen\n")
+        print("\t\t\t\t\t\t(2)\tNeues Spiel Starten\n")
+        __decision = int(input())
+        while consts.FOREVER:
+            if __decision == 1:
+                return consts.RESETS
+            elif __decision == 2:
+                return consts.NEW_GAME
+            else:
+                print("Falsche eingabe")
+    return consts.RESET
 
 
 def __set_new_game(storage):
+    CLEAR()
     print("\n\t\t\t\t\t\tSchachautomat\t\t")
     print("\t\t________________________________________________________________________________\n")
 
