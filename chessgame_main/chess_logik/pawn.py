@@ -30,8 +30,8 @@ class Pawn(Figure):
             DIRECTION_WHITE {int} -- own color is white
         """
         if super().get_color() == consts.COLOR_BLACK:
-            return consts.DIRECTION_BLACK
-        return consts.DIRECTION_WHITE
+            return consts.DIRECTIONS["BLACK_MOVE"]
+        return consts.DIRECTIONS["WHITE_MOVE"]
 
     def get_double_move(self):
         """ getter
@@ -58,7 +58,7 @@ class Pawn(Figure):
             fig_pos_num = figure.get_position().get_pos_number()
             fig_pos_cha = ord(figure.get_position().get_pos_char())
             if figure.get_color() != super().get_color():
-                if fig_pos_cha in ((own_pos_cha + consts.LEFT), (own_pos_cha + consts.RIGHT)):
+                if fig_pos_cha in ((own_pos_cha + consts.DIRECTIONS["LEFT"]), (own_pos_cha + consts.DIRECTIONS["RIGHT"])):
                     if fig_pos_num == own_pos_num:
                         if figure.get_double_move():
                             self.__possible_moves_buffer.append(Position(chr(fig_pos_cha), (fig_pos_num + own_direction)))
