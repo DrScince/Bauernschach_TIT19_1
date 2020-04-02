@@ -82,9 +82,9 @@ class Pawn(Figure):
         Arguments:
             new_position {Position}
         Return:
-            The new Field {Figure[]}
+            consts.ERROR_CODES["Sucess"] {str} -- successfull moved
+            consts.ERROR_CODES["NoPosMove"] {str} -- move is not possible
         """
-        #TODO errorcode
         assert isinstance(new_position, Position), "new_position ist keine Position" + str(type(new_position))
         old_pos_num = super().get_position().get_pos_number
         for position in self.__possible_moves_buffer:

@@ -49,6 +49,9 @@ class Figure:
         """
         Arguments:
             new_position {Position}
+        Returns:
+            consts.ERROR_CODES["Success"] {str} -- if successfull
         """
         assert isinstance(new_position, Position), "new_position is not a Position" + str(type(new_position))
         self.__position = new_position
+        return consts.ERROR_CODES["Success"]
