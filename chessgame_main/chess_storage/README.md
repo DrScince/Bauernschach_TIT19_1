@@ -8,7 +8,7 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
 * class ChessStorage
     * save_data
         >Speichert das Spiel\
-        >Bekommt ein Spielfeld und ein String als Übergabeparameter
+        >Bekommt ein Spielfeld, ein String als Übergabeparameter, bool zum überschreiben und bool zum namen ändern
     * load_data
         >Läd eine Spiel\
         >Bekommt ein String als Übergabeparameter
@@ -35,7 +35,7 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
 * class StorageTest
     >Nach dem Name test_ in den Methoden folgt eine Zahl für die Reihenfolge
     * test_1_save_data
-        >Es wird drei mal mit dem selben Namen gespeichert um das überschreiben zu testen
+        >Es wird drei mal mit dem selben Namen gespeichert um das überschreiben zu testen und drei mal um die Namenserweiterung zu testen
     * test_2_load_data
         >Es wird einmal eine nicht vorhandene Datei und eine Vorhandene geladen sowie den Inhalt geprüft
     * test_3_get_all_games
