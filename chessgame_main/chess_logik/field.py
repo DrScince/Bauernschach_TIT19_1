@@ -73,6 +73,7 @@ class Field():
                 if figure.get_position().get_pos_number() == new_position.get_pos_number() - move_direction:
                     if figure.get_double_move() and figure.get_color() != own_color:
                         self.get_field().remove(figure)
+                        return
 
     def do_move(self, selected_position, new_position):
         """Move figure to new position
@@ -104,9 +105,11 @@ class Field():
             WINNER_CODES["WhiteWon"] {int} -- white won
             WINNER_CODES["BlackWon"] {int} -- black won
         """
+        count_white = 0
+        count_black = 0
         for figure in self.get_field():
             if figure.get_color() == consts.COLOR_WHITE:
-                if figure.get_position.get_pos_number() == consts.GAME_SIZE:
+                if figure.get_position().get_pos_number() == consts.GAME_SIZE:
                     return consts.WINNER_CODES["WhiteWon"]
                 count_white += consts.WINNER_CODES["WhiteWon"]
             if figure.get_color() == consts.COLOR_BLACK:
