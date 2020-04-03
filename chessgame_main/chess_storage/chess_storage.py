@@ -25,16 +25,28 @@ class ChessStorage:
         if not os.path.isdir(self.__dir_game_log):
             os.mkdir(self.__dir_game_log)
 
-    def save_data(self, file_name, current_game, overwrite):
+    def save_data(self, file_name, current_game, overwrite, append_name):
         """Save current game as an binary file
         Arguments:
             file_name {string} -- new name from the file
             current_game {matchfield} -- the current game to save
             overwrite {bool} -- True: overwrite the file, False: do nothing
+            append_name {bool} -- True: append the file_name, False: do nothing
         Returns:
             ERROR_CODE -- SUCCESSFULL, FILE_EXIST
         """
         __dir_game = os.path.join(self.__dir_game_saves, str(file_name))
+        if append_name:
+            i = 0
+            __file_name_split = str.split(file_name, "__")
+            if len(__file_name_split) >= 2:
+                if __file_name_split[1].isnumeric():
+                    file_name = __file_name_split[0]
+                    i = int(__file_name_split[1])
+            while os.path.isfile(__dir_game):
+                i += 1
+                file_name = __file_name_split[0] + "__" + str(i)
+                __dir_game = os.path.join(self.__dir_game_saves, str(file_name))
         if os.path.isfile(__dir_game):
             if overwrite:
                 return self.__write_file(__dir_game, current_game)

@@ -20,11 +20,18 @@ class StorageTest(unittest.TestCase):
         __test = chess_storage.ChessStorage()
         __test_data = list(range(consts.TEST_LIST_LENGHT))
         __test_filename = consts.TEST_FILENAME
-        __save_test = __test.save_data(__test_filename, __test_data, True)
+        __test_filename_appended = consts.TEST_FILENAME + "__1"
+        __save_test = __test.save_data(__test_filename, __test_data, True, False)
         self.assertEqual(__save_test, consts.ERROR_CODES["SUCCESSFULL"])
-        __save_test = __test.save_data(__test_filename, __test_data, False)
+        __save_test = __test.save_data(__test_filename, __test_data, False, False)
         self.assertEqual(__save_test, consts.ERROR_CODES["FILE_EXIST"])
-        __save_test = __test.save_data(__test_filename, __test_data, True)
+        __save_test = __test.save_data(__test_filename, __test_data, True, False)
+        self.assertEqual(__save_test, consts.ERROR_CODES["SUCCESSFULL"])
+        __save_test = __test.save_data(__test_filename, __test_data, False, True)
+        self.assertEqual(__save_test, consts.ERROR_CODES["SUCCESSFULL"])
+        __save_test = __test.save_data(__test_filename, __test_data, False, True)
+        self.assertEqual(__save_test, consts.ERROR_CODES["SUCCESSFULL"])
+        __save_test = __test.save_data(__test_filename_appended, __test_data, False, True)
         self.assertEqual(__save_test, consts.ERROR_CODES["SUCCESSFULL"])
 
     def test_2_load_data(self):
@@ -132,6 +139,12 @@ class StorageTest(unittest.TestCase):
         __dir_game_saves = os.path.join(__dir_game_saves, 'games')
         __test_filename = consts.TEST_FILENAME
         __dir_game_testfile = os.path.join(__dir_game_saves, __test_filename)
+        __test_filename_append1 = __test_filename + "__1"
+        __dir_game_testfile_append1 = os.path.join(__dir_game_saves, __test_filename_append1)
+        __test_filename_append2 = __test_filename + "__2"
+        __dir_game_testfile_append2 = os.path.join(__dir_game_saves, __test_filename_append2)
+        __test_filename_append3 = __test_filename + "__3"
+        __dir_game_testfile_append3 = os.path.join(__dir_game_saves, __test_filename_append3)
         __dir_game_log = os.path.join(__dir_game_saves, "log")
         __test_logname = __test_filename + "_log.txt"
         __dir_game_logfile = os.path.join(__dir_game_log, __test_logname)
@@ -142,6 +155,12 @@ class StorageTest(unittest.TestCase):
             os.removedirs(__dir_game_log)
         os.remove(__dir_game_testfile)
         self.assertFalse(os.path.isfile(__dir_game_testfile))
+        os.remove(__dir_game_testfile_append1)
+        self.assertFalse(os.path.isfile(__dir_game_testfile_append1))
+        os.remove(__dir_game_testfile_append2)
+        self.assertFalse(os.path.isfile(__dir_game_testfile_append2))
+        os.remove(__dir_game_testfile_append3)
+        self.assertFalse(os.path.isfile(__dir_game_testfile_append3))
         __list_files = os.listdir(__dir_game_saves)
         if len(__list_files) == 0:
             os.removedirs(__dir_game_saves)
