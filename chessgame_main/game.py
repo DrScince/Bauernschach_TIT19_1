@@ -286,10 +286,17 @@ class ActiveGame:
                 #
             elif len(desiccion) == 2:
                 #
-                __pos = Position(str(list(desiccion)[0]), int(list(desiccion)[1]))
-                return self.__turn(__pos)
+                dec_char = list(desiccion)[0]
+                dec_num = list(desiccion)[1]
+                if dec_char.isalpha() and dec_num.isnumeric():
+                    __pos = Position(str(list(desiccion)[0]), int(list(desiccion)[1]))
+                    return self.__turn(__pos)
+                else:
+                    self.__error_text = "\033[0;31;47m Falsches zeichen eingegeben \033[0;30;47m"
+                    return True
                 #
             else:
+                self.__error_text = "\033[0;31;47m Falsche eingabe \033[0;30;47m"
                 return True
         #
         ################################################################### End: __get_input ##################################################################
@@ -382,8 +389,8 @@ class ActiveGame:
                     __move_pos = Position(str(list(__move)[0]), int(list(__move)[1]))
                     if __move_pos.get_pos_number() == move.get_pos_number() and __move_pos.get_pos_char() == move.get_pos_char():
                         return __move_pos
-            else:
-                print("\t\t\t\t\033[0;31;47mFalsche eingabe bitte eine der Optionen eingeben\033[0;30;47m")
+                    else:
+                        print("\t\t\t\t\033[0;31;47mFalsche eingabe bitte eine der Optionen eingeben\033[0;30;47m")
         #
         ################################################################### End:_ __get_input_move ############################################################
     #
