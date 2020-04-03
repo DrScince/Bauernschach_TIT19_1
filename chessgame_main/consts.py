@@ -11,6 +11,7 @@ GAME_MODE = {
     "RUN_GAME" : "Running",
     "RESET" : "reset",
     "SAVE" : "S",
+    "SAVE_NEW" : "SN",
     "QUIT" : "B",
     "NEW_GAME" : "N",
     "HOME" : "H"
