@@ -26,8 +26,8 @@ class Pawn(Figure):
     def __get_move_direction(self):
         """
         Returns:
-            DIRECTION_BLACK {int} -- own color is black
-            DIRECTION_WHITE {int} -- own color is white
+            DIRECTIONS["BLACK_MOVE"] {int} -- own color is black
+            DIRECTIONS["WHITE_MOVE"] {int} -- own color is white
         """
         if super().get_color() == consts.COLOR_BLACK:
             return consts.DIRECTIONS["BLACK_MOVE"]
@@ -86,12 +86,12 @@ class Pawn(Figure):
             consts.ERROR_CODES["NoPosMove"] {str} -- move is not possible
         """
         assert isinstance(new_position, Position), "new_position ist keine Position" + str(type(new_position))
-        old_pos_num = super().get_position().get_pos_number
+        old_pos_num = super().get_position().get_pos_number()
         for position in self.__possible_moves_buffer:
             if position.get_pos_char() == new_position.get_pos_char():
                 if position.get_pos_number() == new_position.get_pos_number():
                     super().do_move(new_position)
-                    if old_pos_num == (new_position.get_pos_number() + (consts.DOUBLE_MOVE * self.__get_move_direction())):
+                    if old_pos_num + (consts.DOUBLE_MOVE * self.__get_move_direction()) == new_position.get_pos_number():
                         self.__has_done_double_move = True
                     else:
                         self.__has_done_double_move = False
