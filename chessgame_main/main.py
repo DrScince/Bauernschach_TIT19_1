@@ -49,6 +49,7 @@ def main():
                         __storage.save_data(__active_game.get_game_name(), __active_game, True)
                     elif __game_result == consts.LOAD:
                         __start_game = consts.LOAD
+                        __check_game_saved(__active_game, __storage)
                         break
                     elif __game_result == consts.NEW_GAME:
                         __start_game = __check_new_game(__active_game, __storage)
