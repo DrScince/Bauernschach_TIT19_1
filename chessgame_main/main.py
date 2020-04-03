@@ -42,6 +42,7 @@ def main():
                 __game_result = __active_game.run_game()
                 if not isinstance(__game_result, bool):
                     if __game_result == consts.QUIT:
+                        __check_game_saved(__active_game, __storage)
                         __start_game = consts.HOME
                         break
                     elif __game_result == consts.SAVE:
@@ -53,7 +54,7 @@ def main():
                         __start_game = __check_new_game(__active_game, __storage)
                         break
         elif __start_game == consts.RESET:
-            __game_name = __active_game.get_game_name()
+            __game_name = __active_game.get_game_name()+"("+str(1)+")"
             __playername_one = __active_game.get_playername_one()
             __playername_two = __active_game.get_playername_two()
             __play_against_bot = __active_game.get_play_against_bot()
@@ -126,13 +127,27 @@ def __check_new_game(game, storage):
         __decision = int(input())
         while consts.FOREVER:
             if __decision == 1:
-                return consts.RESETS
+                return consts.RESET
             elif __decision == 2:
                 return consts.NEW_GAME
             else:
                 print("Falsche eingabe")
     return consts.RESET
 
+def __check_game_saved(game, storage):
+    if not game.get_game_name() in storage.get_all_games():
+        print("\t\t\t\t\tSpiel wurde noch nicht gepspeichert")
+        print("\t\t\t\t\t("+consts.SAVE+")\tSpiel Speichern")
+        print("\t\t\t\t\t("+consts.QUIT+")\tohne Speichern fortfahren")
+    else:
+        print("\t\t\t\t\tSpiel wurde bereits gespeichert\n\t\t\t\t\tSoll der Spielstand überschrieben werden")
+        print("\t\t\t\t\t("+consts.SAVE+")\tSpiel Überschreiben")
+        print("\t\t\t\t\t("+consts.QUIT+")\tohne Speichern fortfahren")
+    decision = ""
+    while decision not in [consts.SAVE, consts.QUIT]:
+        decision = str.upper(input("\t\t\t\t\t"))
+    if decision == consts.SAVE:
+        storage.save_data(game.get_game_name(), game, True)
 
 def __set_new_game(storage):
     CLEAR()

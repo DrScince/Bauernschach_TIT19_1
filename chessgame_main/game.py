@@ -48,6 +48,13 @@ class ActiveGame:
         self.__gamename = gamename
         self.__play_against_bot = play_against_bot
 
+        if self.__play_against_bot:
+            #TODO Bot Instanztieren
+            # self.__bot = bot()
+            pass
+        else:
+            self.__bot = None
+
         self.__storage.log(self.__gamename, "\t\t\t Neues Spiel erstellt "+gamename, True)
 
         self.__logic_gamefield = Field()
@@ -70,12 +77,7 @@ class ActiveGame:
         self.__printed_gamefield = self.__fill_game_field(self.__logic_gamefield, self.__printed_gamefield)
         self.__print_game_all()
 
-        if self.__play_against_bot:
-            #TODO Bot Instanztieren
-            # self.__bot = bot()
-            pass
-        else:
-            self.__bot = None
+      
 
 
         if self.__successfull_turn:
@@ -88,9 +90,16 @@ class ActiveGame:
         __run_game = self.__get_input()
         if __run_game == game_consts.WINNER_CODES["NoWinner"]:
             return __run_game
+        elif __run_game in game_consts.WINNER_CODES.values():
+            if __run_game == game_consts.WINNER_CODES["WhiteWon"]:
+                self.__info_text = "\033[0;30;47m "+self.__playername_one+" hat gewonnen\033[0;30;47m"
+            else:
+                self.__info_text = "\033[0;37;40m "+self.__playername_two+" hat gewonnen\033[0;30;47m"
+            self.__print_game_all()
+            decision = input("\t\twas möchten sie machen Nochmal Spielen ("+consts.NEW_GAME+") oder Beenden ("+consts.QUIT+")")
+            return str.upper(decision)
         else:
-            print("Gewonnen")
-            return input("was möchten sie machen ("+consts.NEW_GAME+") oder ("+consts.QUIT+")")
+            return __run_game
            
 
     def __fill_default_game(self):
@@ -190,6 +199,7 @@ class ActiveGame:
                 print("\t\t\t\tSpiel Laden")
                 return consts.LOAD
             elif desiccion == consts.SAVE:
+                self.__info_text2 = "\033[0;32;47m Spiel wurde erfolgreich gespeichert \033[0;30;47m"
                 return consts.SAVE
             elif desiccion == consts.NEW_GAME:
                 return consts.NEW_GAME
