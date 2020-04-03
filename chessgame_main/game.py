@@ -73,13 +73,7 @@ class ActiveGame:
         elif self.__active_player == consts.COLOR_BLACK:
             self.__info_text = "\033[0;37;40m "+self.__playername_two+" ist an der Reihe\033[0;30;47m"
             
-        self.__printed_gamefield = self.__fill_default_game()
-        self.__printed_gamefield = self.__fill_game_field(self.__logic_gamefield, self.__printed_gamefield)
-        self.__print_game_all()
-
-      
-
-
+        self.__update_game()
         if self.__successfull_turn:
             self.__storage.log(self.__gamename, "________________________________________________________________________________", True)
             self.__storage.log(self.__gamename, self.__printed_gamefield, True)
@@ -95,12 +89,17 @@ class ActiveGame:
                 self.__info_text = "\033[0;30;47m "+self.__playername_one+" hat gewonnen\033[0;30;47m"
             else:
                 self.__info_text = "\033[0;37;40m "+self.__playername_two+" hat gewonnen\033[0;30;47m"
-            self.__print_game_all()
-            decision = input("\t\twas möchten sie machen Nochmal Spielen ("+consts.NEW_GAME+") oder Beenden ("+consts.QUIT+")")
+            self.__update_game()
+            decision = input("\t\t\tWas möchten sie machen Nochmal Spielen ("+consts.NEW_GAME+") oder Beenden ("+consts.QUIT+")\n\t\t\t")
             return str.upper(decision)
         else:
             return __run_game
            
+
+    def __update_game(self):
+        self.__printed_gamefield = self.__fill_default_game()
+        self.__printed_gamefield = self.__fill_game_field(self.__logic_gamefield, self.__printed_gamefield)
+        self.__print_game_all()
 
     def __fill_default_game(self):
         """[summary]
