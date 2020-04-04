@@ -17,6 +17,8 @@ try:
     #
     from chess_logik.position import Position
     from chess_logik.field import Field
+    #
+    from computer_gegner.opponent_move import Opponent
 except ImportError:
     print("Import Error!")
     exit()
@@ -119,6 +121,8 @@ def __turn(selceted_position, printed_gamefield, logic_gamefield):
     __print_all(printed_gamefield)
     #TODO SAHRA###################################################################################################################################
     # Computer Gegener Einbauen stattdessen#
+    # bot = Opponent()
+    # bot.bot_move() #array mit 0-7 schwarzen Bauern 8-15 weißen Bauern uebergeben
     __next_move = __get_input_move(__moves)
     ###############################################################################################################################################
     logic_gamefield.do_move(selceted_position, __next_move)
