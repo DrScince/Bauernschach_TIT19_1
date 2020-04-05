@@ -118,7 +118,7 @@ class FieldTest(unittest.TestCase):
         self.assertIsInstance(field.do_move(Position("G", 6), Position("H", 5)), list)
         self.assertEqual(field.check_win(), consts.WINNER_CODES["BlackWon"])
 
-    def test_game_all_black_back_line(self):
+    def test_game_black_back_line(self):
         field = Field()
         self.assertIsInstance(field.get_possible_moves(Position("A", 2)), list)
         self.assertIsInstance(field.do_move(Position("A", 2), Position("A", 4)), list)
@@ -140,7 +140,7 @@ class FieldTest(unittest.TestCase):
         self.assertIsInstance(field.do_move(Position("B", 7), Position("B", 8)), list)
         self.assertEqual(field.check_win(), consts.WINNER_CODES["WhiteWon"])
 
-    def test_game_all_white_back_line(self):
+    def test_game_white_back_line(self):
         field = Field()
         self.assertIsInstance(field.get_possible_moves(Position("A", 2)), list)
         self.assertIsInstance(field.do_move(Position("A", 2), Position("A", 4)), list)
