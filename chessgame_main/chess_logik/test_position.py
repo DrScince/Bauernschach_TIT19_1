@@ -13,20 +13,20 @@ class PositionTest(unittest.TestCase):
     def test_normal_init_and_getter(self):
         for char in "ABCDEFGH":
             for num in range(1,9):
-                assert self.assertEqual(Position(char,num).get_pos_number(), num)
-                assert self.assertEqual(Position(char,num).get_pos_char(), char)
+                self.assertEqual(Position(char,num).get_pos_number(), num)
+                self.assertEqual(Position(char,num).get_pos_char(), char)
 
     def test_error_codes(self):
-        for num in range(1,9):
-            assert self.assertEqual(Position("@",num).get_pos_number(), num)
-            assert self.assertEqual(Position("@",num).get_pos_char(), consts.ERROR_CODES["Char"])
-            assert self.assertEqual(Position("I",num).get_pos_number(), num)
-            assert self.assertEqual(Position("I",num).get_pos_char(), consts.ERROR_CODES["Char"])
         for char in "ABCDEFGH":
-            assert self.assertEqual(Position(char,0).get_pos_number(), consts.ERROR_CODES["Number"])
-            assert self.assertEqual(Position(char,0).get_pos_char(), char)
-            assert self.assertEqual(Position(char,9).get_pos_number(), consts.ERROR_CODES["Number"])
-            assert self.assertEqual(Position(char,9).get_pos_char(), char)
+            self.assertEqual(Position(char,0).get_pos_number(), consts.ERROR_CODES["Number"])
+            self.assertEqual(Position(char,0).get_pos_char(), char)
+            self.assertEqual(Position(char,9).get_pos_number(), consts.ERROR_CODES["Number"])
+            self.assertEqual(Position(char,9).get_pos_char(), char)
+        for num in range(1,9):
+            self.assertEqual(Position("@",num).get_pos_number(), num)
+            self.assertEqual(Position("@",num).get_pos_char(), consts.ERROR_CODES["Char"])
+            self.assertEqual(Position("I",num).get_pos_number(), num)
+            self.assertEqual(Position("I",num).get_pos_char(), consts.ERROR_CODES["Char"])
 
     def test_wrong_argument_types(self):
         with self.assertRaises(Exception):
