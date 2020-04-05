@@ -12,15 +12,12 @@ except ImportError as err:
 class Field():
     """ Contains all the figures in the game and methods to interact
     """
-    def __init__(self, load_field=None):
+    def __init__(self):
         self.__white_turn = True
-        #loadField is meant for testing
-        self.__field = load_field
-        if self.__field is None:
-            self.__field = []
-            for pos_char in "ABCDEFGH":
-                self.__field.append(Pawn(consts.COLOR_BLACK, Position(pos_char, 7)))
-                self.__field.append(Pawn(consts.COLOR_WHITE, Position(pos_char, 2)))
+        self.__field = []
+        for pos_char in "ABCDEFGH":
+            self.__field.append(Pawn(consts.COLOR_BLACK, Position(pos_char, 7)))
+            self.__field.append(Pawn(consts.COLOR_WHITE, Position(pos_char, 2)))
 
     def get_possible_moves(self, selected_position):
         """

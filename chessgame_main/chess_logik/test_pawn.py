@@ -3,10 +3,8 @@ import unittest
 import sys
 try:
     from chess_logik.pawn import Pawn
-    from chess_logik.exceptions import OutOfBoundsException
-    from chess_logik.consts import GAME_SIZE
-    from chess_logik.consts import COLOR_BLACK
-    from chess_logik.consts import COLOR_WHITE
+    from chess_logik.position import Position
+    from chess_logik import consts
 except ImportError as err:
     print("ImportError"+str(err))
     sys.exit()
@@ -14,129 +12,63 @@ except ImportError as err:
 class PawnTest(unittest.TestCase):
 
     def test_get_pos(self):
-        f = Pawn(0, 0, COLOR_BLACK)
-        self.assertTrue(f.get_position() == (0, 0))
-        f = Pawn(2, 2, COLOR_WHITE)
-        self.assertTrue(f.get_position() == (2, 2))
-        f = Pawn(0, 2, COLOR_WHITE)
-        self.assertTrue(f.get_position() == (0, 2))
+        pos = Position("A", 2)
+        f = Pawn(consts.COLOR_BLACK, pos)
+        self.assertEqual(f.get_position(), pos)
 
-    def test_out_of_bounds(self):
-        with self.assertRaises(OutOfBoundsException):
-            Pawn(-1, -1, COLOR_BLACK)
-        with self.assertRaises(OutOfBoundsException):
-            Pawn(0, GAME_SIZE, COLOR_WHITE)
-        with self.assertRaises(OutOfBoundsException):
-            Pawn(100, 0, COLOR_BLACK)
-        with self.assertRaises(OutOfBoundsException):
-            Pawn(GAME_SIZE, GAME_SIZE, COLOR_WHITE)
+    def test_wrong_argument_types(self):
+        pos = Position("A", 2)
+        pawn = Pawn(consts.COLOR_WHITE, pos)
+        with self.assertRaises(Exception):
+            pawn.get_possible_moves("not a list")
+        with self.assertRaises(Exception):
+            pawn.get_possible_moves((0, 3, 5)) #liste vom falschen typ
+        with self.assertRaises(Exception):
+            pawn.do_move("not a Position")
 
-    def test_move_not_allowed_b(self):
-        f = Pawn(0, 0, COLOR_BLACK)
-        self.assertFalse(f.move_to(0, 0, True))
+    def test_moves(self):
+        # make a custom field to quickly test all moves
+        field = []
+        field.append(Pawn(consts.COLOR_WHITE, Position("A", 2)))
+        field.append(Pawn(consts.COLOR_WHITE, Position("B", 2)))
+        field.append(Pawn(consts.COLOR_WHITE, Position("C", 2)))
+        field.append(Pawn(consts.COLOR_BLACK, Position("A", 6)))
+        field.append(Pawn(consts.COLOR_BLACK, Position("B", 6)))
+        field.append(Pawn(consts.COLOR_BLACK, Position("C", 6)))
+        #double move white
+        pos_moves = field[0].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(field[0].do_move(Position("A", 4)), consts.ERROR_CODES["Success"])
+        #single move white
+        pos_moves = field[1].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(field[1].do_move(Position("B", 3)), consts.ERROR_CODES["Success"])
+        #double move black
+        pos_moves = field[4].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(field[4].do_move(Position("B", 4)), consts.ERROR_CODES["Success"])
+        #single move black
+        pos_moves = field[5].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(field[5].do_move(Position("C", 5)), consts.ERROR_CODES["Success"])
+        #test en passant possible
+        pos_moves = field[0].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(field[0].do_move(Position("B", 5)), consts.ERROR_CODES["Success"])
+        #test hit possible
+        pos_moves = field[0].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(field[0].do_move(Position("A", 6)), consts.ERROR_CODES["Success"])
+        #single moves black to stay in front
+        pos_moves = field[5].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(field[5].do_move(Position("C", 4)), consts.ERROR_CODES["Success"])
+        pos_moves = field[5].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(field[5].do_move(Position("C", 3)), consts.ERROR_CODES["Success"])
+        pos_moves = field[5].get_possible_moves(field)
+        self.assertIsInstance(pos_moves, list)
+        self.assertEqual(len(pos_moves), 0)
+        #get error code no pos move
+        self.assertEqual(field[5].do_move(Position("A", 2)), consts.ERROR_CODES["NoPosMove"])
 
-        f = Pawn(1, 1, COLOR_BLACK)
-        self.assertFalse(f.move_to(1, 1, True))
-        self.assertFalse(f.move_to(1, 1, False))
-
-        self.assertFalse(f.move_to(1, 0, False))
-        self.assertFalse(f.move_to(0, 1, False))
-        self.assertFalse(f.move_to(2, 1, False))
-
-        self.assertFalse(f.move_to(1, 0, False))
-        self.assertFalse(f.move_to(1, 0, True))
-
-        self.assertFalse(f.move_to(1, 2, True))
-        self.assertFalse(f.move_to(0, 2, False))
-        self.assertFalse(f.move_to(2, 2, False))
-
-        self.assertFalse(f.move_to(3, 3, True))
-        self.assertFalse(f.move_to(3, 3, False))
-
-        f = Pawn(2, GAME_SIZE-1, COLOR_BLACK)
-        with self.assertRaises(OutOfBoundsException):
-            self.assertFalse(f.move_to(2, GAME_SIZE, False))
-        with self.assertRaises(OutOfBoundsException):
-            self.assertFalse(f.move_to(1, GAME_SIZE, True))
-        with self.assertRaises(OutOfBoundsException):
-            self.assertFalse(f.move_to(1, -1, True))
-
-    def test_move_not_allowed_w(self):
-        f = Pawn(0, 0, COLOR_WHITE)
-        self.assertFalse(f.move_to(0, 0, True))
-
-        f = Pawn(1, 1, COLOR_WHITE)
-        self.assertFalse(f.move_to(1, 1, True))
-        self.assertFalse(f.move_to(1, 1, False))
-
-        self.assertFalse(f.move_to(1, 2, False))
-        self.assertFalse(f.move_to(0, 1, False))
-        self.assertFalse(f.move_to(2, 1, False))
-
-        self.assertFalse(f.move_to(1, 2, False))
-        self.assertFalse(f.move_to(1, 2, True))
-
-        self.assertFalse(f.move_to(1, 0, True))
-        self.assertFalse(f.move_to(0, 0, False))
-        self.assertFalse(f.move_to(2, 0, False))
-
-        self.assertFalse(f.move_to(3, 0, True))
-        self.assertFalse(f.move_to(3, 0, False))
-
-        f = Pawn(2, 0, COLOR_WHITE)
-        with self.assertRaises(OutOfBoundsException):
-            self.assertFalse(f.move_to(2, -1, False))
-        with self.assertRaises(OutOfBoundsException):
-            self.assertFalse(f.move_to(1, -1, True))
-
-    def test_move_allowed_b(self):
-        f = Pawn(1, 1, COLOR_BLACK)
-        self.assertTrue(f.move_to(1, 2, False))
-        self.assertTrue(f.get_position() == (1, 2))
-
-        f = Pawn(1, 1, COLOR_BLACK)
-        self.assertTrue(f.move_to(0, 2, True))
-        self.assertTrue(f.get_position() == (0, 2))
-
-        f = Pawn(1, 1, COLOR_BLACK)
-        self.assertTrue(f.move_to(2, 2, True))
-        self.assertTrue(f.get_position() == (2, 2))
-
-    def test_move_allowed_w(self):
-        f = Pawn(1, GAME_SIZE-2, COLOR_WHITE)
-        self.assertTrue(f.move_to(1, GAME_SIZE-3, False))
-        self.assertTrue(f.get_position() == (1, GAME_SIZE-3))
-
-        f = Pawn(1, GAME_SIZE-2, COLOR_WHITE)
-        self.assertTrue(f.move_to(0, GAME_SIZE-3, True))
-        self.assertTrue(f.get_position() == (0, GAME_SIZE-3))
-
-        f = Pawn(1, GAME_SIZE-2, COLOR_WHITE)
-        self.assertTrue(f.move_to(2, GAME_SIZE-3, True))
-        self.assertTrue(f.get_position() == (2, GAME_SIZE-3))
-
-    def test_move_double_at_start_b(self):
-        f = Pawn(1, 1, COLOR_BLACK)
-        self.assertTrue(f.move_to(1, 3, False))
-        self.assertTrue(f.get_position() == (1, 3))
-
-        f = Pawn(1, 1, COLOR_BLACK)
-        self.assertFalse(f.move_to(1, 3, True))
-        self.assertTrue(f.get_position() == (1, 1))
-
-        f = Pawn(1, 2, COLOR_BLACK)
-        self.assertFalse(f.move_to(1, 4, False))
-        self.assertTrue(f.get_position() == (1, 2))
-
-    def test_move_double_at_start_w(self):
-        f = Pawn(1, GAME_SIZE-2, COLOR_WHITE)
-        self.assertTrue(f.move_to(1, GAME_SIZE-4, False))
-        self.assertTrue(f.get_position() == (1, GAME_SIZE-4))
-
-        f = Pawn(1, GAME_SIZE-2, COLOR_WHITE)
-        self.assertFalse(f.move_to(1, GAME_SIZE-4, True))
-        self.assertTrue(f.get_position() == (1, GAME_SIZE-2))
-
-        f = Pawn(1, GAME_SIZE-3, COLOR_WHITE)
-        self.assertFalse(f.move_to(1, GAME_SIZE-5, False))
-        self.assertTrue(f.get_position() == (1, GAME_SIZE-3))
