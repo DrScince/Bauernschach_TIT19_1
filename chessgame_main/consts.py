@@ -17,4 +17,8 @@ GAME_MODE = {
     "HOME" : "H"
 }
 
+ERROR_CODES = {
+    "WRONG_INPUT" : "WRONG"
+}
+
 FOREVER = True
