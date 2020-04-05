@@ -7,14 +7,12 @@ COLOR_WHITE = 'w'
 COLOR_BLACK = 'b'
 
 ERROR_CODES = {
-    "None": "Error:ArgumentIsNone",
     "NoFigure": "Error:FigureDoesn'tExist",
     "WrongColor": "Error:SelectedFigureHasWrongColor",
     "Number": "Error:NumberIsNotInRange",
     "Char": "Error:CharIsNotInRange",
     "NoPosMove": "Error:NotAPossibleMove",
     "NoPosMoves": "Error:NoPossibleMoves",
-    "OutOfBounds": "Error:OutOfBounds",
     "Success": "Success:NothingFailed"
 }
 
