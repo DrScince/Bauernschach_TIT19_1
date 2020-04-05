@@ -33,7 +33,6 @@ def captured_std():
     finally:
         sys.stdout, sys.stderr, sys.stdin = old_out, old_err, old_in
 
-
 class MainTest(unittest.TestCase):
     """Tests the class MainTest
     """
@@ -46,127 +45,127 @@ class MainTest(unittest.TestCase):
         """"Test the main function
         """
         mock_input.side_effect = ["l",
-                                  consts.GAME_MODE["QUIT"]]
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["LOAD"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["LOAD"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["NEW_GAME"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["NEW_GAME"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["SAVE"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["SAVE"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["SAVE"],
-                                  consts.GAME_MODE["SAVE_NEW"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["SAVE"],
+                                consts.GAME_MODE["SAVE_NEW"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main__1",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["SAVE"],
-                                  consts.GAME_MODE["SAVE_NEW"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main__1",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["SAVE"],
+                                consts.GAME_MODE["SAVE_NEW"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["SAVE_NEW"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["SAVE_NEW"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["NEW_GAME"],
-                                  "1",
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["NEW_GAME"],
+                                "1",
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["NEW_GAME"],
-                                  "2",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1",
-                                  "Test2",
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["NEW_GAME"],
+                                "2",
+                                "n",
+                                "Test_Game_Main",
+                                "Test1",
+                                "Test2",
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n",
-                                  "n",
-                                  "Test_Game_Main",
-                                  "Test1", "Test2",
-                                  consts.GAME_MODE["NEW_GAME"],
-                                  "3",
-                                  "1",
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "n",
+                                "Test_Game_Main",
+                                "Test1", "Test2",
+                                consts.GAME_MODE["NEW_GAME"],
+                                "3",
+                                "1",
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["l",
-                                  "1",
-                                  "H2",
-                                  "H4",
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"],
-                                  consts.GAME_MODE["QUIT"]]
+                                "1",
+                                "H2",
+                                "H4",
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"],
+                                consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = [" ",
-                                  consts.GAME_MODE["QUIT"]]
+                                consts.GAME_MODE["QUIT"]]
         main()
 
     @patch('builtins.input')
@@ -291,6 +290,7 @@ class MainTest(unittest.TestCase):
             if len(__list_files) == 0:
                 os.removedirs(__dir_game_saves)
 
-# Needed to run without console command
-# if __name__ == '__main__':
-#     unittest.main()
+
+    # Needed to run without console command
+    # if __name__ == '__main__':
+    #     unittest.main()

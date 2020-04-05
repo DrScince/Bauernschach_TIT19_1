@@ -35,7 +35,6 @@ class ActiveGame:
         assert isinstance(playername_one, str), "playername_one ist nicht vom typ string"
         assert isinstance(playername_two, str), "playername_two ist nicht vom typ string"
         assert isinstance(gamename, str), "gamename ist nicht vom typ string"
-        # TODO Assert überelgen assert bot is not None, "Kein Bot übergeben"
         assert storage is not None, "Kein storage übegeben"
         self.__info_text = ""
         self.__error_text = ""
@@ -252,18 +251,8 @@ class ActiveGame:
         ################################################################## __get_input ########################################################################
         #
         if self.__bot is not None and self.__active_player == game_consts.COLOR_BLACK:
-            #TODO Bot einfügen
-            # #__sel_position = self.__bot.get_pawn_position()
-            # #__new_position = self.__bot.get_pawn_move()
             time.sleep(2)
-            # __sel_position = Position('A', 7)
-            # __new_position = Position('A', 5)
-            # self.__logic_gamefield.do_move(__sel_position, __new_position)
-            # self.__successfull_turn = True
-            # self.__active_player = consts.COLOR_WHITE
-            # self.__storage.log(self.__gamename, "Weiser Spieler bewegt Bauer von A7 nach A5", True)
             __bot_move = self.__bot.bot_move(self.__logic_gamefield.get_field())
-
             __bot_old_position = Position(list(__bot_move[0])[0], int(list(__bot_move[0])[1]))
             __bot_new_position = Position(list(__bot_move[1])[0], int(list(__bot_move[1])[1]))
             __pos_moves = self.__logic_gamefield.get_possible_moves(__bot_old_position)
@@ -462,13 +451,10 @@ class ActiveGame:
     #
     def set_game_name(self, new_game_name):
         """sets the new game Name
-        
         Arguments:
             new_game_name {string} -- [new game name]
-        
         Returns:
             [bool] -- [success of change]
-            
         """
         ################################################################# get_play_against_bot ################################################################
         #

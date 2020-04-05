@@ -29,6 +29,10 @@
 
 * except für ImportError
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet.
+* platform.system()
+    >Wird nicht aufgeführt da das Betriebssystem beim Ausführen der Tests abhänig ist und nicht geändert werden kann.
+* if __name__ == "__main__"
+    >Wird nicht von den Tests ausgeführt da die main.py nicht ausgeführt wird sonder nur die funktionen.
 
 ## game.py
 
@@ -109,8 +113,7 @@
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet.
 * os.removedirs für /games und //log
     >Zum löschen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser Leer ist. Damit vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.
-* platform.system()
-    >Wird nicht aufgeführt da das Betriebssystem beim Ausführen der Tests abhänig ist und nicht geändert werden kann.
+
 
 ## test_game.py
 

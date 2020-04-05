@@ -40,7 +40,7 @@ class GameTest(unittest.TestCase):
     __test_game_turn = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_game_move = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_run_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
-    __test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent, chess_storage.ChessStorage())
+    __test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent(), chess_storage.ChessStorage())
     __test_win_black_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_win_white_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     # pylint: enable = too-many-instance-attributes
@@ -53,7 +53,7 @@ class GameTest(unittest.TestCase):
         self.__test_game_turn = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_game_move = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_run_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
-        self.__test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent, chess_storage.ChessStorage())
+        self.__test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent(), chess_storage.ChessStorage())
         self.__test_win_black_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_win_white_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.assertIsInstance(self.__test_game, game.ActiveGame)
@@ -115,6 +115,17 @@ class GameTest(unittest.TestCase):
         mock_input.side_effect = ["Schnitzel"]
         game_return = self.__test_run_game.run_game()
         self.assertEqual(game_return, consts.ERROR_CODES["WRONG_INPUT"])
+        ################################## Test Bot Game #####################################################
+        mock_input.side_effect = ["A2", "A4"]
+        game_return = self.__test_bot_game.run_game()
+        self.assertEqual(game_return, game_consts.WINNER_CODES["NoWinner"])
+        game_return = self.__test_bot_game.run_game()
+        self.assertEqual(game_return, game_consts.WINNER_CODES["NoWinner"])
+        mock_input.side_effect = ["H2", "H3"]
+        game_return = self.__test_bot_game.run_game()
+        self.assertEqual(game_return, game_consts.WINNER_CODES["NoWinner"])
+        game_return = self.__test_bot_game.run_game()
+        self.assertEqual(game_return, game_consts.WINNER_CODES["NoWinner"])
         ################################## White Win #####################################################
         mock_input.side_effect = ["C2", "C4"]
         game_return = self.__test_win_white_game.run_game()

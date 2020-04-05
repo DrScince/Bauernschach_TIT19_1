@@ -209,7 +209,6 @@ def __check_game_saved(game, storage):
         else:
             __new_game_name = __new_game_name + "__1"
         return __new_game_name
-        
     #
     ################################################################# __check_game_saved ######################################################################
 #
@@ -263,11 +262,12 @@ def __quit_game():
 #
 #
 if platform.system() == "Windows":
-    CLEAR = lambda: os.system("cls")
+    CLEAR = lambda: os.system(" ") #cls
     os.system('color F0')
 elif platform.system() == "Linux":
     CLEAR = lambda: os.system('clear')
     os.system('setterm -background white -foreground white -store')
+#
 #
 if __name__ == "__main__":
     main()
