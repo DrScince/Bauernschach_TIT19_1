@@ -47,13 +47,31 @@ class MainTest(unittest.TestCase):
         """
         mock_input.side_effect = ["l", consts.GAME_MODE["QUIT"]]
         main()
-        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["LOAD"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        mock_input.side_effect = ["n",
+                                  "n",
+                                  "Test_Game_Main",
+                                  "Test1",
+                                  "Test2",
+                                  consts.GAME_MODE["LOAD"],
+                                  consts.GAME_MODE["QUIT"],
+                                  consts.GAME_MODE["QUIT"]]
         main()
-        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        mock_input.side_effect = ["n",
+                                  "n",
+                                  "Test_Game_Main",
+                                  "Test1",
+                                  "Test2",
+                                  consts.GAME_MODE["QUIT"],
+                                  consts.GAME_MODE["QUIT"],
+                                  consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["NEW_GAME"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["SAVE"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["SAVE"], consts.GAME_MODE["SAVE_NEW"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main__1", "Test1", "Test2", consts.GAME_MODE["SAVE"], consts.GAME_MODE["SAVE_NEW"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["SAVE_NEW"], consts.GAME_MODE["QUIT"]]
         main()
@@ -61,8 +79,9 @@ class MainTest(unittest.TestCase):
         main()
         mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["NEW_GAME"], "2", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
         main()
-        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["NEW_GAME"], "3", "1", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["NEW_GAME"], "3", "1", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
         main()
+
         mock_input.side_effect = ["l", "1", "H2", "H4", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = [" " , consts.GAME_MODE["QUIT"]]
@@ -166,6 +185,16 @@ class MainTest(unittest.TestCase):
         __dir_game_testfile_main = os.path.join(__dir_game_saves, "Test_Game_Main")
         os.remove(__dir_game_logfile_main)
         os.remove(__dir_game_testfile_main)
+
+        __dir_game_logfile_main1 = os.path.join(__dir_game_log, "Test_Game_Main__1_log.txt")
+        __dir_game_testfile_main1 = os.path.join(__dir_game_saves, "Test_Game_Main__1")
+        os.remove(__dir_game_logfile_main1)
+        os.remove(__dir_game_testfile_main1)
+
+        __dir_game_logfile_main2 = os.path.join(__dir_game_log, "Test_Game1_log.txt")
+        __dir_game_testfile_main2 = os.path.join(__dir_game_saves, "Test_Game_Main__2")
+        os.remove(__dir_game_logfile_main2)
+        os.remove(__dir_game_testfile_main2)
 
         self.assertFalse(os.path.isfile(__dir_game_logfile_main))
         self.assertFalse(os.path.isfile(__dir_game_testfile_main))

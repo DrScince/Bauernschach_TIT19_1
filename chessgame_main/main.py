@@ -54,20 +54,20 @@ def main():
                 __game_result = __active_game.run_game()
                 if not isinstance(__game_result, bool):
                     if __game_result == consts.GAME_MODE["QUIT"]:
-                        __check_game_saved(__active_game, __storage)
+                        __active_game.set_game_name = __check_game_saved(__active_game, __storage)
                         __start_game = consts.GAME_MODE["HOME"]
                         break
                     elif __game_result == consts.GAME_MODE["SAVE"]:
-                        __check_game_saved(__active_game, __storage)
+                        __active_game.set_game_name = __check_game_saved(__active_game, __storage)
                     elif __game_result == consts.GAME_MODE["LOAD"]:
                         __start_game = consts.GAME_MODE["LOAD"]
-                        __check_game_saved(__active_game, __storage)
+                        __active_game.set_game_name = __check_game_saved(__active_game, __storage)
                         break
                     elif __game_result == consts.GAME_MODE["NEW_GAME"]:
                         __start_game = __check_new_game(__active_game, __storage)
                         break
         elif __start_game == consts.GAME_MODE["RESET"]:
-            __game_name = __active_game.get_game_name()+"("+str(1)+")"
+            __game_name = __active_game.get_game_name()
             __playername_one = __active_game.get_playername_one()
             __playername_two = __active_game.get_playername_two()
             __play_against_bot = __active_game.get_play_against_bot()
@@ -176,6 +176,8 @@ def __check_game_saved(game, storage):
     """Check if game is saved and saves the game by user input
     Arguments:
         storage ChessStorage -- the Instance of ChessStorage to get file access
+    Returns:
+        new_game_name {string} -- name of new game if necessary
     """
     ################################################################# __check_game_saved ######################################################################
     #
@@ -195,6 +197,19 @@ def __check_game_saved(game, storage):
         storage.save_data(game.get_game_name(), game, True, False)
     elif decision == consts.GAME_MODE["SAVE_NEW"]:
         storage.save_data(game.get_game_name(), game, False, True)
+
+        __old_game_name = game.get_game_name()
+        __old_game_name = str.split(__old_game_name, "__")
+        __new_game_name = __old_game_name[0]
+        if len(__old_game_name) >= 2:
+            if __old_game_name[1].isnumeric():
+                __filenumber = int(__old_game_name[1])
+                __filenumber += 1
+                __new_game_name = __new_game_name + "__" + str(__filenumber)
+        else:
+            __new_game_name = __new_game_name + "__1"
+        return __new_game_name
+        
     #
     ################################################################# __check_game_saved ######################################################################
 #
