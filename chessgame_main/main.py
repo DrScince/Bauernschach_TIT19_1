@@ -219,8 +219,8 @@ def __set_new_game(storage):
     __playername_one = str(input("\t\t\t\t\t\tBitte Spieler Name 1 :\n\t\t\t\t\t\t"))
     if not __play_against_bot:
         __playername_two = str(input("\t\t\t\t\t\tBitte Spieler Name 2 :\n\t\t\t\t\t\t"))
-        return ActiveGame(__playername_one, __playername_two, __game_name, __bot, storage)
-    return ActiveGame(__playername_one, "Computergegner", __game_name, __bot, storage,)
+        return ActiveGame(__playername_one, __playername_two, __game_name, None, storage)
+    return ActiveGame(__playername_one, "Computergegner", __game_name, Opponent(), storage,)
     #
     #################################################################### End: __set_new_game ##################################################################
 #

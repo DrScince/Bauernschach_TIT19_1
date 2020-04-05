@@ -3,7 +3,7 @@
 #TODO docstring
 
 import unittest
-import builtins
+from unittest.mock import patch
 import sys
 
 try:
@@ -11,7 +11,6 @@ try:
     from contextlib import contextmanager
     import consts
     import game
-    from unittest.mock import patch
     from chess_storage import chess_storage
 except ImportError:
     print("Import Error!")
@@ -36,23 +35,24 @@ class GameTest(unittest.TestCase):
         unittest {[type]} -- [description]
     """
     #TODO docstring
-    __test_game = game.ActiveGame("Test1", "Test2", "Test_Game", False, chess_storage.ChessStorage())
+    __test_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
 
     def test_000_init(self):
         """[summary]
         """
         #TODO docstring
-        self.__test_game = game.ActiveGame("Test1", "Test2", "Test_Game", False, chess_storage.ChessStorage())
+        self.__test_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.assertIsInstance(self.__test_game, game.ActiveGame)
-
-    def test_001_run_game(self):
+   
+    @patch('builtins.input', side_effect=['H2', 'H4'])
+    def test_001_run_game(self, mock_input):
         """[summary]
         """
         #TODO docstring
-        self.__run_test_game = game.ActiveGame("Test1", "Test2", "Test_Game", False, chess_storage.ChessStorage())
-        with captured_std() as (out, err, inp):
-            self.__run_test_game.run_game()
-        out = inp.write("S").strip()
+        test = self.__test_game.run_game()
+        mock_input()
+        # test = self.__test_game.run_game()
+
 
     def test_002_update_game(self):
         """Test the update game function
@@ -168,11 +168,11 @@ class GameTest(unittest.TestCase):
         accepted_output = "________________________________________________________________________________"
         self.assertEqual(output, accepted_output)
         # pylint: enable = protected-access, unused-variable
-
+    
     def test_010_get_input(self):
         """[summary]
         """
-        #TODO docstring
+        test = self.__test_game._ActiveGame__get_input()
 
     def test_011_turn(self):
         """[summary]
