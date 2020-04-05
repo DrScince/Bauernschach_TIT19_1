@@ -6,6 +6,7 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
 ## chess_storage
 
 * class ChessStorage
+    >Bei der Initialisierung werden die Ordner: "\games" und "\games\log" angelegt falls diese nicht vorhanden sind.
     * save_data
         >Speichert das Spiel\
         >Bekommt ein Spielfeld, ein String als Übergabeparameter, bool zum überschreiben und bool zum namen ändern
@@ -49,7 +50,7 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
         >Es wird einmal eine Datei erweitert
     * test_999_remove_testfiles
         >Muss als Letztes laufen!!!\
-        >Löscht die erstellten Dateien und den Ordner "games" falls dieser leer ist.
+        >Löscht die erstellten Dateien und den Ordner "games" und "games\log" falls dieser leer ist.
 
 ### Fehlende Zeilen im Unittest coverage
 
