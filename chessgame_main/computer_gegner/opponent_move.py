@@ -4,6 +4,7 @@ try:
     import sys
     import consts
     from random import randint
+    from chess_logik.pawn import Pawn
 except ImportError as err:
     print("ImportError "+str(err))
     sys.exit()
@@ -20,7 +21,9 @@ class Opponent:
             Returns:
                 possible move or x
         """
-
+        assert isinstance(pawn_array, list), "pawn_array ist kein list-Objekt"
+        for pawn in pawn_array:
+            assert isinstance(pawn, Pawn), "pawn ist kein Pawn-Objekt in pawn_array[]"
         result_list = []
         selected_pawn = randint(0, len(pawn_array)-1)
         while pawn_array[selected_pawn].get_color() == consts.COLOR_WHITE:
@@ -34,7 +37,7 @@ class Opponent:
                 selected_pawn = randint(0, len(pawn_array)-1)
             selected_move = self.select_pawn_move(pawn_array, selected_pawn)
         temp_pos = pawn_array[selected_pawn].get_position()
-        result_list.insert(0, temp_pos.pos_char + str(temp_pos.pos_number))
+        result_list.insert(0, temp_pos.get_pos_char() + str(temp_pos.get_pos_number()))
         result_list.insert(1, selected_move)
 
         return result_list
@@ -49,10 +52,10 @@ class Opponent:
                      [1] new pawn position (string)
         """
 
-        x_value = pawn_pos.pos_char
-        y_value = pawn_pos.pos_number
+        x_value = pawn_pos.get_pos_char()
+        y_value = pawn_pos.get_pos_number()
 
-        if ord(x_value) > 65:
+        if ord(x_value) > ord("A"):
             x_value = chr(ord(x_value)-1)
             y_value -= 1
             diagonal_left = x_value + str(y_value)
@@ -67,10 +70,10 @@ class Opponent:
             Returns:
                 possible move or x
         """
-        x_value = pawn_pos.pos_char
-        y_value = pawn_pos.pos_number
+        x_value = pawn_pos.get_pos_char()
+        y_value = pawn_pos.get_pos_number()
 
-        if ord(x_value) < 72:
+        if ord(x_value) < ord("H"):
             x_value = chr(ord(x_value)+1)
             y_value -= 1
             diagonal_right = x_value + str(y_value)
@@ -94,30 +97,30 @@ class Opponent:
             for i in range(0, array_len):
                 if i != selected_pawn:
                     temp_pos = pawn_array[i].get_position()
-                    if temp_pos.pos_char != diag_left_pos[0:1] or temp_pos.pos_number != diag_left_pos[1:2]:
+                    if temp_pos.get_pos_char() != diag_left_pos[0:1] or temp_pos.get_pos_number() != diag_left_pos[1:2]:
                         continue
-                    elif (pawn_array[i].get_color() == consts.COLOR_WHITE and temp_pos.pos_char == diag_left_pos[0:1]
-                          and temp_pos.pos_number == diag_left_pos[1:2]):
+                    elif (pawn_array[i].get_color() == consts.COLOR_WHITE and temp_pos.get_pos_char() == diag_left_pos[0:1]
+                          and temp_pos.get_pos_number() == diag_left_pos[1:2]):
                         return diag_left_pos
         if diag_right_pos != "x" and diag_right_pos is not None:
             for i in range(0, array_len):
                 if i != selected_pawn:
                     temp_pos = pawn_array[i].get_position()
-                    if temp_pos.pos_char != diag_right_pos[0:1] or temp_pos.pos_number != diag_right_pos[1:2]:
+                    if temp_pos.get_pos_char() != diag_right_pos[0:1] or temp_pos.get_pos_number() != diag_right_pos[1:2]:
                         continue
-                    elif (pawn_array[i].get_color() == consts.COLOR_WHITE and temp_pos.pos_char == diag_right_pos[0:1]
-                          and temp_pos.pos_number == diag_right_pos[1:2]):
+                    elif (pawn_array[i].get_color() == consts.COLOR_WHITE and temp_pos.get_pos_char() == diag_right_pos[0:1]
+                          and temp_pos.get_pos_number() == diag_right_pos[1:2]):
                         return diag_right_pos
 
         temp_pos = pawn_array[selected_pawn].get_position()
-        x_value = temp_pos.pos_char
-        y_value = temp_pos.pos_number - 1
+        x_value = temp_pos.get_pos_char()
+        y_value = temp_pos.get_pos_number() - 1
         forward_step = x_value + str(y_value)
 
         for i in range(0, array_len):
             if i != selected_pawn:
                 temp_pos = pawn_array[i].get_position()
-                if temp_pos.pos_char != forward_step[0:1] or temp_pos.pos_number != forward_step[1:2]:
+                if temp_pos.get_pos_char() != forward_step[0:1] or temp_pos.get_pos_number() != forward_step[1:2]:
                     continue
                 else:
                     no_move_possible = True
