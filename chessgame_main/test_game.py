@@ -1,6 +1,5 @@
-"""[summary]
+"""test game.py
 """
-#TODO docstring
 
 import unittest
 from unittest.mock import patch
@@ -12,6 +11,7 @@ try:
     from contextlib import contextmanager
     import consts
     from chess_logik import consts as game_consts
+    from chess_logik.position import Position
     import game
     from chess_storage import chess_storage
     from computer_gegner.opponent_move import Opponent
@@ -21,9 +21,8 @@ except ImportError:
 
 @contextmanager
 def captured_std():
-    """[summary]
+    """To capture the terminal output
     """
-    #TODO docstring
     new_out, new_err, new_in = io.StringIO(), io.StringIO(), io.StringIO()
     old_out, old_err, old_in = sys.stdout, sys.stderr, sys.stdin
     try:
@@ -33,37 +32,42 @@ def captured_std():
         sys.stdout, sys.stderr, sys.stdin = old_out, old_err, old_in
 
 class GameTest(unittest.TestCase):
-    """[summary]
-    Arguments:
-        unittest {[type]} -- [description]
+    """Tests the class ActiveGame
     """
-    #TODO docstring
     __test_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
+    __test_game_input = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
+    __test_game_turn = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
+    __test_game_move = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_run_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent, chess_storage.ChessStorage())
     __test_win_black_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_win_white_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
 
     def test_000_init(self):
-        """[summary]
+        """Test the init from ActiveGame
         """
-        #TODO docstring
         self.__test_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
+        self.__test_game_input = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
+        self.__test_game_turn = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
+        self.__test_game_move = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_run_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent, chess_storage.ChessStorage())
         self.__test_win_black_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_win_white_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.assertIsInstance(self.__test_game, game.ActiveGame)
+        self.assertIsInstance(self.__test_game_input, game.ActiveGame)
+        self.assertIsInstance(self.__test_game_turn, game.ActiveGame)
+        self.assertIsInstance(self.__test_game_move, game.ActiveGame)
         self.assertIsInstance(self.__test_run_game, game.ActiveGame)
         self.assertIsInstance(self.__test_bot_game, game.ActiveGame)
         self.assertIsInstance(self.__test_win_black_game, game.ActiveGame)
         self.assertIsInstance(self.__test_win_white_game, game.ActiveGame)
 
+    # pylint: disable = too-many-statements
     @patch('builtins.input')
     def test_001_run_game(self, mock_input):
-        """[summary]
+        """Test the method run_game
         """
-        #TODO docstring
         # Weis macht zug
         mock_input.side_effect = ["A2", "A4"]
         game_return = self.__test_run_game.run_game()
@@ -170,6 +174,7 @@ class GameTest(unittest.TestCase):
         game_return = self.__test_win_black_game.run_game()
         self.assertEqual(game_return, consts.GAME_MODE["QUIT"])
         ################################## End: Black Win #####################################################
+    # pylint: enable = too-many-statements
 
 
     def test_002_update_game(self):
@@ -194,30 +199,42 @@ class GameTest(unittest.TestCase):
         self.assertEqual(output, accepted_output)
         with captured_std() as (out, err, inp):
             self.__test_run_game._ActiveGame__update_game()
-        #TODO docstring
+        output = out.getvalue().strip()
+        accepted_output = "Schachautomat\t\t\n\n\t\tNeues Spiel(N)\t\tSpeichern(S)\tLaden(L)\t\tSpiel Beenden(B)\n\t\t________________________________________"
+        accepted_output = accepted_output + "________________________________________\n\n\t\t\t\t    A    B    C    D    E    F    G    H\n\n\t\t\t       \x1b"
+        accepted_output = accepted_output + "[6;34;47m8\x1b[0;30;47m    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    \x1b[6;34;47m8\x1b[0;30;47m\n\t\t\t       \x1b"
+        accepted_output = accepted_output + "[6;34;47m7\x1b[0;30;47m    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    \x1b[6;34;47m7\x1b[0;30;47m\n\t\t\t       \x1b"
+        accepted_output = accepted_output + "[6;34;47m6\x1b[0;30;47m    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    \x1b[6;34;47m6\x1b[0;30;47m\n\t\t\t       \x1b"
+        accepted_output = accepted_output + "[6;34;47m5\x1b[0;30;47m    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    \x1b[6;34;47m5\x1b[0;30;47m\t\t\x1b[0;30;47m Te"
+        accepted_output = accepted_output + "st1 ist an der Reihe\x1b[0;30;47m\x1b[0;30;47m\n\t\t\t       \x1b[6;34;47m4\x1b[0;30;47m    ♙    ◼    ◻    ◼    ◻"
+        accepted_output = accepted_output + "    ◼    ◻    ◼    \x1b[6;34;47m4\x1b[0;30;47m\t\t\x1b[0;31;47m__Falsche eingabe__\x1b[0;30;47m\x1b[0;30;47m\n\t"
+        accepted_output = accepted_output + "\t\t       \x1b[6;34;47m3\x1b[0;30;47m    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    \x1b[6;34;47m3\x1b[0;30;47m\n"
+        accepted_output = accepted_output + "\t\t\t       \x1b[6;34;47m2\x1b[0;30;47m    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    \x1b[6;34;47m2\x1b[0;30;47m\n"
+        accepted_output = accepted_output + "\t\t\t       \x1b[6;34;47m1\x1b[0;30;47m    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    \x1b[6;34;47m1\x1b[0;30;47m\n"
+        accepted_output = accepted_output + "\n\t\t\t\t    A    B    C    D    E    F    G    H\n\n\t\t_________________________________________________"
+        accepted_output = accepted_output + "_______________________________"
+        self.assertEqual(output, accepted_output)
+        # pylint: enable = protected-access, unused-variable
 
     def test_003_fill_default_game(self):
-        """[summary]
+        """Test the fill_default_game function
         """
-        #TODO docstring
         # pylint: disable = protected-access, unused-variable
         __gamefield_test = self.__test_game._ActiveGame__fill_default_game()
         self.assertIsInstance(__gamefield_test, list)
         # pylint: enable = protected-access, unused-variable
 
     def test_004_fill_game_field(self):
-        """[summary]
+        """Test the fill_game_field function
         """
         # pylint: disable = protected-access, unused-variable
         __gamefield_test = self.__test_game._ActiveGame__fill_game_field()
         self.assertIsInstance(__gamefield_test, list)
-        #TODO docstring
         # pylint: enable = protected-access, unused-variable
 
     def test_005_print_game_all(self):
-        """[summary]
+        """Test the print_game_all function
         """
-        #TODO docstring
         # pylint: disable = protected-access, unused-variable
         with captured_std() as (out, err, inp):
             self.__test_game._ActiveGame__print_game_all()
@@ -238,9 +255,8 @@ class GameTest(unittest.TestCase):
         # pylint: enable = protected-access, unused-variable
 
     def test_006_print_menu(self):
-        """[summary]
+        """Test the print_menu function
         """
-        #TODO docstring
         # pylint: disable = protected-access, unused-variable
         with captured_std() as (out, err, inp):
             self.__test_game._ActiveGame__print_menu()
@@ -251,9 +267,8 @@ class GameTest(unittest.TestCase):
         # pylint: enable = protected-access, unused-variable
 
     def test_007_print_footer(self):
-        """[summary]
+        """Test the print_footer function
         """
-        #TODO docstring
         # pylint: disable = protected-access, unused-variable
         with captured_std() as (out, err, inp):
             self.__test_game._ActiveGame__print_footer()
@@ -263,9 +278,8 @@ class GameTest(unittest.TestCase):
         # pylint: enable = protected-access, unused-variable
 
     def test_008_print_game(self):
-        """[summary]
+        """Test the print_game function
         """
-        #TODO docstring
         # pylint: disable = protected-access, unused-variable
         with captured_std() as (out, err, inp):
             self.__test_game._ActiveGame__print_game()
@@ -283,9 +297,8 @@ class GameTest(unittest.TestCase):
         # pylint: enable = protected-access, unused-variable
 
     def test_009_print_game_line(self):
-        """[summary]
+        """Test the print_game_line function
         """
-        #TODO docstring
         # pylint: disable = protected-access, unused-variable
         with captured_std() as (out, err, inp):
             self.__test_game._ActiveGame__print_footer()
@@ -294,54 +307,80 @@ class GameTest(unittest.TestCase):
         self.assertEqual(output, accepted_output)
         # pylint: enable = protected-access, unused-variable
 
-    def test_010_get_input(self):
-        """[summary]
+    @patch('builtins.input')
+    def test_010_get_input(self, mock_input):
+        """Test the get_input function
         """
-        # test = self.__test_game._ActiveGame__get_input()
+        # pylint: disable = protected-access, unused-variable
+        mock_input.side_effect = [consts.GAME_MODE["SAVE"]]
+        input_return = self.__test_game_input._ActiveGame__get_input()
+        self.assertEqual(input_return, consts.GAME_MODE["SAVE"])
+        mock_input.side_effect = [consts.GAME_MODE["LOAD"]]
+        input_return = self.__test_game_input._ActiveGame__get_input()
+        self.assertEqual(input_return, consts.GAME_MODE["LOAD"])
+        mock_input.side_effect = [consts.GAME_MODE["QUIT"]]
+        input_return = self.__test_game_input._ActiveGame__get_input()
+        self.assertEqual(input_return, consts.GAME_MODE["QUIT"])
+        mock_input.side_effect = [consts.GAME_MODE["NEW_GAME"]]
+        input_return = self.__test_game_input._ActiveGame__get_input()
+        self.assertEqual(input_return, consts.GAME_MODE["NEW_GAME"])
+        mock_input.side_effect = ["H2", "H4"]
+        input_return = self.__test_game_input._ActiveGame__get_input()
+        self.assertIn(input_return, game_consts.WINNER_CODES.values())
+        # pylint: enable = protected-access, unused-variable
 
-    def test_011_turn(self):
-        """[summary]
+    @patch('builtins.input')
+    def test_011_turn(self, mock_input):
+        """Test the turn function
         """
-        #TODO docstring
+        # pylint: disable = protected-access, unused-variable
+        mock_input.side_effect = ["H4"]
+        input_return = self.__test_game_turn._ActiveGame__turn(Position("H", 2))
+        self.assertIn(input_return, game_consts.WINNER_CODES.values())
+        # pylint: enable = protected-access, unused-variable
 
-    def test_012_get_input_move(self):
-        """[summary]
+    @patch('builtins.input')
+    def test_012_get_input_move(self, mock_input):
+        """Test the get_input_move function
         """
-        #TODO docstring
+        # pylint: disable = protected-access, unused-variable
+        test_array = [Position('H', 3), Position('H', 4)]
+        mock_input.side_effect = ["H3"]
+        input_return = self.__test_game_move._ActiveGame__get_input_move(test_array)
+        self.assertEqual(input_return.get_pos_char(), "H")
+        self.assertEqual(input_return.get_pos_number(), 3)
+        # pylint: enable = protected-access, unused-variable
 
     def test_013_get_game_name(self):
-        """[summary]
+        """Test the get_game_name function
         """
-        #TODO docstring
         __test_name = self.__test_game.get_game_name()
         self.assertEqual(__test_name, "Test_Game")
 
     def test_014_get_playername_one(self):
-        """[summary]
+        """Test the get_playername_one function
         """
-        #TODO docstring
         __test_name_1 = self.__test_game.get_playername_one()
         self.assertEqual(__test_name_1, "Test1")
 
     def test_015_get_playername_two(self):
-        """[summary]
+        """Test the get_playername_two function
         """
-        #TODO docstring
         __test_name_2 = self.__test_game.get_playername_two()
         self.assertEqual(__test_name_2, "Test2")
 
     def test_016_get_play_against_bot(self):
-        """[summary]
+        """Test the get_play_against_bot function
         """
-        #TODO docstring
         __test_name = self.__test_game.get_play_against_bot()
         self.assertEqual(__test_name, False)
         __test_name = self.__test_bot_game.get_play_against_bot()
         self.assertEqual(__test_name, True)
 
     def test_999_remove_testfiles(self):
-        """[summary]
+        """Remove all created files
         """
+        print("\033[0;37;40m")
         __dir_game_saves = os.path.dirname(__file__)
         __dir_game_saves = os.path.join(__dir_game_saves, 'chess_storage')
         __dir_game_saves = os.path.join(__dir_game_saves, 'games')
@@ -359,7 +398,6 @@ class GameTest(unittest.TestCase):
             if len(__list_files) == 0:
                 os.removedirs(__dir_game_saves)
 
-        #TODO docstring
 # Needed to run without console command
 # if __name__ == '__main__':
 #     unittest.main()
