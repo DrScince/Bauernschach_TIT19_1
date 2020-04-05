@@ -85,20 +85,20 @@
 
 ## test_main.py
 
+* test_000_init
+    >Kein Inhalt.
 * test_001_main
-    >
+    >Die main() wird mehrfach mit verschiednen Inputs aufgerufen.
 * test_002_print_welcome_screen
-    >
+    >Es wird drei mal aufgerufen und auf den Rückgabewert getestet.
 * test_003_get_load_game
-    >
+    >Es wird vier mal aufgerufen und auf den Rückgabewert getestet.
 * test_004_check_new_game
-    >
-* test_005_check_game_saved
-    >
-* test_006_set_new_game
-    >
-* test_007_quit_game
-    >
+    >Es wird drei mal aufgerufen und auf den Rückgabewert getestet.
+* test_005_set_new_game
+    >Es wird zwei mal aufgerufen und auf den Rückgabewert getestet.
+* test_006_quit_game
+    >Es wird einmal mal aufgerufen und auf den Rückgabewert getestet.
 * test_999_remove_testfiles
     >Muss als Letztes laufen!!!\
     >Löscht die erstellten Dateien und den Ordner "chess_storage\games" und "chess_storage\games\log" falls dieser leer ist.
