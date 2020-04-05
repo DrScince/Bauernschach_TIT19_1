@@ -18,7 +18,8 @@ GAME_MODE = {
 }
 
 ERROR_CODES = {
-    "WRONG_INPUT" : "WRONG"
+    "WRONG_INPUT" : "WRONG",
+    "NO_GAME_TO_LOAD" : "NOTHING"
 }
 
 FOREVER = True
