@@ -350,12 +350,14 @@ class GameTest(unittest.TestCase):
         __dir_game_logfile = os.path.join(__dir_game_log, __test_logname)
         os.remove(__dir_game_logfile)
         self.assertFalse(os.path.isfile(__dir_game_logfile))
-        __list_files = os.listdir(__dir_game_log)
-        if len(__list_files) == 0:
-            os.removedirs(__dir_game_log)
-        __list_files = os.listdir(__dir_game_saves)
-        if len(__list_files) == 0:
-            os.removedirs(__dir_game_saves)
+        if os.path.isdir(__dir_game_log):
+            __list_files = os.listdir(__dir_game_log)
+            if len(__list_files) == 0:
+                os.removedirs(__dir_game_log)
+        if os.path.isdir(__dir_game_saves):
+            __list_files = os.listdir(__dir_game_saves)
+            if len(__list_files) == 0:
+                os.removedirs(__dir_game_saves)
 
         #TODO docstring
 # Needed to run without console command

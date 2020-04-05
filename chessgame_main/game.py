@@ -96,7 +96,9 @@ class ActiveGame:
             else:
                 self.__info_text = "\033[0;37;40m "+self.__playername_two+" hat gewonnen\033[0;30;47m"
             self.__update_game()
-            decision = input("\t\t\tWas möchten sie machen Nochmal Spielen ("+consts.GAME_MODE["NEW_GAME"]+") oder Beenden ("+consts.GAME_MODE["QUIT"]+")\n\t\t\t")
+            str_play_again = consts.GAME_MODE["NEW_GAME"]
+            str_quit = consts.GAME_MODE["QUIT"]
+            decision = input("\t\t\tWas möchten sie machen Nochmal Spielen ("+str_play_again+") oder Beenden ("+str_quit+")\n\t\t\t")
             return str.upper(decision)
         else:
             return __run_game
@@ -266,7 +268,6 @@ class ActiveGame:
             #
             desiccion = input("\t\t\t\t")
             desiccion = str.upper(desiccion)
-            #TODO falsche Eingabe Abfangen
             if desiccion == consts.GAME_MODE["LOAD"]:
                 #
                 return consts.GAME_MODE["LOAD"]
