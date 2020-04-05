@@ -89,6 +89,8 @@
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet.
 * os.removedirs für /games und //log
     >Zum löschen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser Leer ist. Damit vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.
+* platform.system()
+    >Wird nicht aufgeführt da das Betriebssystem beim Ausführen der Tests abhänig ist und nicht geändert werden kann.
 
 ## test_game.py
 
@@ -98,11 +100,40 @@
         >Es wird die Initialisierung überprüft.
     * test_001_run_game
         >Es wird ein Set von Zügen und alle Menüpunkte abgeprüft.\
-        >Es Gewinnt je inmal Weiß und Schwarz.
+        >Es Gewinnt je einmal Weiß und Schwarz.
     * test_002_update_game
-        >Die Terminal Ausgabe wird zweimal getestet
+        >Die Terminal Ausgabe wird zweimal getestet.
     * test_003_fill_default_game
         >Es wird getest ob eine Liste zurückgegeben wird.
+    * test_004_fill_game_field
+        >Es wird getest ob eine Liste zurückgegeben wird.
+    * test_005_print_game_all
+        >Die Terminal Ausgabe wird getestet.
+    * test_006_print_menu
+        >Die Terminal Ausgabe wird getestet.
+    * test_007_print_footer
+        >Die Terminal Ausgabe wird getestet.
+    * test_008_print_game
+        >Die Terminal Ausgabe wird getestet.
+    * test_009_print_game_line
+        >Die Terminal Ausgabe wird getestet.
+    * test_010_get_input
+        >Es wird fünf mal mit verschiedenen Eingaben aufgerufen und die verschiedenen Rückgabewert getestet.
+    * test_011_turn
+        >Es wird getest ob eine Liste zurückgegeben wird.
+    * test_012_get_input_move
+        >Es wird getest ob die richtige Position zurückgegeben wird.
+    * test_013_get_game_name
+        >Es wird getest ob der richtige Spielname zurückgegeben wird.
+    * test_014_get_playername_one
+        >Es wird getest ob der richtige Spielername zurückgegeben wird.
+    * test_015_get_playername_two
+        >Es wird getest ob der richtige Spielername zurückgegeben wird.
+    * test_016_get_play_against_bot
+        >Es wird zwei mal aufgerufen mit und ohne Computergegnger und die verschiedenen Rückgabewert getestet.
+    * test_999_remove_testfiles
+        >Muss als Letztes laufen!!!\
+        >Löscht die erstellten Dateien und den Ordner "chess_storage\games" und "chess_storage\games\log" falls dieser leer ist.
 
 ### Fehlende Zeilen in Coverage
 
