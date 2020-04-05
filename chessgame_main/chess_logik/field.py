@@ -89,6 +89,8 @@ class Field():
                 if figure.get_position().get_pos_number() == selected_position.get_pos_number():
                     if (self.__white_turn and figure.get_color() == consts.COLOR_WHITE) or (figure.get_color() == consts.COLOR_BLACK and not self.__white_turn):
                         self.__del_old_figure(new_position, figure.get_color())
+                        for fig in self.get_field():
+                            fig.en_passant_timed_out()
                         figure.do_move(new_position)
                         self.__white_turn = not self.__white_turn
                         return self.get_field()
