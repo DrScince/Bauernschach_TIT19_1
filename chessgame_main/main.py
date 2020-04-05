@@ -159,8 +159,8 @@ def __check_new_game(game, storage):
         print("\t\t\t\t\t\tSpiel Was möchten sie tun\n")
         print("\t\t\t\t\t\t(1)\tNochmal Spielen\n")
         print("\t\t\t\t\t\t(2)\tNeues Spiel Starten\n")
-        __decision = int(input())
         while consts.FOREVER:
+            __decision = int(input())
             if __decision == 1:
                 return consts.GAME_MODE["RESET"]
             elif __decision == 2:
@@ -217,10 +217,10 @@ def __set_new_game(storage):
             __bot = Opponent()
         elif __play_against_bot == "N":
             __play_against_bot = False
-        if not isinstance(__play_against_bot, bool):
-            print("\t\t\t\t\t\t\033[0;31;47mFalsche eingabe bitte erneut Versuchen\033[0;30;47m")
-        else:
+        if isinstance(__play_against_bot, bool):
             break
+        else:
+            print("\t\t\t\t\t\t\033[0;31;47mFalsche eingabe bitte erneut Versuchen\033[0;30;47m")
         #
     #
     __game_name = str(input("\t\t\t\t\t\tBitte Spielname eingeben :\n\t\t\t\t\t\t"))

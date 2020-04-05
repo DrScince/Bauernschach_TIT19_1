@@ -45,9 +45,23 @@ class MainTest(unittest.TestCase):
         Arguments:
             self {[type]} -- [description]
         """
-        mock_input.side_effect = ["n", "n", "Test_Game", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        mock_input.side_effect = ["l", consts.GAME_MODE["QUIT"]]
         main()
-        mock_input.side_effect = ["n", "n", "Test_Game", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["SAVE"], consts.GAME_MODE["QUIT"]]
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["LOAD"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["NEW_GAME"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["SAVE"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["SAVE_NEW"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["NEW_GAME"], "1", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["NEW_GAME"], "2", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
+        main()
+        mock_input.side_effect = ["n", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["NEW_GAME"], "3", "1", "n", "Test_Game_Main", "Test1", "Test2", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
         main()
         mock_input.side_effect = ["l", "1", "H2", "H4", consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"], consts.GAME_MODE["QUIT"]]
         main()
@@ -123,7 +137,7 @@ class MainTest(unittest.TestCase):
         """[summary]
         """
         test_storage = ChessStorage()
-        mock_input.side_effect = ["n", "Test_Game1", "Test1", "Test2"]
+        mock_input.side_effect = ["Schnitzel", "n", "Test_Game1", "Test1", "Test2"]
         result = set_new_game(test_storage)
         self.assertIsInstance(result, ActiveGame)
         mock_input.side_effect = ["j", "Test_Game1", "Test1", "Test2"]
@@ -147,6 +161,14 @@ class MainTest(unittest.TestCase):
         __dir_game_logfile = os.path.join(__dir_game_log, "Test_Game_log.txt")
         os.remove(__dir_game_logfile)
         os.remove(__dir_game_testfile)
+
+        __dir_game_logfile_main = os.path.join(__dir_game_log, "Test_Game_Main_log.txt")
+        __dir_game_testfile_main = os.path.join(__dir_game_saves, "Test_Game_Main")
+        os.remove(__dir_game_logfile_main)
+        os.remove(__dir_game_testfile_main)
+
+        self.assertFalse(os.path.isfile(__dir_game_logfile_main))
+        self.assertFalse(os.path.isfile(__dir_game_testfile_main))
 
         self.assertFalse(os.path.isfile(__dir_game_logfile))
         self.assertFalse(os.path.isfile(__dir_game_testfile))
