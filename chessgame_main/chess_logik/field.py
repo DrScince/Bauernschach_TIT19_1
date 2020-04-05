@@ -25,8 +25,8 @@ class Field():
             selected_position {Position}
         Returns:
             possible_moves {Position[]}
-            ERROR_CODES["WrongColor"] {str} -- if figure doesn't exist
-            ERROR_CODES["NoFigure"] {str} -- if figure has the wrong color
+            ERROR_CODES["NoFigure"] {str} -- if figure doesn't exist
+            ERROR_CODES["WrongColor"] {str} -- if figure has the wrong color
             ERROR_CODES["NoPosMoves"] {str} -- if no moves are possible
         """
         assert isinstance(selected_position, Position), "selected_position is not a Position" + str(type(selected_position))
@@ -79,7 +79,7 @@ class Field():
             new_position {Position} -- new position
         Returns:
             field {Figure[]}
-            ERROR_CODES["NoFigure"] {str} -- if one of the figures doesn't exist
+            ERROR_CODES["NoFigure"] {str} -- if the selected figure doesn't exist
             ERROR_CODES["WrongColor"] {str} -- if figure has the wrong color
         """
         assert isinstance(selected_position, Position), "selected_position is not a Position" + str(type(selected_position))
