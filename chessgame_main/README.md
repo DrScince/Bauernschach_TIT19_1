@@ -18,7 +18,8 @@
 * function __check_game_saved
     >Es wird mit einem Spiel und einem Spielnamen auufgerufen.\
     >Überprüfung ob das Spiel vorhanden ist.\
-    >Nutzereingabe: Spiel speicher, überschreiben oder mit neuem Namen speichern.
+    >Nutzereingabe: Spiel speicher, überschreiben oder mit neuem Namen speichern.\
+    >Falls mit neuem Namen wird dieser zurückgegeben.
 * function __set_new_game
     >Nutzerabfrage für Spieldaten (Computergegner, Spielname, Spieler 1, Spieler 2).
 * function __quit_game
@@ -73,6 +74,9 @@
         >Rückgabe vom Name des Spieler 2
     * get_play_against_bot
         >Rückgabe ob gegen ein Computer gespielt wird oder nicht.
+    * set_game_name
+        >Setzt den Übergebenen String als neuen Spielnamen.\
+        >Gibt True oder False zurück
 
 ### Fehlende Zeilen in Coverage
 
@@ -81,7 +85,23 @@
 
 ## test_main.py
 
-* 
+* test_001_main
+    >
+* test_002_print_welcome_screen
+    >
+* test_003_get_load_game
+    >
+* test_004_check_new_game
+    >
+* test_005_check_game_saved
+    >
+* test_006_set_new_game
+    >
+* test_007_quit_game
+    >
+* test_999_remove_testfiles
+    >Muss als Letztes laufen!!!\
+    >Löscht die erstellten Dateien und den Ordner "chess_storage\games" und "chess_storage\games\log" falls dieser leer ist.
 
 ### Fehlende Zeilen in Coverage
 
@@ -131,6 +151,8 @@
         >Es wird getest ob der richtige Spielername zurückgegeben wird.
     * test_016_get_play_against_bot
         >Es wird zwei mal aufgerufen mit und ohne Computergegnger und die verschiedenen Rückgabewert getestet.
+    * test_017_set_game_name
+        >Es wird zwei mal aufgerufen und auf den Rückgabewert getestet
     * test_999_remove_testfiles
         >Muss als Letztes laufen!!!\
         >Löscht die erstellten Dateien und den Ordner "chess_storage\games" und "chess_storage\games\log" falls dieser leer ist.
