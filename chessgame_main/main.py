@@ -9,10 +9,11 @@ Returns:
 #                                                                                                                    Version: V1.00                           #
 ###############################################################################################################################################################
 #
+import platform
+import os
+import sys
+import time
 try:
-    import platform
-    import os
-    import sys
     import consts
     from game import ActiveGame
     from computer_gegner.opponent_move import Opponent
@@ -38,9 +39,14 @@ def main():
             __start_game = consts.GAME_MODE["RUN_GAME"]
         elif __start_game == consts.GAME_MODE["LOAD"]:
             __games = __storage.get_all_games()
-            __game_load_name = __get_load_game(__games)
-            __active_game = __storage.load_data(__game_load_name)
-            __start_game = consts.GAME_MODE["RUN_GAME"]
+            if len(__games) != 0:
+                __game_load_name = __get_load_game(__games)
+                __active_game = __storage.load_data(__game_load_name)
+                __start_game = consts.GAME_MODE["RUN_GAME"]
+            else:
+                __start_game = consts.GAME_MODE["HOME"]
+                print("\n\t\t\t\t\t\tKeine Spiele zum Laden vorhanden")
+                time.sleep(2)
         elif __start_game == consts.GAME_MODE["RUN_GAME"]:
             __game_run = True
             while __game_run:
@@ -89,18 +95,18 @@ def __print_welcome_screen():
     CLEAR()
     print("\n\t\t\t\t\t\tSchachautomat\t\t")
     print("\t\t________________________________________________________________________________\n")
-    print("\t\t\t\t\t        Neues Spiel(N)\t\t")
-    print("\t\t\t\t\t        Spiel Laden(L)\t\t")
-    print("\t\t\t\t\t        Beenden(B)\t\t")
+    print("\t\t\t\t\t        Neues Spiel("+consts.GAME_MODE["NEW_GAME"]+")\t\t")
+    print("\t\t\t\t\t        Spiel Laden("+consts.GAME_MODE["LOAD"]+")\t\t")
+    print("\t\t\t\t\t        Beenden("+consts.GAME_MODE["QUIT"]+")\t\t")
     print("\n\t\t________________________________________________________________________________")
     #
     while consts.FOREVER:
         __input = str.upper(input("\n\t\t\t\t\t\tWas möchten sie tun: "))
-        if __input == "N":
+        if __input == consts.GAME_MODE["NEW_GAME"]:
             return consts.GAME_MODE["NEW_GAME"]
-        elif __input == "L":
+        elif __input == consts.GAME_MODE["LOAD"]:
             return consts.GAME_MODE["LOAD"]
-        elif __input == "B":
+        elif __input == consts.GAME_MODE["QUIT"]:
             return consts.GAME_MODE["QUIT"]
         else:
             print("\n\t\t\t\t\t\t\033[0;31;47mFalsche eingabe !\033[0;30;47m")
@@ -115,6 +121,8 @@ def __get_load_game(games):
     """
     ################################################################### __get_load_game #######################################################################
     #
+    if len(games) == 0:
+        return consts.ERROR_CODES["NO_GAME_TO_LOAD"]
     CLEAR()
     print("\n\t\t\t\t\t\tSchachautomat\t\t")
     print("\t\t________________________________________________________________________________\n")
@@ -178,7 +186,7 @@ def __check_game_saved(game, storage):
     else:
         print("\t\t\t\t\tSpiel wurde bereits gespeichert\n\t\t\t\t\tSoll der Spielstand überschrieben werden")
         print("\t\t\t\t\t("+consts.GAME_MODE["SAVE"]+")\tSpiel Überschreiben")
-        print("\t\t\t\t\t("+consts.GAME_MODE["SAVE_NEW"]+")\tSpiel Überschreiben")
+        print("\t\t\t\t\t("+consts.GAME_MODE["SAVE_NEW"]+")\tals neues Spiel Speichern")
         print("\t\t\t\t\t("+consts.GAME_MODE["QUIT"]+")\tohne Speichern fortfahren")
     decision = ""
     while decision not in [consts.GAME_MODE["SAVE"], consts.GAME_MODE["SAVE_NEW"], consts.GAME_MODE["QUIT"]]:
