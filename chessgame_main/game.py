@@ -47,7 +47,7 @@ class ActiveGame:
         self.__successfull_turn = False
         self.__logic_gamefield = Field()
         self.__printed_gamefield = self.__fill_default_game()
-        self.__printed_gamefield = self.__fill_game_field(self.__logic_gamefield, self.__printed_gamefield)
+        self.__printed_gamefield = self.__fill_game_field()
         self.__storage.log(self.__gamename, "\t\t\t Neues Spiel erstellt "+gamename, True)
         #
         ############################################################# End: __init__ ###########################################################################
@@ -81,8 +81,8 @@ class ActiveGame:
             self.__storage.log(self.__gamename, self.__printed_gamefield, True)
             self.__storage.log(self.__gamename, "________________________________________________________________________________", True)
             self.__successfull_turn = False
-        elif len(str.split(self.__error_text, " ")) == 3:
-            self.__storage.log(self.__gamename, str.split(self.__error_text, " ")[1], True)
+        elif len(str.split(self.__error_text, "__")) == 3:
+            self.__storage.log(self.__gamename, str.split(self.__error_text, "__")[1], True)
         #
         #
         __run_game = self.__get_input()
@@ -96,7 +96,7 @@ class ActiveGame:
             else:
                 self.__info_text = "\033[0;37;40m "+self.__playername_two+" hat gewonnen\033[0;30;47m"
             self.__update_game()
-            decision = input("\t\t\tWas möchten sie machen Nochmal Spielen ("+consts.NEW_GAME+") oder Beenden ("+consts.QUIT+")\n\t\t\t")
+            decision = input("\t\t\tWas möchten sie machen Nochmal Spielen ("+consts.GAME_MODE["NEW_GAME"]+") oder Beenden ("+consts.GAME_MODE["QUIT"]+")\n\t\t\t")
             return str.upper(decision)
         else:
             return __run_game
@@ -110,7 +110,7 @@ class ActiveGame:
         ################################################################# __update_game #######################################################################
         #
         self.__printed_gamefield = self.__fill_default_game()
-        self.__printed_gamefield = self.__fill_game_field(self.__logic_gamefield, self.__printed_gamefield)
+        self.__printed_gamefield = self.__fill_game_field()
         self.__print_game_all()
         #
         ################################################################# End: __update_game ##################################################################
@@ -142,7 +142,7 @@ class ActiveGame:
         ################################################################# End: __fill_default_game ############################################################
     #
     #
-    def __fill_game_field(self, logic_gamefield, printed_gamefield):
+    def __fill_game_field(self):
         """[fills the printed_gamefield with pawns from logic_gamefield]
         Arguments:
             logic_gamefield {[field]} -- [contains the info from chess_logik.field]
@@ -150,18 +150,18 @@ class ActiveGame:
         """
         ################################################################# __fill_game_field ###################################################################
         #
-        for actual_pawn in logic_gamefield.get_field():
+        for actual_pawn in self.__logic_gamefield.get_field():
             __actual_pos = actual_pawn.get_position()
             __actual_color = actual_pawn.get_color()
             __col = ord(__actual_pos.get_pos_char())-65
             __row = 8-__actual_pos.get_pos_number()
             #
             if __actual_color == consts.COLOR_BLACK:
-                printed_gamefield[__row][__col] = u"♟"
+                self.__printed_gamefield[__row][__col] = u"♟"
             elif __actual_color == consts.COLOR_WHITE:
-                printed_gamefield[__row][__col] = u"♙"
+                self.__printed_gamefield[__row][__col] = u"♙"
         #
-        return printed_gamefield
+        return self.__printed_gamefield
         #
         ################################################################# End: __fill_game_field ##############################################################
     #
@@ -273,7 +273,7 @@ class ActiveGame:
                 #
             elif desiccion == consts.GAME_MODE["SAVE"]:
                 #
-                self.__error_text = "\033[0;32;47m Spiel wurde erfolgreich gespeichert \033[0;30;47m"
+                self.__error_text = "\033[0;32;47m__Spiel wurde erfolgreich gespeichert__\033[0;30;47m"
                 return consts.GAME_MODE["SAVE"]
                 #
             elif desiccion == consts.GAME_MODE["NEW_GAME"]:
@@ -292,12 +292,12 @@ class ActiveGame:
                     __pos = Position(str(list(desiccion)[0]), int(list(desiccion)[1]))
                     return self.__turn(__pos)
                 else:
-                    self.__error_text = "\033[0;31;47m Falsches zeichen eingegeben \033[0;30;47m"
-                    return True
+                    self.__error_text = "\033[0;31;47m__Falsches zeichen eingegeben__\033[0;30;47m"
+                    return consts.ERROR_CODES["WRONG_INPUT"]
                 #
             else:
-                self.__error_text = "\033[0;31;47m Falsche eingabe \033[0;30;47m"
-                return True
+                self.__error_text = "\033[0;31;47m__Falsche eingabe__\033[0;30;47m"
+                return consts.ERROR_CODES["WRONG_INPUT"]
         #
         ################################################################### End: __get_input ##################################################################
     #
@@ -323,19 +323,19 @@ class ActiveGame:
             self.__info_text = "\033[0;31;47mFalsches Feld ausgewählt\033[0;30;47m"
             if __moves == game_consts.ERROR_CODES["WrongColor"]:
                 #
-                self.__error_text = "\033[0;31;47m Spielfigur hat falsche Farbe \033[0;30;47m"
+                self.__error_text = "\033[0;31;47m__Spielfigur hat falsche Farbe__\033[0;30;47m"
                 #
             elif __moves == game_consts.ERROR_CODES["NoFigure"]:
                 #
-                self.__error_text = "\033[0;31;47m Keine Figur auf diesem Feld \033[0;30;47m"
+                self.__error_text = "\033[0;31;47m__Keine Figur auf diesem Feld__\033[0;30;47m"
                 #
             elif __moves == game_consts.ERROR_CODES["NoPosMoves"]:
                 #
-                self.__error_text = "\033[0;31;47m Keine Spielzüge für diese Figur möglich \033[0;30;47m"
+                self.__error_text = "\033[0;31;47m__Keine Spielzüge für diese Figur möglich__\033[0;30;47m"
                 #
-            return True
+            return consts.ERROR_CODES["WRONG_INPUT"]
         #
-        self.__error_text = "\033[0;31;47m \033[0;30;47m"
+        self.__error_text = "\033[0;31;47m__\033[0;30;47m"
         #
         for move in __moves:
             move_row = ord(move.get_pos_char()) - 65
@@ -429,7 +429,7 @@ class ActiveGame:
         """
         ################################################################# get_playername_one ##################################################################
         #
-        return self.__playername_one
+        return self.__playername_two
         #
         ################################################################# End: get_playername_one #############################################################
     #

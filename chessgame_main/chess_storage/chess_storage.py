@@ -3,12 +3,13 @@
 
 import os
 import pickle
+import sys
 
 try:
     from chess_storage import consts
 except ImportError:
     print("Import Error!")
-    exit()
+    sys.exit()
 
 class ChessStorage:
     """Manage gamefiles
