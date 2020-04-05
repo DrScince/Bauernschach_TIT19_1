@@ -43,6 +43,7 @@ class PawnTest(unittest.TestCase):
         pos_moves = field[1].get_possible_moves(field)
         self.assertIsInstance(pos_moves, list)
         self.assertEqual(field[1].do_move(Position("B", 3)), consts.ERROR_CODES["Success"])
+        field[0].en_passant_timed_out()
         #double move black
         pos_moves = field[4].get_possible_moves(field)
         self.assertIsInstance(pos_moves, list)
