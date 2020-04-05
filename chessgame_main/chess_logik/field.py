@@ -91,9 +91,11 @@ class Field():
                         self.__del_old_figure(new_position, figure.get_color())
                         for fig in self.get_field():
                             fig.en_passant_timed_out()
-                        figure.do_move(new_position)
-                        self.__white_turn = not self.__white_turn
-                        return self.get_field()
+                        code = figure.do_move(new_position)
+                        if code == consts.ERROR_CODES["Success"]:
+                            self.__white_turn = not self.__white_turn
+                            return self.get_field()
+                        return code
                     return consts.ERROR_CODES["WrongColor"]
         return consts.ERROR_CODES["NoFigure"]
 
