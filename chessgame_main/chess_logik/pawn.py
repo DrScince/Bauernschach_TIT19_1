@@ -99,3 +99,9 @@ class Pawn(Figure):
                     return consts.ERROR_CODES["Success"]
         self.__possible_moves_buffer = []
         return consts.ERROR_CODES["NoPosMove"]
+
+    def en_passant_timed_out(self):
+        """ removes the en passant move
+        """
+        if self.__has_done_double_move:
+            self.__has_done_double_move = False
