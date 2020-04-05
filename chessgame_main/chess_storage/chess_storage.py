@@ -85,7 +85,7 @@ class ChessStorage:
         """Log in a txt file
         Arguments:
             file_name {string} -- new name from the file
-            log_info {} -- info to log (converts to string)
+            log_info {string} -- info to log (converts to string)
             append {bool} -- True: append the file, False: do nothing
         Returns:
             ERROR_CODE -- SUCCESSFULL, FILE_EXIST
