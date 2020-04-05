@@ -34,18 +34,18 @@ Zum Laden, Speichern, Durchsuchen und Loggen von Dateien in /games
 
 * class StorageTest
     >Nach dem Name test_ in den Methoden folgt eine Zahl für die Reihenfolge
-    * test_1_save_data
+    * test_001_save_data
         >Es wird drei mal mit dem selben Namen gespeichert um das überschreiben zu testen und drei mal um die Namenserweiterung zu testen
-    * test_2_load_data
+    * test_002_load_data
         >Es wird einmal eine nicht vorhandene Datei und eine Vorhandene geladen sowie den Inhalt geprüft
     * test_3_get_all_games
         >Testet ob die Dateinamen korrekt gelesen werden
-    * test_4_log_game
+    * test_004_log_game
         >Es wird eine Liste und ein String je drei mal mit dem selben Namen ausgeführt um das erweitern zu testen\
         >Der Inhalt der Testdatei wird im Terminal ausgegeben
-    * test_5_write_file
+    * test_005_write_file
         >Es wird einmal eine Datei geschrieben
-    * test_6_log_append
+    * test_006_log_append
         >Es wird einmal eine Datei erweitert
     * test_999_remove_testfiles
         >Muss als Letztes laufen!!!\

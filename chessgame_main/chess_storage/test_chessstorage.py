@@ -14,7 +14,7 @@ class StorageTest(unittest.TestCase):
     """Tests the class ChessStorage
     """
 
-    def test_1_save_data(self):
+    def test_001_save_data(self):
         """Test the method save_data
         """
         __test = chess_storage.ChessStorage()
@@ -34,7 +34,7 @@ class StorageTest(unittest.TestCase):
         __save_test = __test.save_data(__test_filename_appended, __test_data, False, True)
         self.assertEqual(__save_test, consts.ERROR_CODES["SUCCESSFULL"])
 
-    def test_2_load_data(self):
+    def test_002_load_data(self):
         """Test the method load_data
         """
         __test = chess_storage.ChessStorage()
@@ -45,7 +45,7 @@ class StorageTest(unittest.TestCase):
         __load_test = __test.load_data(__test_filename)
         self.assertEqual(__load_test, __test_data)
 
-    def test_3_get_all_games(self):
+    def test_003_get_all_games(self):
         """Test the method get_all_games
         """
         __test = chess_storage.ChessStorage()
@@ -58,7 +58,7 @@ class StorageTest(unittest.TestCase):
         __test_filenames = __test.get_all_games()
         self.assertEqual(__test_filenames, __filenames_infolder)
 
-    def test_4_log(self):
+    def test_004_log(self):
         """Test the method log_game
         """
         __test = chess_storage.ChessStorage()
@@ -104,7 +104,7 @@ class StorageTest(unittest.TestCase):
             print("Two Lines")
             print(__log_game.read())
 
-    def test_5_write_file(self):
+    def test_005_write_file(self):
         """testing the private method __write_file
         """
         __test = chess_storage.ChessStorage()
@@ -117,7 +117,7 @@ class StorageTest(unittest.TestCase):
         # pylint: enable = protected-access
         self.assertEqual(__save_test, consts.ERROR_CODES["SUCCESSFULL"])
 
-    def test_6_log_append(self):
+    def test_006_log_append(self):
         """testing the private method __log_append
         """
         __test = chess_storage.ChessStorage()
