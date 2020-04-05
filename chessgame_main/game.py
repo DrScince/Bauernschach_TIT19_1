@@ -451,4 +451,25 @@ class ActiveGame:
         ################################################################# End: get_play_against_bot ###########################################################
     #
     #
+    def set_game_name(self, new_game_name):
+        """sets the new game Name
+        
+        Arguments:
+            new_game_name {string} -- [new game name]
+        
+        Returns:
+            [bool] -- [success of change]
+            
+        """
+        ################################################################# get_play_against_bot ################################################################
+        #
+        if isinstance(new_game_name, str):
+            self.__gamename = new_game_name
+            return True
+        else:
+            return False
+        #
+        ################################################################# End: get_play_against_bot ###########################################################
+    #
+    #
     ######################################################################### ActiveGame ######################################################################

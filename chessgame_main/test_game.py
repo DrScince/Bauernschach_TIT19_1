@@ -377,6 +377,14 @@ class GameTest(unittest.TestCase):
         __test_name = self.__test_bot_game.get_play_against_bot()
         self.assertEqual(__test_name, True)
 
+    def test_017_set_game_name(self):
+        """Test the get_play_against_bot function
+        """
+        result = self.__test_game.set_game_name("Test_Game")
+        self.assertEqual(result, True)
+        result = self.__test_game.set_game_name(1)
+        self.assertEqual(result, False)
+
     def test_999_remove_testfiles(self):
         """Remove all created files
         """
