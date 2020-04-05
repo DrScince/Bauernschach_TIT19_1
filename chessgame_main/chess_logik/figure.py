@@ -27,8 +27,6 @@ class Figure:
             self.__color = consts.COLOR_BLACK
         if position is not None:
             self.__position = position
-        else:
-            self.__position = consts.ERROR_CODES["None"]
 
     def get_color(self):
         """ Gets the color of the Figure
