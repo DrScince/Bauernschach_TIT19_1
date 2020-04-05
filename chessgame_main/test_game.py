@@ -34,6 +34,7 @@ def captured_std():
 class GameTest(unittest.TestCase):
     """Tests the class ActiveGame
     """
+    # pylint: disable = too-many-instance-attributes
     __test_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_game_input = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_game_turn = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
@@ -42,6 +43,7 @@ class GameTest(unittest.TestCase):
     __test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent, chess_storage.ChessStorage())
     __test_win_black_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_win_white_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
+    # pylint: enable = too-many-instance-attributes
 
     def test_000_init(self):
         """Test the init from ActiveGame
