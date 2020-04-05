@@ -24,17 +24,17 @@ class Position():
             number_pos = consts.ERROR_CODES["Number"]
         if ord(char_pos) > ord("H") or ord(char_pos) < ord("A"):
             char_pos = consts.ERROR_CODES["Char"]
-        self.pos_number = number_pos
-        self.pos_char = char_pos
+        self.__pos_number = number_pos
+        self.__pos_char = char_pos
 
     def get_pos_number(self):
         """
         Return: the number part of the position
         """
-        return self.pos_number
+        return self.__pos_number
 
     def get_pos_char(self):
         """
         Return: the char part of the position
         """
-        return self.pos_char
+        return self.__pos_char
