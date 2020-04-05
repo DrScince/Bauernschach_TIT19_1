@@ -17,4 +17,14 @@ class PawnTest(unittest.TestCase):
         self.assertEqual(f.get_position(), pos)
 
     def test_wrong_argument_types(self):
+        pos = Position("A", 2)
+        pawn = Pawn(consts.COLOR_WHITE, pos)
+        with self.assertRaises(Exception):
+            pawn.get_possible_moves("not a list")
+        with self.assertRaises(Exception):
+            pawn.get_possible_moves((0, 3, 5)) #liste vom falschen typ
+        with self.assertRaises(Exception):
+            pawn.do_move("not a Position")
+
+    def test_moves(self):
         pass
