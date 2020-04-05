@@ -15,6 +15,7 @@ try:
     import sys
     import consts
     from game import ActiveGame
+    from computer_gegner.opponent_move import Opponent
     from chess_storage.chess_storage import ChessStorage
 except ImportError:
     print("Import Error!")
@@ -205,6 +206,7 @@ def __set_new_game(storage):
         __play_against_bot = str.upper(input("\t\t\t\t\t\tWollen sie gegen den Computer Spielen (J/N) :\n\t\t\t\t\t\t"))
         if __play_against_bot == "J":
             __play_against_bot = True
+            __bot = Opponent()
         elif __play_against_bot == "N":
             __play_against_bot = False
         if not isinstance(__play_against_bot, bool):
@@ -217,8 +219,8 @@ def __set_new_game(storage):
     __playername_one = str(input("\t\t\t\t\t\tBitte Spieler Name 1 :\n\t\t\t\t\t\t"))
     if not __play_against_bot:
         __playername_two = str(input("\t\t\t\t\t\tBitte Spieler Name 2 :\n\t\t\t\t\t\t"))
-        return ActiveGame(__playername_one, __playername_two, __game_name, False, storage)
-    return ActiveGame(__playername_one, "Computergegner", __game_name, True, storage)
+        return ActiveGame(__playername_one, __playername_two, __game_name, __bot, storage)
+    return ActiveGame(__playername_one, "Computergegner", __game_name, __bot, storage,)
     #
     #################################################################### End: __set_new_game ##################################################################
 #

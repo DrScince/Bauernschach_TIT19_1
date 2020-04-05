@@ -20,7 +20,7 @@ class ActiveGame:
     """
     ######################################################################### ActiveGame ######################################################################
     #
-    def __init__(self, playername_one, playername_two, gamename, play_against_bot, storage):
+    def __init__(self, playername_one, playername_two, gamename, bot, storage):
         """Inits a new game with all its parameters
         :
             playername_one {[string]} -- [Name of Player 1]
@@ -34,7 +34,7 @@ class ActiveGame:
         assert isinstance(playername_one, str), "playername_one ist nicht vom typ string"
         assert isinstance(playername_two, str), "playername_two ist nicht vom typ string"
         assert isinstance(gamename, str), "gamename ist nicht vom typ string"
-        assert isinstance(play_against_bot, bool), "play_against_bot ist nicht vom typ bool"
+        # TODO Assert überelgen assert bot is not None, "Kein Bot übergeben"
         assert storage is not None, "Kein storage übegeben"
         self.__info_text = ""
         self.__error_text = ""
@@ -43,8 +43,7 @@ class ActiveGame:
         self.__playername_one = playername_one
         self.__playername_two = playername_two
         self.__gamename = gamename
-        self.__play_against_bot = play_against_bot
-        self.__bot = None
+        self.__bot = bot
         self.__successfull_turn = False
         self.__logic_gamefield = Field()
         self.__printed_gamefield = self.__fill_default_game()
@@ -249,7 +248,7 @@ class ActiveGame:
         """
         ################################################################## __get_input ########################################################################
         #
-        if self.__play_against_bot and self.__active_player == game_consts.COLOR_BLACK:
+        if self.__bot is not None and self.__active_player == game_consts.COLOR_BLACK:
             #TODO Bot einfügen
             # #__sel_position = self.__bot.get_pawn_position()
             # #__new_position = self.__bot.get_pawn_move()
@@ -260,6 +259,7 @@ class ActiveGame:
             # self.__successfull_turn = True
             # self.__active_player = consts.COLOR_WHITE
             # self.__storage.log(self.__gamename, "Weiser Spieler bewegt Bauer von A7 nach A5", True)
+            __bot_move = self.__bot.bot_move(self.__logic_gamefield.get_field())
             return True
         else:
             print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")###
@@ -442,7 +442,10 @@ class ActiveGame:
         """
         ################################################################# get_play_against_bot ################################################################
         #
-        return self.__play_against_bot
+        if self.__bot is not None:
+            return True
+        else:
+            return False
         #
         ################################################################# End: get_play_against_bot ###########################################################
     #

@@ -10,6 +10,7 @@ try:
     from contextlib import contextmanager
     import consts
     import game
+    from unittest.mock import patch
     from chess_storage import chess_storage
 except ImportError:
     print("Import Error!")
