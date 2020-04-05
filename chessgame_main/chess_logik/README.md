@@ -1,10 +1,6 @@
 # Klassen aller Spielfiguren
 
-Spiellogik von Bauernschach
-
-## consts.py
-
->Beinhaltet sämtliche Konstanten welche für die Spiellogik benötigt werden.
+Spiellogik von Schach
 
 ## position.py
 
@@ -23,7 +19,7 @@ Spiellogik von Bauernschach
 ## figure.py
 
 * class Figure
-    >Im grunde abstract um die Vorlage für alle Figuren zu bilden.
+    >Die Vorlage für alle Figuren.
     * function get_color
         >Gibt die Farbe der Figur zurück.
     * function get_position
@@ -77,7 +73,7 @@ Spiellogik von Bauernschach
 * class TestPosition
     >Testet die Klasse Position.
     * function test_normal_init_and_getter
-        >Testet die normale Initialisierung und getter Methoden, welche funktionieren sollten.
+        >Testet alle möglichen Positionen und prüft den Rückgabewert.
     * function test_error_codes
         >Testet die Error Codes ab welche zurückgegeben werden bei einer Fehlerhaften eingabe.
     * function test_wrong_argument_types
@@ -90,9 +86,9 @@ Spiellogik von Bauernschach
 ## test_figure.py
 
 * class TestFigure
-    >Testet die Klasse Figure
+    >Testet die Klasse Figure.
     * function test_normal_init_and_getter
-        >Testet die normale Initialisierung und getter Methoden, welche funktionieren sollten.
+        >Testet die normale Initialisierung und die Rückgabewerte.
     * function test_error_codes
         >Testet die Error Codes ab welche zurückgegeben werden bei einer Fehlerhaften eingabe.
     * function test_wrong_argument_types
@@ -106,7 +102,7 @@ Spiellogik von Bauernschach
 ## test_pawn.py
 
 * class TestPawn
-    >Testet die Klasse Pawn
+    >Testet die Klasse Pawn.
     * function test_get_pos
         >Testet die Vererbte Funktion get_position.
     * function test_wrong_argument_types
@@ -122,15 +118,15 @@ Spiellogik von Bauernschach
 ## test_field.py
 
 * class TestField
-    >Testet die Klasse Field
+    >Testet die Klasse Field.
     * function test_game_all_black_hit
-        >Testet ein Spiel durch bis alle Schwarzen figuren geschlagen wurden und Weiß gewonnen hat.
+        >Testet ein Spiel über Rückgabewerte durch bis alle Schwarzen figuren geschlagen wurden und Weiß gewonnen hat.
     * function test_game_all_white_hit
-        >Testet ein Spiel durch bis alle Weißen figuren geschlagen wurden und Schwarz gewonnen hat.
+        >Testet ein Spiel über Rückgabewerte durch bis alle Weißen figuren geschlagen wurden und Schwarz gewonnen hat.
     * function test_game_black_back_line
-        >Testet ein Spiel durch bis ein Weißer Bauer die Schwarze Linie erreicht hat.
+        >Testet ein Spiel über Rückgabewerte durch bis ein Weißer Bauer die Schwarze Linie erreicht hat.
     * function test_game_white_back_line
-        >Testet ein Spiel durch bis ein Schwarzer Bauer die Weiße Linie erreicht hat.
+        >Testet ein Spiel über Rückgabewerte durch bis ein Schwarzer Bauer die Weiße Linie erreicht hat.
     * function test_error_codes
         >Testet die Error Codes ab welche zurückgegeben werden bei einer Fehlerhaften eingabe.
     * function test_wrong_argument_types
