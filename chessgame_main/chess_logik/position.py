@@ -20,10 +20,10 @@ class Position():
         assert isinstance(char_pos, str), "char_pos is not a str" + str(type(char_pos))
         assert isinstance(number_pos, int), "number_pos is not a int" + str(type(number_pos))
         assert len(char_pos) == 1, "char_pos doesn't have the length 1, the length is: " + str(len(char_pos))
-        if number_pos > consts.GAME_SIZE or number_pos < 1:
-            number_pos = consts.ERROR_CODES["OutOfBounds"]
-        if ord(char_pos) > consts.GAME_SIZE + 64 or ord(char_pos) < 64:
-            char_pos = consts.ERROR_CODES["OutOfBounds"]
+        if number_pos > consts.GAME_SIZE or number_pos < consts.GAME_SIZE_MIN:
+            number_pos = consts.ERROR_CODES["Number"]
+        if ord(char_pos) > ord("H") or ord(char_pos) < ord("A"):
+            char_pos = consts.ERROR_CODES["Char"]
         self.pos_number = number_pos
         self.pos_char = char_pos
 
