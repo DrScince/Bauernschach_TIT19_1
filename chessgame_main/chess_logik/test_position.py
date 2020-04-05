@@ -3,6 +3,7 @@ import unittest
 import sys
 try:
     from chess_logik.position import Position
+    from chess_logik import consts
 except ImportError as err:
     print("ImportError "+str(err))
     sys.exit()
@@ -18,13 +19,13 @@ class PositionTest(unittest.TestCase):
     def test_error_codes(self):
         for num in range(1,9):
             assert self.assertEqual(Position("@",num).get_pos_number(), num)
-            assert self.assertEqual(Position("@",num).get_pos_char(), "Error:char")
+            assert self.assertEqual(Position("@",num).get_pos_char(), consts.ERROR_CODES["Char"])
             assert self.assertEqual(Position("I",num).get_pos_number(), num)
-            assert self.assertEqual(Position("I",num).get_pos_char(), "Error:char")
+            assert self.assertEqual(Position("I",num).get_pos_char(), consts.ERROR_CODES["Char"])
         for char in "ABCDEFGH":
-            assert self.assertEqual(Position(char,0).get_pos_number(), "Error:number")
+            assert self.assertEqual(Position(char,0).get_pos_number(), consts.ERROR_CODES["Number"])
             assert self.assertEqual(Position(char,0).get_pos_char(), char)
-            assert self.assertEqual(Position(char,9).get_pos_number(), "Error:number")
+            assert self.assertEqual(Position(char,9).get_pos_number(), consts.ERROR_CODES["Number"])
             assert self.assertEqual(Position(char,9).get_pos_char(), char)
 
     def test_wrong_argument_types(self):
