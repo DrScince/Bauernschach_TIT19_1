@@ -84,6 +84,8 @@ class Field():
         """
         assert isinstance(selected_position, Position), "selected_position is not a Position" + str(type(selected_position))
         assert isinstance(new_position, Position), "new_position is not a Position" + str(type(new_position))
+        if selected_position.get_pos_char() == new_position.get_pos_char() and selected_position.get_pos_number() == new_position.get_pos_number():
+            return consts.ERROR_CODES["WrongColor"]
         for figure in self.get_field():
             if figure.get_position().get_pos_char() == selected_position.get_pos_char():
                 if figure.get_position().get_pos_number() == selected_position.get_pos_number():
