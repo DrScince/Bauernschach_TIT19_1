@@ -262,7 +262,7 @@ def __quit_game():
 #
 #
 if platform.system() == "Windows":
-    CLEAR = lambda: os.system(" ") #cls
+    CLEAR = lambda: os.system("cls")
     os.system('color F0')
 elif platform.system() == "Linux":
     CLEAR = lambda: os.system('clear')
