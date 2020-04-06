@@ -27,7 +27,7 @@ Fuer alleiniges Spiel muss Gegner seine Zuege automatisch ausfuehren.
 * class OpponentTest
     * test_1_bot_move
         >Testet Methode bot_move.\
-        >Testet dreimal mit drei verschiedenen Arraygroessen.\
+        >Testet viermal mit vier verschiedenen Arraygroessen.\
         >Da Random ausgewaehlt wird, wird geprueft, ob Rueckgabewerte zwischen 0 bzw. 1 und 8 liegen.
     * test_2_diagonal_left
         >Testet Methode diagonal_left.\

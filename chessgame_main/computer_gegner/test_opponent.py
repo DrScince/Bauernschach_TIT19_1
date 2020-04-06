@@ -100,6 +100,25 @@ class OpponentTest(unittest.TestCase):
         self.assertIn(ord(new_val_char)-65, range(8))
         self.assertIn(new_val_num, range(1, 9))
 
+
+        field4 = []
+        field4.append(Pawn(consts.COLOR_WHITE, Position("A", 4)))
+        field4.append(Pawn(consts.COLOR_BLACK, Position("A", 5)))
+        field4.append(Pawn(consts.COLOR_BLACK, Position("G", 7)))
+
+        ret_val = opponent1.bot_move(field4)
+        old_val = ret_val[0]
+        old_val_char = list(old_val)[0]
+        old_val_num = int(list(old_val)[1])
+        self.assertIn(ord(old_val_char)-65, range(8))
+        self.assertIn(old_val_num, range(1, 9))
+
+        new_val = ret_val[1]
+        new_val_char = list(new_val)[0]
+        new_val_num = int(list(new_val)[1])
+        self.assertIn(ord(new_val_char)-65, range(8))
+        self.assertIn(new_val_num, range(1, 9))
+
     def test_2_diagonal_left(self):
         """Tests the method diagonal_left
         """
