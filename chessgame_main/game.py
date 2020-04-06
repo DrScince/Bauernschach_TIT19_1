@@ -1,10 +1,5 @@
 """Contains the class ActiveGame wich contains all functions to run a chessgame
 """
-###############################################################################################################################################################
-#       class:ActiveGame                                                                                             Author: Frank Rübenkönig                 #
-#                                                                                                                    Date:   03.04.2020                       #
-#                                                                                                                    Version: V1.00                           #
-###############################################################################################################################################################
 import sys
 import time
 try:
@@ -23,11 +18,11 @@ class ActiveGame:
     #
     def __init__(self, playername_one, playername_two, gamename, bot, storage):
         """Inits a new game with all its parameters
-        :
+        Arguments:
             playername_one {[string]} -- [Name of Player 1]
             playername_two {[string]} -- [Name of Player 2]
             gamename {[string]} -- [Game Name for Save and Log FileArguments]
-            play_against_bot {[bool]} -- [Select if playing against a Bot]
+            bot {[Opponent]} -- [Instance of the Opponent if needed]
             storage {[ChessStorage]} --[Instance of storage class to log and save game]
         """
         ############################################################# __init__ ################################################################################
@@ -56,7 +51,6 @@ class ActiveGame:
     def run_game(self):
         """Runs the actual game
         Returns:
-            bool -- TRUE if game is not finished and should continue
             GAME_MODE["LOAD"] -- Load new Game
             GAME_MODE["RUN_GAME"] -- Game not finished need to run again
             GAME_MODE["RESET"] -- Reset game to default falue
@@ -122,7 +116,7 @@ class ActiveGame:
         """Fills the printed_gameframe with white and black fields
         to display a default chessgame
         Returns:
-            [gamefield] -- [New version of the gamefield with filled fields]
+            gamefield {String[]} -- New version of the gamefield with filled fields
         """
         ################################################################# __fill_default_game #################################################################
         #
@@ -145,10 +139,10 @@ class ActiveGame:
     #
     #
     def __fill_game_field(self):
-        """[fills the printed_gamefield with pawns from logic_gamefield]
+        """fills the printed_gamefield with pawns from logic_gamefield
         Arguments:
-            logic_gamefield {[field]} -- [contains the info from chess_logik.field]
-            printed_gamefield {[string[][]} -- [string array wich represenets the printed chess field]
+            logic_gamefield {[field]} -- contains the info from chess_logik.field
+            printed_gamefield {[string[][]} -- string array wich represenets the printed chess field
         """
         ################################################################# __fill_game_field ###################################################################
         #
@@ -218,7 +212,7 @@ class ActiveGame:
     def __print_game_line(self, line_number):
         """print a single line of the game field
         Arguments:
-            line_number {[int]} -- [number of the printed line needed for index]
+            line_number {int} -- number of the printed line needed for index
         """
         ################################################################# __print_game_line ###################################################################
         #
@@ -243,6 +237,8 @@ class ActiveGame:
             GAME_MODE["LOAD"] -- User wants to Load a game
             GAME_MODE["QUIT"] -- User wants to Exit the Runnning game
             GAME_MODE["NEW_GAME"] -- User wants start a new Game
+            ________________________________________________________________
+            consts.ERROR_CODES["WRONG_INPUT"] -- User has done a wrong input
             ________________________________________________________________
             game_consts.WINNER_CODES["NoWinner"] -- No win Game still running
             game_consts.WINNER_CODES["WhiteWon"] -- White Player is winner
@@ -309,6 +305,8 @@ class ActiveGame:
             game_consts.WINNER_CODES["NoWinner"] -- No win Game still running
             game_consts.WINNER_CODES["WhiteWon"] -- White Player is winner
             game_consts.WINNER_CODES["BlackWon"] -- Black Player is winner
+            ________________________________________________________________
+            consts.ERROR_CODES["WRONG_INPUT"] -- User has done a wrong input
         """
         ################################################################## __turn #############################################################################
         #
@@ -368,10 +366,10 @@ class ActiveGame:
         """Request User Input and reutrns the next move for the figure
 
         Arguments:
-            possible_moves Position[] -- All Posibile move for the selcted figure
+            possible_moves {Position[]} -- All possibile moves for the selcted figure
 
         Returns:
-            Position -- the New Position for the selected Figure
+            position {Position} -- the new Position for the selected figure
         """
         ################################################################### __get_input_move ##################################################################
         #
@@ -398,7 +396,7 @@ class ActiveGame:
         """get the game name
 
         Returns:
-            string -- name of the game
+            gamename {string} -- name of the game
         """
         ################################################################# get_game_name #######################################################################
         #
@@ -411,7 +409,7 @@ class ActiveGame:
         """get the name of player one
 
         Returns:
-            string -- name of player one
+            playername_one {string}  -- name of player one
         """
         ################################################################# get_playername_one ##################################################################
         #
@@ -424,7 +422,7 @@ class ActiveGame:
         """get the name of player two
 
         Returns:
-            string -- name of player two
+            playername_two {string}  -- name of player two
         """
         ################################################################# get_playername_one ##################################################################
         #
@@ -434,10 +432,10 @@ class ActiveGame:
     #
     #
     def get_play_against_bot(self):
-        """Falue in vield play aginst bot
+        """Returns value in field play against bot
 
         Returns:
-            bool -- play_against_bot
+            play_against_bot {bool} -- play_against_bot
         """
         ################################################################# get_play_against_bot ################################################################
         #
@@ -452,9 +450,9 @@ class ActiveGame:
     def set_game_name(self, new_game_name):
         """sets the new game Name
         Arguments:
-            new_game_name {string} -- [new game name]
+            new_game_name {string} -- new game name
         Returns:
-            [bool] -- [success of change]
+            success {bool} -- success of change
         """
         ################################################################# get_play_against_bot ################################################################
         #

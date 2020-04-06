@@ -28,13 +28,13 @@ class Position():
         self.__pos_char = char_pos
 
     def get_pos_number(self):
-        """
+        """ Gets the numeric part of the position
         Return: the number part of the position
         """
         return self.__pos_number
 
     def get_pos_char(self):
-        """
+        """Gets the alphabetic part of the position
         Return: the char part of the position
         """
         return self.__pos_char

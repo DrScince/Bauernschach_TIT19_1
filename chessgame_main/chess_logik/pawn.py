@@ -24,7 +24,7 @@ class Pawn(Figure):
         self.__possible_moves_buffer = []
 
     def __get_move_direction(self):
-        """
+        """Returns the direction of the figure
         Returns:
             DIRECTIONS["BLACK_MOVE"] {int} -- own color is black
             DIRECTIONS["WHITE_MOVE"] {int} -- own color is white
@@ -34,16 +34,16 @@ class Pawn(Figure):
         return consts.DIRECTIONS["WHITE_MOVE"]
 
     def get_double_move(self):
-        """ getter
+        """ Returns if the figure has done a double move
         Returns:
             has_done_double_move {bool} -- None if no move has been done
         """
         return self.__has_done_double_move
 
     def get_possible_moves(self, field):
-        """ gets all the possible moves of the Pawn
+        """ Gets all the possible moves of the Pawn
         Arguments:
-            field {Figure[]}
+            field {Figure[]} -- a list filled with all pawns on the field
         Return:
             possible_moves {Position[]} -- if there are none the array is empty
         """
@@ -80,7 +80,7 @@ class Pawn(Figure):
     def do_move(self, new_position):
         """ Does the move to the position if the position is a possible move
         Arguments:
-            new_position {Position}
+            new_position {Position} -- new Position of the pawn
         Return:
             consts.ERROR_CODES["Sucess"] {str} -- successfull moved
             consts.ERROR_CODES["NoPosMove"] {str} -- move is not possible
@@ -101,7 +101,7 @@ class Pawn(Figure):
         return consts.ERROR_CODES["NoPosMove"]
 
     def en_passant_timed_out(self):
-        """ removes the en passant move
+        """ if pawn has done double move then it will be set to false
         """
         if self.__has_done_double_move:
             self.__has_done_double_move = False

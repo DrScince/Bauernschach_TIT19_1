@@ -4,7 +4,6 @@
 import os
 import pickle
 import sys
-
 try:
     from chess_storage import consts
 except ImportError:
@@ -72,9 +71,9 @@ class ChessStorage:
             return consts.ERROR_CODES["NO_FILE_EXIST"]
 
     def get_all_games(self):
-        """list all files in ../games
+        """list all gamenames in ../games
         Returns:
-            list -- all filenames as list
+            list -- all gamenames as list
         """
         __games = []
         for __match in os.listdir(self.__dir_game_saves):

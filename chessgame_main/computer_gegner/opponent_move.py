@@ -1,9 +1,9 @@
 """computer opponent for the chess game
 """
+import sys
+from random import randint
 try:
-    import sys
     import consts
-    from random import randint
     from chess_logik.pawn import Pawn
 except ImportError as err:
     print("ImportError "+str(err))
@@ -17,9 +17,11 @@ class Opponent:
     def bot_move(self, pawn_array):
         """moves pawn (for external call)
             Arguments:
-                selected pawn position
+                pawn_array[] {pawns} -- selected pawn position
             Returns:
-                possible move or x
+                pawn_move {string[]} -- old and new position of the pawn
+                    string[0] = old_position
+                    string[1] = new_position
         """
         assert isinstance(pawn_array, list), "pawn_array ist kein list-Objekt"
         for pawn in pawn_array:
@@ -46,10 +48,9 @@ class Opponent:
     def diagonal_left(self, pawn_pos):
         """checks for diagonal left field
             Arguments:
-                array with the pawn positions
+                pawn_pos {Position} -- Position of the selected pawn
             Returns:
-                List [0] old pawn position (string)
-                     [1] new pawn position (string)
+                possible_move {string} -- possible move or x
         """
 
         x_value = pawn_pos.get_pos_char()
@@ -65,10 +66,10 @@ class Opponent:
 
     def diagonal_right(self, pawn_pos):
         """checks for diagonal right field
-            Arguments:
-                selected pawn position
+          Arguments:
+               pawn_pos {Position} -- Position of the selected pawn
             Returns:
-                possible move or x
+                possible_move {string} -- possible move or x
         """
         x_value = pawn_pos.get_pos_char()
         y_value = pawn_pos.get_pos_number()
@@ -84,10 +85,10 @@ class Opponent:
     def select_pawn_move(self, pawn_array, selected_pawn):
         """moves the pawn
             Arguments:
-                array with the pawn positions
-                index of the selected pawn
+                pawn_array[] {pawns} -- array with the pawn positions
+                selected_pawn{int} -- index of the selected pawn
             Returns:
-                possible move or x
+                possible_move{string} -- possible move or x
         """
         no_move_possible = False
         array_len = len(pawn_array)

@@ -1,14 +1,5 @@
-"""[summary]
-
-Returns:
-    [type] -- [description]
+"""Game Menu
 """
-###############################################################################################################################################################
-#       Chess main                                                                                                   Author: Frank Rübenkönig                 #
-#                                                                                                                    Date:   03.04.2020                       #
-#                                                                                                                    Version: V1.00                           #
-###############################################################################################################################################################
-#
 import platform
 import os
 import sys
@@ -115,9 +106,9 @@ def __print_welcome_screen():
 #
 #
 def __get_load_game(games):
-    """Aks user to load game and returns the game
+    """Asks user to load game and returns the game
     Returns:
-        string -- Name of the game wich should be load
+        gamename {string} -- Name of the game wich should be loaded
     """
     ################################################################### __get_load_game #######################################################################
     #
@@ -142,12 +133,12 @@ def __get_load_game(games):
 #
 #
 def __check_new_game(game, storage):
-    """Check if the user Wants a new Game or a Game Reset
+    """Check if the user wants a new game or a game reset
     Arguments:
-        storage ChessStorage -- the Instance of ChessStorage to get file access
+        storage {ChessStorage} -- the Instance of ChessStorage to get file access
     Returns:
-        consts.GAME_MODE["RESET"] -- User wants to Reset a Game
-        consts.GAME_MODE["NEW_GAME"] -- User wants to start a new Game
+        consts.GAME_MODE["RESET"] -- User wants to reset a game
+        consts.GAME_MODE["NEW_GAME"] -- User wants to start a new game
     """
     ############################################################## __check_new_game ###########################################################################
     #
@@ -175,7 +166,7 @@ def __check_new_game(game, storage):
 def __check_game_saved(game, storage):
     """Check if game is saved and saves the game by user input
     Arguments:
-        storage ChessStorage -- the Instance of ChessStorage to get file access
+        storage {ChessStorage} -- the Instance of ChessStorage to get file access
     Returns:
         new_game_name {string} -- name of new game if necessary
     """
@@ -214,9 +205,9 @@ def __check_game_saved(game, storage):
 #
 #
 def __set_new_game(storage):
-    """GEt Infos for a new game and returns them
+    """Get informations for a new game and returns them
     Returns:
-        ActiveGame -- a new instance with all entered Informantions
+        new_game {ActiveGame} -- a new instance with all entered Informantions
     """
     #################################################################### __set_new_game #######################################################################
     #
@@ -248,9 +239,9 @@ def __set_new_game(storage):
 #
 #
 def __quit_game():
-    """Quits the game
+    """Exit the program
     Returns:
-        bool -- every time False to Exit game
+        exit_game {bool} -- every time False to exit game
     """
     ################################################################## __quit_game ############################################################################
     #

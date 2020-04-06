@@ -52,6 +52,8 @@ class Field():
         """ if an figure gets thrown out, delete it
         Arguments:
             new_position {Position}
+        Returns:
+            consts.ERROR_CODES["Success"] -- pawn has been beaten
         """
         assert isinstance(new_position, Position), "new_position is not a Position" + str(type(new_position))
         assert isinstance(own_color, str), "own_color is not a str" + str(type(own_color))
@@ -60,7 +62,7 @@ class Field():
             if figure.get_position().get_pos_char() == new_position.get_pos_char():
                 if figure.get_position().get_pos_number() == new_position.get_pos_number():
                     self.get_field().remove(figure)
-                    return
+                    return consts.ERROR_CODES["Success"]
         for figure in self.get_field():
             if figure.get_position().get_pos_char() == new_position.get_pos_char():
                 if own_color == consts.COLOR_BLACK:
@@ -70,7 +72,8 @@ class Field():
                 if figure.get_position().get_pos_number() == new_position.get_pos_number() - move_direction:
                     if figure.get_double_move() and figure.get_color() != own_color:
                         self.get_field().remove(figure)
-                        return
+                        return consts.ERROR_CODES["Success"]
+
 
     def do_move(self, selected_position, new_position):
         """Move figure to new position

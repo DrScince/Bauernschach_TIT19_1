@@ -37,7 +37,6 @@ class Figure:
 
     def get_position(self):
         """ Gets the position of the Figure
-
         Return:
             position {Position}
         """
