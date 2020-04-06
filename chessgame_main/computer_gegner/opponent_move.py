@@ -14,6 +14,7 @@ class Opponent:
     """
     def __init__(self):
         pass
+
     def bot_move(self, pawn_array):
         """moves pawn (for external call)
             Arguments:
@@ -43,7 +44,6 @@ class Opponent:
         result_list.insert(1, selected_move)
 
         return result_list
-
 
     def diagonal_left(self, pawn_pos):
         """checks for diagonal left field

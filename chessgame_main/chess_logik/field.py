@@ -74,7 +74,6 @@ class Field():
                         self.get_field().remove(figure)
                         return consts.ERROR_CODES["Success"]
 
-
     def do_move(self, selected_position, new_position):
         """Move figure to new position
         Arguments:
