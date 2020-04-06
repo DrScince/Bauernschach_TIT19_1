@@ -3,21 +3,21 @@
 ## main.py
 
 >Menüführung.\
->Platform wird überprüft (Linux oder Windows).
+>Plattform wird überprüft (Linux oder Windows).
 
 * function main
     >Zentraler Startpunkt.\
-    >Ruft alle Funktionen auf und Steuert den Programmablauf.
+    >Ruft alle Funktionen auf und steuert den Programmablauf.
 * function __print_welcome_screen
-    >Es wird der Startseite im Terminal ausgegeben und zu einer Eingabe aufgefordert.
+    >Es wird die Startseite im Terminal ausgegeben und zu einer Eingabe aufgefordert.
 * function __get_load_game
     >Es wird eine übergebene Liste von vorhandenen Spielen ausgegeben.\
-    >Über eine Eingabe wird entschieden welches Spiel geladen wird.
+    >Über eine Eingabe wird entschieden, welches Spiel geladen wird.
 * function __check_new_game
-    >Es wird eine Eingabeaufforderung im Terminal ausgegeben um zu entscheiden ob das Spiel neugestartet wird oder ein Neuesspiel erstellt wird.
+    >Es wird eine Eingabeaufforderung im Terminal ausgegeben, um zu entscheiden, ob das Spiel neugestartet wird oder ein neues Spiel erstellt wird.
 * function __check_game_saved
-    >Es wird mit einem Spiel und einem Spielnamen auufgerufen.\
-    >Überprüfung ob das Spiel vorhanden ist.\
+    >Es wird mit einem Spiel und einem Spielnamen aufgerufen.\
+    >Überprüfung, ob das Spiel vorhanden ist.\
     >Nutzereingabe: Spiel speicher, überschreiben oder mit neuem Namen speichern.\
     >Falls mit neuem Namen wird dieser zurückgegeben.
 * function __set_new_game
@@ -30,9 +30,9 @@
 * except für ImportError
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet.
 * platform.system()
-    >Wird nicht aufgeführt da das Betriebssystem beim Ausführen der Tests abhänig ist und nicht geändert werden kann.
+    >Wird nicht aufgeführt, da das Betriebssystem beim Ausführen der Tests abhänig ist und nicht geändert werden kann.
 * if __name__ == "__main__"
-    >Wird nicht von den Tests ausgeführt da die main.py nicht ausgeführt wird sonder nur die funktionen.
+    >Wird nicht von den Tests ausgeführt, da die main.py nicht ausgeführt wird, sondern nur die funktionen.
 
 ## game.py
 
@@ -40,11 +40,11 @@
     >Zentrale Spielsteuerung.\
     >Initialisierung mit: Spieler 1, Spieler 2, Spielname, class Oponent und class ChessStorage
     * run_game
-        >Terminalausgabe von dem aktuellen Spiel.\
+        >Terminalausgabe vom aktuellen Spiel.\
         >Aufruf self.__get_input\
         >Es wird eine Konstante (von GAME_MODE oder WINNER_CODES) zurückgegeben.
     * __update_game
-        >Neues Spiel wird im Terminal Ausgegeben.\
+        >Neues Spiel wird im Terminal ausgegeben.\
         >Spielfigurenliste wird auf den aktuellen Stand gebracht.
     * __fill_default_game
         >Erzeugt das Schachfeld.
@@ -62,25 +62,25 @@
     * __print_game_line
         >Es wird eine Zeile des aktuelle Spielfeld im Terminal ausgegeben.
     * __get_input
-        >Die konstante Nutzereingabe für jeden Spielzug oder Menüpunkt.
+        >Die Nutzereingabe für jeden Spielzug oder Menüpunkt.
     * __turn
         >Wird nach dem Auswählen einer Figur ausgeführt.\
         >Aufruf von self.__get_input_move.\
         >Rückgabe von Konstanten (von ERROR_CODES oder WINNER_CODES)
     * __get_input_move
-        >Es werden die möglichen Züge Ausgegeben und eine Auswahl von diesen Erwartet.\
-        >Rückgabe von der neuen Position der Ausgewählten Figur.
+        >Es werden die möglichen Züge ausgegeben und eine Auswahl von diesen erwartet.\
+        >Rückgabe von der neuen Position der ausgewählten Figur.
     * get_game_name
-        >Rückgabe vom Spielname
+        >Rückgabe vom Spielname.
     * get_playername_one
-        >Rückgabe vom Name des Spieler 1
+        >Rückgabe vom Name des Spieler 1.
     * get_playername_two
-        >Rückgabe vom Name des Spieler 2
+        >Rückgabe vom Name des Spieler 2.
     * get_play_against_bot
-        >Rückgabe ob gegen ein Computer gespielt wird oder nicht.
+        >Rückgabe, ob gegen ein Computer gespielt wird oder nicht.
     * set_game_name
-        >Setzt den Übergebenen String als neuen Spielnamen.\
-        >Gibt True oder False zurück
+        >Setzt den übergebenen String als neuen Spielnamen.\
+        >Gibt True oder False zurück.
 
 ### Fehlende Zeilen in Coverage
 
@@ -94,42 +94,42 @@
 * test_001_main
     >Die main() wird mehrfach mit verschiednen Inputs aufgerufen.
 * test_002_print_welcome_screen
-    >Es wird drei mal aufgerufen und auf den Rückgabewert getestet.
+    >Es wird drei Mal aufgerufen und auf den Rückgabewert getestet.
 * test_003_get_load_game
-    >Es wird vier mal aufgerufen und auf den Rückgabewert getestet.
+    >Es wird vier Mal aufgerufen und auf den Rückgabewert getestet.
 * test_004_check_new_game
-    >Es wird drei mal aufgerufen und auf den Rückgabewert getestet.
+    >Es wird drei Mal aufgerufen und auf den Rückgabewert getestet.
 * test_005_set_new_game
-    >Es wird zwei mal aufgerufen und auf den Rückgabewert getestet.
+    >Es wird zwei Mal aufgerufen und auf den Rückgabewert getestet.
 * test_006_quit_game
-    >Es wird einmal mal aufgerufen und auf den Rückgabewert getestet.
+    >Es wird einmal aufgerufen und auf den Rückgabewert getestet.
 * test_999_remove_testfiles
-    >Muss als Letztes laufen!!!\
-    >Löscht die erstellten Dateien und den Ordner "chess_storage\games" und "chess_storage\games\log" falls dieser leer ist.
+    >Muss als letztes laufen!!!\
+    >Löscht die erstellten Dateien und den Ordner "chess_storage\games" und "chess_storage\games\log", falls dieser leer ist.
 
 ### Fehlende Zeilen in Coverage
 
 * except für ImportError
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet.
 * os.removedirs für /games und //log
-    >Zum löschen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser Leer ist. Damit vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.
+    >Zum Löschen vom Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser leer ist. Damit vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.
 
 
 ## test_game.py
 
 * class GameTest
-    >Nach dem Name test_ in den Methoden folgt eine Zahl für die Reihenfolge
+    >Nach dem Name test_ in den Methoden folgt eine Zahl für die Reihenfolge.
     * test_000_init
         >Es wird die Initialisierung überprüft.
     * test_001_run_game
         >Es wird ein Set von Zügen und alle Menüpunkte abgeprüft.\
-        >Es Gewinnt je einmal Weiß und Schwarz.
+        >Es Gewinnt je einmal weiß und schwarz.
     * test_002_update_game
         >Die Terminal Ausgabe wird zweimal getestet.
     * test_003_fill_default_game
-        >Es wird getest ob eine Liste zurückgegeben wird.
+        >Es wird getestet, ob eine Liste zurückgegeben wird.
     * test_004_fill_game_field
-        >Es wird getest ob eine Liste zurückgegeben wird.
+        >Es wird getestet, ob eine Liste zurückgegeben wird.
     * test_005_print_game_all
         >Die Terminal Ausgabe wird getestet.
     * test_006_print_menu
@@ -141,28 +141,28 @@
     * test_009_print_game_line
         >Die Terminal Ausgabe wird getestet.
     * test_010_get_input
-        >Es wird fünf mal mit verschiedenen Eingaben aufgerufen und die verschiedenen Rückgabewert getestet.
+        >Es wird fünf Mal mit verschiedenen Eingaben aufgerufen und die verschiedenen Rückgabewert getestet.
     * test_011_turn
-        >Es wird getest ob eine Liste zurückgegeben wird.
+        >Es wird getestet, ob eine Liste zurückgegeben wird.
     * test_012_get_input_move
-        >Es wird getest ob die richtige Position zurückgegeben wird.
+        >Es wird getestet, ob die richtige Position zurückgegeben wird.
     * test_013_get_game_name
-        >Es wird getest ob der richtige Spielname zurückgegeben wird.
+        >Es wird getestet, ob der richtige Spielname zurückgegeben wird.
     * test_014_get_playername_one
-        >Es wird getest ob der richtige Spielername zurückgegeben wird.
+        >Es wird getestet, ob der richtige Spielername zurückgegeben wird.
     * test_015_get_playername_two
-        >Es wird getest ob der richtige Spielername zurückgegeben wird.
+        >Es wird getestet, ob der richtige Spielername zurückgegeben wird.
     * test_016_get_play_against_bot
-        >Es wird zwei mal aufgerufen mit und ohne Computergegnger und die verschiedenen Rückgabewert getestet.
+        >Es wird zwei Mal aufgerufen mit und ohne Computergegnger und die verschiedenen Rückgabewert getestet.
     * test_017_set_game_name
-        >Es wird zwei mal aufgerufen und auf den Rückgabewert getestet
+        >Es wird zwei Mal aufgerufen und auf den Rückgabewert getestet
     * test_999_remove_testfiles
-        >Muss als Letztes laufen!!!\
-        >Löscht die erstellten Dateien und den Ordner "chess_storage\games" und "chess_storage\games\log" falls dieser leer ist.
+        >Muss als letztes laufen!!!\
+        >Löscht die erstellten Dateien und den Ordner "chess_storage\games" und "chess_storage\games\log", falls dieser leer ist.
 
 ### Fehlende Zeilen in Coverage
 
 * except für ImportError
     >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet.
 * os.removedirs für /games und //log
-    >Zum löschen von dem Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser Leer ist. Damit vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.
+    >Zum Löschen vom Ordner in dem die Log und Spieldateien liegen. Dies wird nur ausgeführt, wenn dieser leer ist. Damit vorhandene Spieldateien und Logs nicht vom Test gelöscht werden.

@@ -77,7 +77,7 @@ Spiellogik von Schach
     * function test_error_codes
         >Testet die Error Codes ab welche zurückgegeben werden bei einer Fehlerhaften eingabe.
     * function test_wrong_argument_types
-        >Testet den Abfang von Argument Typen.
+        >Prüft ob die richtigen Datentypen übergeben werden.
 ### Fehlende Zeilen in Coverage
 
 * except für ImportError
@@ -104,11 +104,11 @@ Spiellogik von Schach
 * class TestPawn
     >Testet die Klasse Pawn.
     * function test_get_pos
-        >Testet die Vererbte Funktion get_position.
+        >Wird einmal ausgeführt und auf den richtigen Übergabeparameter überprüft.
     * function test_wrong_argument_types
-        >Testet den Abfang von Argument Typen.
+        >Wird dreimal ausgeführt und auf die richtigen Übergabeparameter überprüft
     * function test_moves
-        >Testet sämtliche bewegungen vom Bauern
+        >Wird mehrmals ausgeführt und auf die richtigen Übergabeparameter überprüft
 
 ### Fehlende Zeilen in Coverage
 

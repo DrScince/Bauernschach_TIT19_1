@@ -2,7 +2,7 @@
 
 Fuer alleiniges Spiel muss Gegner seine Zuege automatisch ausfuehren.
 
-## opponent_move
+## opponent_move.py
 
 * class Opponent
     * bot_move
@@ -10,19 +10,24 @@ Fuer alleiniges Spiel muss Gegner seine Zuege automatisch ausfuehren.
         >Bauern als Array uebergeben.\
         >Urspruengliches Feld und neues Feld als Liste zurueckgeben.
     * diagonal_left
-        >Prueft ob diagonal links geschlagen werden kann.\
+        >Prueft, ob diagonal links geschlagen werden kann.\
         >Ausgewaehlter Bauer als Uebergabeparameter.\
         >Gibt moeglichen Move zurueck.
     * diagonal_right
-        >Prueft ob diagonal rechts geschlagen werden kann.\
+        >Prueft, ob diagonal rechts geschlagen werden kann.\
         >Ausgewaehlter Bauer als Uebergabeparameter.\
         >Gibt moeglichen Move zurueck.
     * select_pawn_move
-        >Prueft ob und wie ausgewaehlter Bauer bewegt werden kann.\
+        >Prueft, ob und wie ausgewaehlter Bauer bewegt werden kann.\
         >Index des ausgewaehlten Bauers und Bauernarray als Uebergabeparameter.\
         >Gibt moeglichen Move zurueck.
 
-## test_opponent
+### Fehlende Zeilen im Unittest coverage
+
+* except für ImportError
+    >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet.
+
+## test_opponent.py
 
 * class OpponentTest
     * test_1_bot_move
@@ -37,8 +42,13 @@ Fuer alleiniges Spiel muss Gegner seine Zuege automatisch ausfuehren.
         >Es werden drei verschiedene Spielpositionen auf korrekten Rueckgabewert ueberprueft.
     * test_4_select_pawn_move
         >Testet Methode select_pawn_move.\
-        >Folgende Faelle werden abgedeckt:\
-           * diagonal links schlagen\
-           * diagonal rechts schlagen\
-           * einfacher Spielzug\
-           * kein Spielzug moeglich
+        >Folgende Faelle werden abgedeckt:
+        * diagonal links schlagen
+        * diagonal rechts schlagen
+        * einfacher Spielzug
+        * kein Spielzug moeglich
+
+### Fehlende Zeilen im Unittest coverage
+
+* except für ImportError
+    >Dieser kann nicht getestet werden. Wenn dieser Code ausgeführt wird, wird das Programm beendet.
