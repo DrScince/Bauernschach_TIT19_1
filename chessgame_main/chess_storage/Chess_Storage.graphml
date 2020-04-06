@@ -18,10 +18,10 @@
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="132.0" width="441.0" x="105.0" y="50.0"/>
+          <y:Geometry height="169.0" width="580.0" x="-79.0" y="50.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="218.5" y="26.701171875">
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="288.0" y="26.701171875">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
@@ -32,9 +32,11 @@
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="Chess_Storage" use3DEffect="true">
             <y:AttributeLabel xml:space="preserve">- dir_game_saves</y:AttributeLabel>
             <y:MethodLabel xml:space="preserve">+ matchfield: load_data (string file_name)
-+ ErrorCode: save_data (string file_name, matchfield current_game, bool overwirite)
++ ErrorCode: save_data (string file_name, matchfield current_game, bool overwirite, bool append_name)
 + list matchfield: get_all_games ()
-+ ErrorCode: log_game (string file_name,  log_info, bool append)</y:MethodLabel>
++ ErrorCode: log (string file_name,  log_info, bool append)
+-Error_code: write_file (string file_path, matchfield current_game)
+-Error_code: log_append (string file_path, string  log_info)</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>

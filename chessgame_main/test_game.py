@@ -34,14 +34,16 @@ def captured_std():
 class GameTest(unittest.TestCase):
     """Tests the class ActiveGame
     """
+    # pylint: disable = too-many-instance-attributes
     __test_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_game_input = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_game_turn = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_game_move = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_run_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
-    __test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent, chess_storage.ChessStorage())
+    __test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent(), chess_storage.ChessStorage())
     __test_win_black_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
     __test_win_white_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
+    # pylint: enable = too-many-instance-attributes
 
     def test_000_init(self):
         """Test the init from ActiveGame
@@ -51,7 +53,7 @@ class GameTest(unittest.TestCase):
         self.__test_game_turn = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_game_move = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_run_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
-        self.__test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent, chess_storage.ChessStorage())
+        self.__test_bot_game = game.ActiveGame("Test1", "Test2", "Test_Game", Opponent(), chess_storage.ChessStorage())
         self.__test_win_black_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.__test_win_white_game = game.ActiveGame("Test1", "Test2", "Test_Game", None, chess_storage.ChessStorage())
         self.assertIsInstance(self.__test_game, game.ActiveGame)
@@ -113,6 +115,17 @@ class GameTest(unittest.TestCase):
         mock_input.side_effect = ["Schnitzel"]
         game_return = self.__test_run_game.run_game()
         self.assertEqual(game_return, consts.ERROR_CODES["WRONG_INPUT"])
+        ################################## Test Bot Game #####################################################
+        mock_input.side_effect = ["A2", "A4"]
+        game_return = self.__test_bot_game.run_game()
+        self.assertEqual(game_return, game_consts.WINNER_CODES["NoWinner"])
+        game_return = self.__test_bot_game.run_game()
+        self.assertEqual(game_return, game_consts.WINNER_CODES["NoWinner"])
+        mock_input.side_effect = ["H2", "H3"]
+        game_return = self.__test_bot_game.run_game()
+        self.assertEqual(game_return, game_consts.WINNER_CODES["NoWinner"])
+        game_return = self.__test_bot_game.run_game()
+        self.assertEqual(game_return, game_consts.WINNER_CODES["NoWinner"])
         ################################## White Win #####################################################
         mock_input.side_effect = ["C2", "C4"]
         game_return = self.__test_win_white_game.run_game()
@@ -376,6 +389,14 @@ class GameTest(unittest.TestCase):
         self.assertEqual(__test_name, False)
         __test_name = self.__test_bot_game.get_play_against_bot()
         self.assertEqual(__test_name, True)
+
+    def test_017_set_game_name(self):
+        """Test the get_play_against_bot function
+        """
+        result = self.__test_game.set_game_name("Test_Game")
+        self.assertEqual(result, True)
+        result = self.__test_game.set_game_name(1)
+        self.assertEqual(result, False)
 
     def test_999_remove_testfiles(self):
         """Remove all created files

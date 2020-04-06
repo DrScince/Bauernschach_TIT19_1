@@ -1,11 +1,13 @@
 """Consts for chess_storage
 """
 
-TEST_LIST_LENGHT = 50
+TEST_LIST_LENGHT = 10
 TEST_FILENAME = "TestGame123456789TESTGAME"
 TEST_NOTEXISTFILE = "Test123456789TEST"
 
-#Errorcode
-SUCCESSFULL = 0
-ERROR = 1
-FILE_EXIST = 2
+ERROR_CODES = {
+    "SUCCESSFULL": "No Error",
+    "ERROR": "Any other Error",
+    "FILE_EXIST": "Error: the file already exists",
+    "NO_FILE_EXIST": "Error: the file don´t exists"
+}

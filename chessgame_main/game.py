@@ -5,8 +5,9 @@
 #                                                                                                                    Date:   03.04.2020                       #
 #                                                                                                                    Version: V1.00                           #
 ###############################################################################################################################################################
+import sys
+import time
 try:
-    import sys
     import consts
     from chess_logik.position import Position
     from chess_logik import consts as game_consts
@@ -34,7 +35,6 @@ class ActiveGame:
         assert isinstance(playername_one, str), "playername_one ist nicht vom typ string"
         assert isinstance(playername_two, str), "playername_two ist nicht vom typ string"
         assert isinstance(gamename, str), "gamename ist nicht vom typ string"
-        # TODO Assert überelgen assert bot is not None, "Kein Bot übergeben"
         assert storage is not None, "Kein storage übegeben"
         self.__info_text = ""
         self.__error_text = ""
@@ -251,18 +251,16 @@ class ActiveGame:
         ################################################################## __get_input ########################################################################
         #
         if self.__bot is not None and self.__active_player == game_consts.COLOR_BLACK:
-            #TODO Bot einfügen
-            # #__sel_position = self.__bot.get_pawn_position()
-            # #__new_position = self.__bot.get_pawn_move()
-            # time.sleep(2)
-            # __sel_position = Position('A', 7)
-            # __new_position = Position('A', 5)
-            # self.__logic_gamefield.do_move(__sel_position, __new_position)
-            # self.__successfull_turn = True
-            # self.__active_player = consts.COLOR_WHITE
-            # self.__storage.log(self.__gamename, "Weiser Spieler bewegt Bauer von A7 nach A5", True)
+            time.sleep(2)
             __bot_move = self.__bot.bot_move(self.__logic_gamefield.get_field())
-            return True
+            __bot_old_position = Position(list(__bot_move[0])[0], int(list(__bot_move[0])[1]))
+            __bot_new_position = Position(list(__bot_move[1])[0], int(list(__bot_move[1])[1]))
+            __pos_moves = self.__logic_gamefield.get_possible_moves(__bot_old_position)
+            __move_result = self.__logic_gamefield.do_move(__bot_old_position, __bot_new_position)
+            self.__storage.log(self.__gamename, "Schwarzer Spieler bewegt Bauer von"+__bot_move[0]+" nach "+__bot_move[1]+"", True)
+            self.__active_player = consts.COLOR_WHITE
+            self.__print_game_all()
+            return self.__logic_gamefield.check_win()
         else:
             print("\t\t\t\tBitte Menü Aktion eingeben oder Bauer wählen")###
             #
@@ -444,6 +442,24 @@ class ActiveGame:
         ################################################################# get_play_against_bot ################################################################
         #
         if self.__bot is not None:
+            return True
+        else:
+            return False
+        #
+        ################################################################# End: get_play_against_bot ###########################################################
+    #
+    #
+    def set_game_name(self, new_game_name):
+        """sets the new game Name
+        Arguments:
+            new_game_name {string} -- [new game name]
+        Returns:
+            [bool] -- [success of change]
+        """
+        ################################################################# get_play_against_bot ################################################################
+        #
+        if isinstance(new_game_name, str):
+            self.__gamename = new_game_name
             return True
         else:
             return False
