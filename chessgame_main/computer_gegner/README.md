@@ -37,9 +37,8 @@ Fuer alleiniges Spiel muss Gegner seine Zuege automatisch ausfuehren.
         >Es werden drei verschiedene Spielpositionen auf korrekten Rueckgabewert ueberprueft.
     * test_4_select_pawn_move
         >Testet Methode select_pawn_move.\
-        >Folgende Faelle werden abgedeckt:
-           * diagonal links schlagen
-           * diagonal rechts schlagen
-           * einfacher Spielzug
+        >Folgende Faelle werden abgedeckt:\
+           * diagonal links schlagen\
+           * diagonal rechts schlagen\
+           * einfacher Spielzug\
            * kein Spielzug moeglich
-           
