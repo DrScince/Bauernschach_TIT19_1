@@ -34,7 +34,8 @@
             <y:AttributeLabel xml:space="preserve">-color:char
 -position:position</y:AttributeLabel>
             <y:MethodLabel xml:space="preserve">+get_color():char
-+get_position():position</y:MethodLabel>
++get_position():position
++do_move(new_position):String</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -48,10 +49,22 @@
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="37.95361328125" x="180.8752775699013" xml:space="preserve" y="3.0">Pawn
 <y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="197.8520842105263" y="119.97999999999996">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="true">
-            <y:AttributeLabel xml:space="preserve">-has_done_double_move:bool</y:AttributeLabel>
-            <y:MethodLabel xml:space="preserve">+get_possible_moves(position:selected_figure):position[]
-+do_move(position:new_position):Figure[]</y:MethodLabel>
+            <y:AttributeLabel xml:space="preserve">-has_done_double_move:bool
+-possible_moves_buffer:Position[]</y:AttributeLabel>
+            <y:MethodLabel xml:space="preserve">-get_move_direction():int
++get_double_move():bool
++get_possible_moves(Figure[]:field):position[]
++do_move(position:new_position):Figure[]
++en_passant_timed_out()</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -82,25 +95,15 @@
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="34.33544921875" x="157.33227539062494" xml:space="preserve" y="3.0">Field<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="true">
-            <y:AttributeLabel xml:space="preserve">-field:Figure[]</y:AttributeLabel>
+            <y:AttributeLabel xml:space="preserve">-field:Figure[]
+-white_turn:bool</y:AttributeLabel>
             <y:MethodLabel xml:space="preserve">+get_possible_moves(position:selected_figure):position[]
 +get_field():Figure[]
-+do_move(position:move):Figure[]
-+check_win():char</y:MethodLabel>
+-del_old_figure(Position:new_position,char:own_color):String
++do_move(Position:old_position,Position:new_position):Figure[]
++check_win():int</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
-      </data>
-    </node>
-    <node id="n4">
-      <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
-      <data key="d6">
-        <y:UMLNoteNode>
-          <y:Geometry height="94.30545101214568" width="187.75721457489874" x="553.5650642914977" y="-161.464498785425"/>
-          <y:Fill color="#FFCC00" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="117.4140625" x="35.17157603744931" xml:space="preserve" y="37.80213956857284">noch kein en passant<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-        </y:UMLNoteNode>
       </data>
     </node>
     <edge id="e0" source="n1" target="n0">
