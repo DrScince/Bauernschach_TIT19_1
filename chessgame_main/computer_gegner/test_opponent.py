@@ -117,7 +117,11 @@ class OpponentTest(unittest.TestCase):
         self.assertEqual(opponent3.diagonal_right(Position("H", 5)), "x")
 
     def test_4_select_pawn_move(self):
-        """Tests the method select_pawn_move with diagonal_left
+        """Tests the method select_pawn_move in following cases:
+            1. diagonal_left
+            2. diagonal_right
+            3. normal move
+            4. no move possible
         """
 
         opponent4 = Opponent()
@@ -132,13 +136,8 @@ class OpponentTest(unittest.TestCase):
 
         self.assertEqual(opponent4.select_pawn_move(field1, 3), "B4")
 
-    def test_5_select_pawn_move(self):
-        """Tests the method select_pawn_move with diagonal_right
-        """
 
-        opponent5 = Opponent()
-
-        field1 = []
+        field1.clear()
         field1.append(Pawn(consts.COLOR_WHITE, Position("A", 2)))
         field1.append(Pawn(consts.COLOR_WHITE, Position("B", 2)))
         field1.append(Pawn(consts.COLOR_WHITE, Position("C", 2)))
@@ -150,15 +149,10 @@ class OpponentTest(unittest.TestCase):
         field1.append(Pawn(consts.COLOR_BLACK, Position("E", 4)))
         field1.append(Pawn(consts.COLOR_WHITE, Position("C", 7)))
 
-        self.assertEqual(opponent5.select_pawn_move(field1, 8), "F3")
+        self.assertEqual(opponent4.select_pawn_move(field1, 8), "F3")
 
-    def test_6_select_pawn_move(self):
-        """Tests the method select_pawn_move with normal move
-        """
 
-        opponent6 = Opponent()
-
-        field1 = []
+        field1.clear()
         field1.append(Pawn(consts.COLOR_WHITE, Position("A", 2)))
         field1.append(Pawn(consts.COLOR_WHITE, Position("B", 2)))
         field1.append(Pawn(consts.COLOR_WHITE, Position("C", 2)))
@@ -176,16 +170,15 @@ class OpponentTest(unittest.TestCase):
         field1.append(Pawn(consts.COLOR_BLACK, Position("G", 7)))
         field1.append(Pawn(consts.COLOR_BLACK, Position("H", 7)))
 
-        self.assertEqual(opponent6.select_pawn_move(field1, 14), "G6")
+        self.assertEqual(opponent4.select_pawn_move(field1, 14), "G6")
 
-    def test_7_select_pawn_move(self):
-        """Tests the method select_pawn_move with no move possible
-        """
 
-        opponent7 = Opponent()
-
-        field1 = []
+        field1.clear()
         field1.append(Pawn(consts.COLOR_WHITE, Position("A", 4)))
         field1.append(Pawn(consts.COLOR_BLACK, Position("A", 5)))
 
-        self.assertEqual(opponent7.select_pawn_move(field1, 1), "x")
+        self.assertEqual(opponent4.select_pawn_move(field1, 1), "x")
+
+# Needed to run without console command
+# if __name__ == '__main__':
+#     unittest.main()

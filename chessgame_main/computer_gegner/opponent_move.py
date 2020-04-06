@@ -97,19 +97,19 @@ class Opponent:
             for i in range(0, array_len):
                 if i != selected_pawn:
                     temp_pos = pawn_array[i].get_position()
-                    if temp_pos.get_pos_char() != diag_left_pos[0:1] or temp_pos.get_pos_number() != diag_left_pos[1:2]:
+                    if temp_pos.get_pos_char() != diag_left_pos[0:1] or temp_pos.get_pos_number() != int(diag_left_pos[1:2]):
                         continue
                     elif (pawn_array[i].get_color() == consts.COLOR_WHITE and temp_pos.get_pos_char() == diag_left_pos[0:1]
-                          and temp_pos.get_pos_number() == diag_left_pos[1:2]):
+                          and temp_pos.get_pos_number() == int(diag_left_pos[1:2])):
                         return diag_left_pos
         if diag_right_pos != "x" and diag_right_pos is not None:
             for i in range(0, array_len):
                 if i != selected_pawn:
                     temp_pos = pawn_array[i].get_position()
-                    if temp_pos.get_pos_char() != diag_right_pos[0:1] or temp_pos.get_pos_number() != diag_right_pos[1:2]:
+                    if temp_pos.get_pos_char() != diag_right_pos[0:1] or temp_pos.get_pos_number() != int(diag_right_pos[1:2]):
                         continue
                     elif (pawn_array[i].get_color() == consts.COLOR_WHITE and temp_pos.get_pos_char() == diag_right_pos[0:1]
-                          and temp_pos.get_pos_number() == diag_right_pos[1:2]):
+                          and temp_pos.get_pos_number() == int(diag_right_pos[1:2])):
                         return diag_right_pos
 
         temp_pos = pawn_array[selected_pawn].get_position()
@@ -120,12 +120,10 @@ class Opponent:
         for i in range(0, array_len):
             if i != selected_pawn:
                 temp_pos = pawn_array[i].get_position()
-                if temp_pos.get_pos_char() != forward_step[0:1] or temp_pos.get_pos_number() != forward_step[1:2]:
-                    continue
-                else:
+                if temp_pos.get_pos_char() == forward_step[0:1] and temp_pos.get_pos_number() == int(forward_step[1:2]):
                     no_move_possible = True
                     break
-        if not no_move_possible:
-            return forward_step
-        else:
+        if no_move_possible:
             return "x"
+        else:
+            return forward_step

@@ -37,13 +37,9 @@ Fuer alleiniges Spiel muss Gegner seine Zuege automatisch ausfuehren.
         >Es werden drei verschiedene Spielpositionen auf korrekten Rueckgabewert ueberprueft.
     * test_4_select_pawn_move
         >Testet Methode select_pawn_move.\
-        >Prueft ueber Rueckgabewert, ob diagonal links geschlagen wird.
-    * test_5_select_pawn_move
-        >Testet Methode select_pawn_move.\
-        >Prueft ueber Rueckgabewert, ob diagonal rechts geschlagen wird.
-    * test_6_select_pawn_move
-        >Testet Methode select_pawn_move.\
-        >Prueft ueber Rueckgabewert, ob Figur um eins nach vorn bewegt wird.
-    * test_7_select_pawn_move
-        >Testet Methode select_pawn_move.\
-        >Prueft ueber Rueckgabewert, ob erkannt wird, dass kein Spielzug durchgefuehrt werden kann.
+        >Folgende Faelle werden abgedeckt:
+           * diagonal links schlagen
+           * diagonal rechts schlagen
+           * einfacher Spielzug
+           * kein Spielzug moeglich
+           
