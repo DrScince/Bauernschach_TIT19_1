@@ -135,6 +135,7 @@ def __get_load_game(games):
 def __check_new_game(game, storage):
     """Check if the user wants a new game or a game reset
     Arguments:
+        game {ActiveGame} -- the active instance of the game
         storage {ChessStorage} -- the Instance of ChessStorage to get file access
     Returns:
         consts.GAME_MODE["RESET"] -- User wants to reset a game
@@ -166,6 +167,7 @@ def __check_new_game(game, storage):
 def __check_game_saved(game, storage):
     """Check if game is saved and saves the game by user input
     Arguments:
+        game {ActiveGame} -- the active instance of the game
         storage {ChessStorage} -- the Instance of ChessStorage to get file access
     Returns:
         new_game_name {string} -- name of new game if necessary
@@ -253,7 +255,7 @@ def __quit_game():
 #
 #
 if platform.system() == "Windows":
-    CLEAR = lambda: os.system("cls")
+    CLEAR = lambda: os.system(" ") #("cls")
     os.system('color F0')
 elif platform.system() == "Linux":
     CLEAR = lambda: os.system('clear')

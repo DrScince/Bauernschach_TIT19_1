@@ -39,6 +39,8 @@ class Opponent:
             while pawn_array[selected_pawn].get_color() == consts.COLOR_WHITE:
                 selected_pawn = randint(0, len(pawn_array)-1)
             selected_move = self.select_pawn_move(pawn_array, selected_pawn)
+
+
         temp_pos = pawn_array[selected_pawn].get_position()
         result_list.insert(0, temp_pos.get_pos_char() + str(temp_pos.get_pos_number()))
         result_list.insert(1, selected_move)

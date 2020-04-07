@@ -1,18 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c92e7ef5-0c74-41a7-b304-0edb2baa9d2f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1aBKn6mR1Z7Tms2rLOXz4FPvkBX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c92e7ef5-0c74-41a7-b304-0edb2baa9d2f" name="Default Changelist" comment="" />
+      <created>1586203711161</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586203711161</updated>
+      <workItem from="1586203723559" duration="730000" />
+      <workItem from="1586241283984" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="981" y="559" key="com.intellij.ide.util.TipDialog" timestamp="1586203747603">
+    <state x="736" y="390" width="1089" height="705" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586204350824">
       <screen x="0" y="31" width="2560" height="1409" />
     </state>
-    <state x="981" y="559" key="com.intellij.ide.util.TipDialog/0.31.2560.1409/-3840.12.2560.1440/-7691.-2148.2560.1440/-3851.-2148.1536.864@0.31.2560.1409" timestamp="1586203747603" />
+    <state x="736" y="390" width="1089" height="705" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.31.2560.1409/-3840.12.2560.1440/-7691.-2148.2560.1440/-3851.-2148.1536.864@0.31.2560.1409" timestamp="1586204350824" />
+    <state x="981" y="559" key="com.intellij.ide.util.TipDialog" timestamp="1586241284510">
+      <screen x="0" y="31" width="2560" height="1409" />
+    </state>
+    <state x="981" y="559" key="com.intellij.ide.util.TipDialog/0.31.2560.1409/-3840.12.2560.1440/-7691.-2148.2560.1440/-3851.-2148.1536.864@0.31.2560.1409" timestamp="1586241284510" />
   </component>
 </project>

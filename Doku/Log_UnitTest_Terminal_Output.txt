@@ -1,4 +1,5 @@
-PS D:\Nextcloud\Studium\Git\Bauernschach_TIT19_1\chessgame_main> coverage run -m unittest -v                                                                                         test_error_codes (chess_logik.test_field.FieldTest) ... ok
+PS D:\Nextcloud\Studium\Git\Bauernschach_TIT19_1\chessgame_main> coverage run -m unittest -v
+test_error_codes (chess_logik.test_field.FieldTest) ... ok
 test_game_all_black_hit (chess_logik.test_field.FieldTest) ... ok
 test_game_all_white_hit (chess_logik.test_field.FieldTest) ... ok
 test_game_black_back_line (chess_logik.test_field.FieldTest) ... ok
@@ -85,6 +86,14 @@ test_006_log_append (chess_storage.test_chessstorage.StorageTest)
 testing the private method __log_append ... ok
 test_999_remove_testfiles (chess_storage.test_chessstorage.StorageTest)
 Remove all created files ... ok
+test_1_bot_move (computer_gegner.test_opponent.OpponentTest)
+Tests the method bot_move ... ok
+test_2_diagonal_left (computer_gegner.test_opponent.OpponentTest)
+Tests the method diagonal_left ... ok
+test_3_diagonal_right (computer_gegner.test_opponent.OpponentTest)
+Tests the method diagonal_right ... ok
+test_4_select_pawn_move (computer_gegner.test_opponent.OpponentTest)
+Tests the method select_pawn_move in following cases: ... ok
 test_000_init (test_game.GameTest)
 Test the init from ActiveGame ... ok
 test_001_run_game (test_game.GameTest)
@@ -455,8 +464,8 @@ Test the method run_game ...
                                     A    B    C    D    E    F    G    H
 
                                8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
-                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ◻    7
-                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ♟    6
+                               7    ♟    ♟    ♟    ♟    ♟    ◻    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ♟    ◻    ◼    6
                                5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
                                4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
                                3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
@@ -476,8 +485,8 @@ Test the method run_game ...
                                     A    B    C    D    E    F    G    H
 
                                8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
-                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ◻    7
-                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ♟    6
+                               7    ♟    ♟    ♟    ♟    ♟    ◻    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ♟    ◻    ◼    6
                                5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
                                4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
                                3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
@@ -497,8 +506,8 @@ Test the method run_game ...
                                     A    B    C    D    E    F    G    H
 
                                8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
-                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ◻    7
-                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ♟    6
+                               7    ♟    ♟    ♟    ♟    ♟    ◻    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ♟    ◻    ◼    6
                                5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
                                4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
                                3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ♙    3
@@ -517,8 +526,8 @@ Test the method run_game ...
                                     A    B    C    D    E    F    G    H
 
                                8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
-                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ◻    7
-                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ♟    6
+                               7    ♟    ♟    ♟    ♟    ♟    ◻    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ♟    ◻    ◼    6
                                5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
                                4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
                                3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ♙    3
@@ -2351,7 +2360,6 @@ test_999_remove_testfiles (test_main.MainTest)
 Remove all created files ... ok
 
 ----------------------------------------------------------------------
-Ran 49 tests in 13.634s
+Ran 53 tests in 14.367s
 
 OK
-PS D:\Nextcloud\Studium\Git\Bauernschach_TIT19_1\chessgame_main>                                                                                                                                                                                              

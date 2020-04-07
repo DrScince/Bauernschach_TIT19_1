@@ -178,6 +178,7 @@ class FieldTest(unittest.TestCase):
         field.do_move(Position("H", 2), Position("H", 4))
         field.get_possible_moves(Position("H", 7))
         field.do_move(Position("H", 7), Position("H", 5))
+        self.assertEqual(field.do_move(Position("A", 2), Position("A", 4)), consts.ERROR_CODES["NoPosMove"])
         self.assertEqual(field.get_possible_moves(Position("H", 4)), consts.ERROR_CODES["NoPosMoves"])
         self.assertEqual(field.do_move(Position("A", 3), Position("A", 4)), consts.ERROR_CODES["NoFigure"])
         self.assertEqual(field.do_move(Position("A", 7), Position("A", 6)), consts.ERROR_CODES["WrongColor"])
