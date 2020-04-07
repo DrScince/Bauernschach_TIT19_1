@@ -1,0 +1,2365 @@
+PS D:\Nextcloud\Studium\Git\Bauernschach_TIT19_1\chessgame_main> coverage run -m unittest -v
+test_error_codes (chess_logik.test_field.FieldTest) ... ok
+test_game_all_black_hit (chess_logik.test_field.FieldTest) ... ok
+test_game_all_white_hit (chess_logik.test_field.FieldTest) ... ok
+test_game_black_back_line (chess_logik.test_field.FieldTest) ... ok
+test_game_white_back_line (chess_logik.test_field.FieldTest) ... ok
+test_wrong_argument_types (chess_logik.test_field.FieldTest) ... ok
+test_error_codes (chess_logik.test_figure.FigureTest) ... ok
+test_normal_init_and_getter (chess_logik.test_figure.FigureTest) ... ok
+test_wrong_argument_types (chess_logik.test_figure.FigureTest) ... ok
+test_get_pos (chess_logik.test_pawn.PawnTest) ... ok
+test_moves (chess_logik.test_pawn.PawnTest) ... ok
+test_wrong_argument_types (chess_logik.test_pawn.PawnTest) ... ok
+test_error_codes (chess_logik.test_position.PositionTest) ... ok
+test_normal_init_and_getter (chess_logik.test_position.PositionTest) ... ok
+test_wrong_argument_types (chess_logik.test_position.PositionTest) ... ok
+test_001_save_data (chess_storage.test_chessstorage.StorageTest)
+Test the method save_data ... ok
+test_002_load_data (chess_storage.test_chessstorage.StorageTest)
+Test the method load_data ... ok
+test_003_get_all_games (chess_storage.test_chessstorage.StorageTest)
+Test the method get_all_games ... ok
+test_004_log (chess_storage.test_chessstorage.StorageTest)
+Test the method log_game ...
+Line (0 bis 9)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+Still Line (0 bis 9)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+Line (0 bis 9) two times
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+One Line:
+__test_data
+
+Still one Line:
+__test_data
+
+Two Lines
+__test_data
+__test_data
+
+ok
+test_005_write_file (chess_storage.test_chessstorage.StorageTest)
+testing the private method __write_file ... ok
+test_006_log_append (chess_storage.test_chessstorage.StorageTest)
+testing the private method __log_append ... ok
+test_999_remove_testfiles (chess_storage.test_chessstorage.StorageTest)
+Remove all created files ... ok
+test_1_bot_move (computer_gegner.test_opponent.OpponentTest)
+Tests the method bot_move ... ok
+test_2_diagonal_left (computer_gegner.test_opponent.OpponentTest)
+Tests the method diagonal_left ... ok
+test_3_diagonal_right (computer_gegner.test_opponent.OpponentTest)
+Tests the method diagonal_right ... ok
+test_4_select_pawn_move (computer_gegner.test_opponent.OpponentTest)
+Tests the method select_pawn_move in following cases: ... ok
+test_000_init (test_game.GameTest)
+Test the init from ActiveGame ... ok
+test_001_run_game (test_game.GameTest)
+Test the method run_game ...
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        A3      A4                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spielfigur hat falsche Farbe__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        A6      A5                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Keine Spielzüge für diese Figur möglich__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Keine Figur auf diesem Feld__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Falsches zeichen eingegeben__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spiel wurde erfolgreich gespeichert__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spiel wurde erfolgreich gespeichert__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spiel wurde erfolgreich gespeichert__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spiel wurde erfolgreich gespeichert__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        A3      A4                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ◻    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ♟    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ◻    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ♟    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        H3      H4
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ◻    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ♟    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ♙    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ◼    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ◻    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ♟    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ♙    3
+                               2    ◻    ♙    ♙    ♙    ♙    ♙    ♙    ◼    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        C3      C4                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        B6      B5                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        B5      C5                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ♙    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ♙    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        D6      D5                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ◻    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ♙    ♟    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ◻    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ♙    ♟    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        D6      C6
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ◻    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ♙    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ◻    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ♙    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        A6      A5
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ◻    ♟    ◻    ♟    ♟    ♟    ♟    7
+                               6    ♟    ◼    ◻    ♙    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ◻    ♟    ◻    ♟    ♟    ♟    ♟    7
+                               6    ♟    ◼    ◻    ♙    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        C7      E7      D7                                      Falsche eingabe bitte eine der Optionen eingeben
+                                Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ◻    ♟    ♙    ♟    ♟    ♟    ♟    7
+                               6    ♟    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ◻    ♟    ♙    ♟    ♟    ♟    ♟    7
+                               6    ♟    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        A5
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ◻    ♟    ♙    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ◼    ◻    ♟    ♙    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        D8
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ♙    ◻    ◼    ◻    ◼    8
+                               7    ◼    ◻    ♟    ◻    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ♟    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 hat gewonnen
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        C3      C4                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        B6      B5                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        A3      A4                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ♟    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ♙    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        A4      C4      B4                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ♟    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ♟    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        E3      E4
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ♟    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ♙    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ◻    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ♟    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ♙    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ◻    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        C3
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ♟    ◻    ♙    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ◻    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ♟    ◻    ♙    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ◻    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        E4
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ♙    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ♟    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ◻    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ♙    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ♟    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ◻    ♙    ◻    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        B2      D2      C2                                      Falsche eingabe bitte eine der Optionen eingeben
+                                Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ♙    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♟    ♙    ◻    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ♙    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ◻    ♙    ♟    ♙    ◻    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        H3      H4
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ♙    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ♙    3
+                               2    ◻    ♙    ♟    ♙    ◻    ♙    ♙    ◼    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ♙    ◼    ◻    ◼    ♙    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ♙    3
+                               2    ◻    ♙    ♟    ♙    ◻    ♙    ♙    ◼    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        C1
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ◻    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 hat gewonnen
+                               4    ♙    ◼    ◻    ◼    ♙    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ♙    3
+                               2    ◻    ♙    ◻    ♙    ◻    ♙    ♙    ◼    2
+                               1    ◼    ◻    ♟    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+ok
+test_002_update_game (test_game.GameTest)
+Test the update game function ... ok
+test_003_fill_default_game (test_game.GameTest)
+Test the fill_default_game function ... ok
+test_004_fill_game_field (test_game.GameTest)
+Test the fill_game_field function ... ok
+test_005_print_game_all (test_game.GameTest)
+Test the print_game_all function ... ok
+test_006_print_menu (test_game.GameTest)
+Test the print_menu function ... ok
+test_007_print_footer (test_game.GameTest)
+Test the print_footer function ... ok
+test_008_print_game (test_game.GameTest)
+Test the print_game function ... ok
+test_009_print_game_line (test_game.GameTest)
+Test the print_game_line function ... ok
+test_010_get_input (test_game.GameTest)
+Test the get_input function ...                                 Bitte Menü Aktion eingeben oder Bauer wählen
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        H3      H4                                      Falsche eingabe bitte eine der Optionen eingeben
+ok
+test_011_turn (test_game.GameTest)
+Test the turn function ...
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        H3      H4                                      Falsche eingabe bitte eine der Optionen eingeben
+ok
+test_012_get_input_move (test_game.GameTest)
+Test the get_input_move function ...                            Bitte einen der folgenden Züge auswählen:
+ok
+test_013_get_game_name (test_game.GameTest)
+Test the get_game_name function ... ok
+test_014_get_playername_one (test_game.GameTest)
+Test the get_playername_one function ... ok
+test_015_get_playername_two (test_game.GameTest)
+Test the get_playername_two function ... ok
+test_016_get_play_against_bot (test_game.GameTest)
+Test the get_play_against_bot function ... ok
+test_017_set_game_name (test_game.GameTest)
+Test the get_play_against_bot function ... ok
+test_999_remove_testfiles (test_game.GameTest)
+Remove all created files ...                                    H3      H4
+ok
+test_000_init (test_main.MainTest)
+no init needed because main is no class ... ok
+test_001_main (test_main.MainTest)
+"Test the main function ...
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Keine Spiele zum Laden vorhanden
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde noch nicht gepspeichert
+                                        (S)     Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Keine Spiele zum Laden vorhanden
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde noch nicht gepspeichert
+                                        (S)     Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde noch nicht gepspeichert
+                                        (S)     Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde noch nicht gepspeichert
+                                        (S)     Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spiel wurde erfolgreich gespeichert__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde noch nicht gepspeichert
+                                        (S)     Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde noch nicht gepspeichert
+                                        (S)     Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spiel wurde erfolgreich gespeichert__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde bereits gespeichert
+                                        Soll der Spielstand überschrieben werden
+                                        (S)     Spiel Überschreiben
+                                        (SN)    als neues Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde noch nicht gepspeichert
+                                        (S)     Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spiel wurde erfolgreich gespeichert__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde bereits gespeichert
+                                        Soll der Spielstand überschrieben werden
+                                        (S)     Spiel Überschreiben
+                                        (SN)    als neues Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde bereits gespeichert
+                                        Soll der Spielstand überschrieben werden
+                                        (S)     Spiel Überschreiben
+                                        (SN)    als neues Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Spiel Test_Game_Main existiert bereits
+
+                                                Spiel Was möchten sie tun
+
+                                                (1)     Nochmal Spielen
+
+                                                (2)     Neues Spiel Starten
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde bereits gespeichert
+                                        Soll der Spielstand überschrieben werden
+                                        (S)     Spiel Überschreiben
+                                        (SN)    als neues Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Spiel Test_Game_Main existiert bereits
+
+                                                Spiel Was möchten sie tun
+
+                                                (1)     Nochmal Spielen
+
+                                                (2)     Neues Spiel Starten
+
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde bereits gespeichert
+                                        Soll der Spielstand überschrieben werden
+                                        (S)     Spiel Überschreiben
+                                        (SN)    als neues Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Spiel Test_Game_Main existiert bereits
+
+                                                Spiel Was möchten sie tun
+
+                                                (1)     Nochmal Spielen
+
+                                                (2)     Neues Spiel Starten
+
+Falsche eingabe
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde bereits gespeichert
+                                        Soll der Spielstand überschrieben werden
+                                        (S)     Spiel Überschreiben
+                                        (SN)    als neues Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Spiele zum laden
+                                                (1)     Test_Game_Main
+                                                (2)     Test_Game_Main__1
+                                                (3)     Test_Game_Main__2
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __Spiel wurde erfolgreich gespeichert__
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test1 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ♙    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte einen der folgenden Züge auswählen:
+                                        H3      H4                                      Falsche eingabe bitte eine der Optionen eingeben
+
+                                                Schachautomat
+
+                Neues Spiel(N)          Speichern(S)    Laden(L)                Spiel Beenden(B)
+                ________________________________________________________________________________
+
+                                    A    B    C    D    E    F    G    H
+
+                               8    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    8
+                               7    ♟    ♟    ♟    ♟    ♟    ♟    ♟    ♟    7
+                               6    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ◼    6
+                               5    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    5            Test2 ist an der Reihe
+                               4    ◻    ◼    ◻    ◼    ◻    ◼    ◻    ♙    4           __
+                               3    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    3
+                               2    ♙    ♙    ♙    ♙    ♙    ♙    ♙    ◼    2
+                               1    ◼    ◻    ◼    ◻    ◼    ◻    ◼    ◻    1
+
+                                    A    B    C    D    E    F    G    H
+
+                ________________________________________________________________________________
+                                Bitte Menü Aktion eingeben oder Bauer wählen
+                                        Spiel wurde bereits gespeichert
+                                        Soll der Spielstand überschrieben werden
+                                        (S)     Spiel Überschreiben
+                                        (SN)    als neues Spiel Speichern
+                                        (B)     ohne Speichern fortfahren
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Falsche eingabe !
+ok
+test_002_print_welcome_screen (test_main.MainTest)
+Test the function print_welcome_screen ...
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Neues Spiel(N)
+                                                Spiel Laden(L)
+                                                Beenden(B)
+
+                ________________________________________________________________________________
+ok
+test_003_get_load_game (test_main.MainTest)
+Test the function get_load_game ...
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Spiele zum laden
+                                                (1)     Game1
+                                                (2)     Game2
+                                                (3)     Game3
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Spiele zum laden
+                                                (1)     Game1
+                                                (2)     Game2
+                                                (3)     Game3
+                ________________________________________________________________________________
+
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+
+                                                Spiele zum laden
+                                                (1)     Game1
+                                                (2)     Game2
+                                                (3)     Game3
+                ________________________________________________________________________________
+
+ok
+test_004_check_new_game (test_main.MainTest)
+Test the function get_load_game ... ok
+test_005_set_new_game (test_main.MainTest)
+Test the function set_new_game ...
+                                                Schachautomat
+                ________________________________________________________________________________
+
+                                                Falsche eingabe bitte erneut Versuchen
+
+                                                Schachautomat
+                ________________________________________________________________________________
+
+ok
+test_006_quit_game (test_main.MainTest)
+est the function quit_game ... ok
+test_999_remove_testfiles (test_main.MainTest)
+Remove all created files ... ok
+
+----------------------------------------------------------------------
+Ran 53 tests in 14.367s
+
+OK
